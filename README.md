@@ -20,7 +20,7 @@ To use this module, add it to the modules array in the config/config.js file:
   module: 'MMM-Multimonth',
 	position: 'top_left', // can be any of the postions
 	config: { // Optional - will default to 3 months, with one previous and one next. 
-	  startMonth: -1, // Define when you start from current month (negative is before current, zero is current, positive is in future) 
+		startMonth: -1, // Define when you start from current month (negative is before current, zero is current, positive is in future) 
 		monthCount: 3, //  How many months to display 
 	}
 }
@@ -36,4 +36,7 @@ This is still a very basic module, but I felt it was good enough for release to 
 “The more I read, the more I acquire, the more certain I am that I know nothing.”
 ― Voltaire
 
+## Versioning
+0.1 - Initial Release
+0.2 - Change code to improve functionality, allow for some localization - will not move start of week yet, but will change languages with system.
 
