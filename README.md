@@ -1,6 +1,6 @@
 # MagicMirror Module to display a calendar with multiple months (user configurable)
 
-This is a module fpr the [MagicMirror](https://github.com/MichMich/MagicMirror) project. 
+This is a module for the [MagicMirror](https://github.com/MichMich/MagicMirror) project. 
 
 It's purpose is to enable a mini-calendar with as many months as the user wants, assuming screen space is available. 
 
