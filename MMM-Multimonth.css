@@ -1,0 +1,13 @@
+  
+.MMM-Multimonth .hilight {
+	background-color: Yellow;
+	color: black;
+}
+
+.MMM-Multimonth .monthhead {
+	background-color: green;
+	color: white;
+	font-size: 20px;
+	line-height: 25px;
+}
+
