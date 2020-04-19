@@ -1,35 +1,37 @@
-# MagicMirror-Module-Template
-This is a module to help developers to start building their own modules for the [MagicMirror](https://github.com/MichMich/MagicMirror). 
+# MagicMirror Module to display a calendar with multiple months (user configurable)
 
-There samples of code for:
-- External request
-- Config parameters
-- Custom URL path route
-- Passing of messages (NOTIFICATIONS)
+This is a module fpr the [MagicMirror](https://github.com/MichMich/MagicMirror) project. 
 
-Also this module include tasks for checking your code. For that you need install the developer dependencies.
-
-```
-cd MI_MODULE_PATH && npm install 
-```
-
-Run the `test` npm script
-```
-npm test
-```
-
-Current Tests:
-- [ESLint](http://eslint.org/) for linting the javascript
-- [stylelint](https://stylelint.io/) for linting the CSS with [stylelint-config-standard](https://github.com/stylelint/stylelint-config-standard) as its base
-- [jsonlint](https://github.com/zaach/jsonlint) for linting the translation files
-- [markdownlint](https://github.com/DavidAnson/markdownlint) for checking the markdown files (`README.md`, `CHANGELOG.md`, `LICENSE.txt`)
-- [js-yaml](https://github.com/nodeca/js-yaml) to lint the `.travis.yml` (run through [grunt-yamllint](https://github.com/geedew/grunt-yamllint))
-
+It's purpose is to enable a mini-calendar with as many months as the user wants, assuming screen space is available. 
 
 ## Installation
 
-`bash -c "$(curl -sL https://raw.githubusercontent.com/roramirez/MagicMirror-Module-Template/master/create_module.sh)"`
+Clone this repository in your ~/MagicMirror/modules/ folder ( $ cd ~MagicMirror/modules/ ):
 
-This creates a module example to start your development more easy.
+git clone https://github.com/BKeyport/MMM-Multimonth.git
 
-If you have any suggest, please let me know [by an issue](https://github.com/roramirez/MagicMirror-Module-Template/issues/new).
+## Using the module
+To use this module, add it to the modules array in the config/config.js file:
+
+```
+{
+  module: 'MMM-Multimonth',
+	position: 'top_left', // can be any of the postions
+	config: { // Optional - will default to 3 months, with one previous and one next. 
+	  startMonth: -1, // Define when you start from current month (negative is before current, zero is current, positive is in future) 
+		monthCount: 3, //  How many months to display 
+	}
+}
+```
+
+Many thanks to kirash for the inspiration with the monthly_calendar module, sdetweil and lavolp3 for the help in coding and CSS work. Without your help, this would just be a pipe dream. 
+
+This is still a very basic module, but I felt it was good enough for release to the public. Please, if you have any suggestions for improvement, let me know, I'm learning JS and CSS as I write this, and I dream of much bigger things. 
+
+“Let the improvement of yourself keep you so busy that you have no time to criticize others.”
+― Roy T. Bennett, The Light in the Heart
+
+“The more I read, the more I acquire, the more certain I am that I know nothing.”
+― Voltaire
+
+
