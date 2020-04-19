@@ -4,6 +4,8 @@ This is a module fpr the [MagicMirror](https://github.com/MichMich/MagicMirror) 
 
 It's purpose is to enable a mini-calendar with as many months as the user wants, assuming screen space is available. 
 
+![screenshot](screenshot.png?raw=true "Screenshot")
+
 ## Installation
 
 Clone this repository in your ~/MagicMirror/modules/ folder ( $ cd ~MagicMirror/modules/ ):
