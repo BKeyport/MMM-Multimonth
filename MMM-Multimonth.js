@@ -1,5 +1,5 @@
 /* Magic Mirror Module: MMM-Minical
- * v0.2 - Apr 2020
+ * v0.25 - Apr 2020
  * By Brendan Keyport <brendan.keyport@gmail.com>
  *
  */
@@ -16,10 +16,16 @@ Module.register("MMM-Multimonth", {
     return [this.data.path + "/MMM-Multimonth.css"];
   },
 
+  // Update hourly (Bodge until I can figure out how to count to midnight) 
+  start: function (){
+     var timer = setInterval(()=>{
+     this.updateDom()
+    }, 3600000)
+  },    
 
   // Override dom generator.
   getDom: function() {
-	var wrapper = document.createElement("div");
+    var wrapper = document.createElement("div");
     // Static variables 
     var maxLoops = this.config.startMonth + this.config.monthCount;
     var todayNum = moment().format("D");

@@ -38,5 +38,7 @@ This is still a very basic module, but I felt it was good enough for release to 
 
 ## Versioning
 0.1 - Initial Release
+
 0.2 - Change code to improve functionality, allow for some localization - will not move start of week yet, but will change languages with system.
 
+0.25 - Fix code with temporary bodge so to refresh every hour to assure day changes sometime between midnight and 1 am. 
