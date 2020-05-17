@@ -16,11 +16,11 @@ Module.register("MMM-Multimonth", {
     return [this.data.path + "/MMM-Multimonth.css"];
   },
 
-  // Update hourly (Bodge until I can figure out how to count to midnight) 
+  // Update at midnight
   start: function (){
      var timer = setInterval(()=>{
      this.updateDom()
-    }, 3600000)
+    }, moment().add(1, 'days').hours(0).minutes(0).seconds(0)-moment())
   },    
 
   // Override dom generator.
