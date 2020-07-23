@@ -29,8 +29,7 @@ Module.register("MMM-Multimonth", {
     // Static variables 
     var maxLoops = this.config.startMonth + this.config.monthCount;
     var todayNum = moment().format("D");
-    // var todayWD = moment().weekday(); // Don't work internationally, yet. I will beat it. 
-    var weekdayArray = moment.weekdaysShort();
+    var weekdayArray = moment.weekdaysShort(true);
     // start of output string 
     output = "<table border=0 class ='xsmall'><tr>"
 
@@ -39,17 +38,16 @@ Module.register("MMM-Multimonth", {
       // Variables that need to change each loop
       processTitle = moment().add(processMonth, "month").format("MMMM YYYY");
       processEnd = moment().add(processMonth, "month").endOf("month").format("D");
-      processStart = moment().add(processMonth, "month").startOf("month").format("d");
+      monthStart = parseInt(moment().add(processMonth, "month").startOf("month").format("d"));
+      weekStart = parseInt(moment().add(processMonth, "month").startOf("week").format("d"));
+      processStart = monthStart+weekStart;
+      if (processStart == 7) {processStart = 0} 
       output += "<tr><th colspan=7 class='monthhead'>" + processTitle + "</th></tr>";
       // write the first line after the first month (Day string)
       if (processMonth == this.config.startMonth) {
         output += "<tr>";
         for (weekdayLoop = 0; weekdayLoop < 7; weekdayLoop++) {
-          //      if (weekdayLoop == todayWD) { // Part of not-working international segment. 
-          //        output += "<td width='14%' class='hilight'>" + weekdayArray[weekdayLoop] + "</td>"; // Part of not-working international segment. 
-          //      } else { // Part of not-working international segment. 
           output += "<td width='14%'>" + weekdayArray[weekdayLoop] + "</td>";
-          //      } // Part of not-working international segment. 
         }
         output += "</tr>";
       }
