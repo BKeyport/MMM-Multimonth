@@ -1,5 +1,5 @@
 /* Magic Mirror Module: MMM-Minical
- * v0.25 - Apr 2020
+ * v0.95 - Apr 2020
  * By Brendan Keyport <brendan.keyport@gmail.com>
  *
  */
@@ -40,7 +40,7 @@ Module.register("MMM-Multimonth", {
       processEnd = moment().add(processMonth, "month").endOf("month").format("D");
       monthStart = parseInt(moment().add(processMonth, "month").startOf("month").format("d"));
       weekStart = parseInt(moment().add(processMonth, "month").startOf("week").format("d"));
-      processStart = monthStart+weekStart;
+      processStart = monthStart-weekStart;
       if (processStart == 7) {processStart = 0} 
       output += "<tr><th colspan=7 class='monthhead'>" + processTitle + "</th></tr>";
       // write the first line after the first month (Day string)

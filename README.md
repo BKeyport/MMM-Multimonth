@@ -48,3 +48,5 @@ Localization is provided by moment.js and controlled by the master language of M
 0.3 - Removed bodge in 0.25, replaced with a simple refresh at midnight, no animation, as I find it annoying. 
 
 0.9 - Start of week now moves per moment.js. Note: at this point, module is almost everything I wanted. If I don't get any bug reports that I can control, I'm going to bump it up to 1.0 and call it good. 
+
+0.95 - Fix start of week issue. Had a calculation backwards. - Suggestion was made to optionally add week numbers to the system, still working on that. 
