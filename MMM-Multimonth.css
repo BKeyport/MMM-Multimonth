@@ -38,9 +38,10 @@
 }
 .MMM-Multimonth .day-header {
 	color: white;
-	flex-basis: 100%;
-	padding-left: 2px;
-	padding-right: 2px;
+	flex: 1 1 0px;
+	min-width: 0;
+	padding-left: 4px;
+	padding-right: 4px;
 }
 
 /* The line representing an actual week */
@@ -49,10 +50,20 @@
 	flex-direction: row;
 	align-items: stretch;
 }
+.MMM-Multimonth .weeknumber {
+	flex: 1 1 0px;
+	min-width: 0;
+	padding-left: 4px;
+	padding-right: 4px;
+	border-radius: 8px;
+	background-color: DarkGrey;
+	color: black;
+}
 .MMM-Multimonth .day {
-	flex-basis: 100%;
-	padding-left: 2px;
-	padding-right: 2px;
+	flex: 1 1 0px;
+	min-width: 0;
+	padding-left: 4px;
+	padding-right: 4px;
 }
 
 .MMM-Multimonth .current_day {

@@ -26,6 +26,7 @@ To use this module, add it to the modules array in the config/config.js file:
 		monthCount: 3, //  How many months to display 
 		monthsVertical: true, // Whether to arrange the months vertically (true) or horizontally (false).
 		repeatWeekdaysVertical: false, // Whether to repeat the week days in each month in vertical mode. Ignored in horizontal mode.
+		weekNumbers: false, // Whether to display the week numbers in front of each week.
 	}
 }
 ```

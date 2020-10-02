@@ -11,6 +11,7 @@ Module.register("MMM-Multimonth", {
     monthCount: 3, // Define How many months to display
     monthsVertical: true, // Whether to arrange the months vertically (true) or horizontally (false).
     repeatWeekdaysVertical: false, // Whether to repeat the week days in each month in vertical mode. Ignored in horizontal mode.
+    weekNumbers: false, // Whether to display the week numbers in front of each week.
   },
 
   // CSS Add
@@ -34,6 +35,10 @@ Module.register("MMM-Multimonth", {
     // pre-calculcate the header line containing the week days - no need to repeat this for every month
     var weekdays = moment.weekdaysShort(true);
     var weekdaysHeader = "<div class='days-header'>";
+    if (this.config.weekNumbers) {
+      // empty cell as a placeholder for the week number
+      weekdaysHeader += "<div class='day-header'>&nbsp;&nbsp;&nbsp;</div>";      
+    }
     for (day = 0; day < 7; day++) {
       weekdaysHeader += "<div class='day-header'>" + weekdays[day] + "</div>";
     }
@@ -66,6 +71,9 @@ Module.register("MMM-Multimonth", {
 
       do {
         output += "<div class='week'>";
+        if (this.config.weekNumbers) {
+          output += "<div class='weeknumber'>" + currentWeekday.format("W") + "</div>";
+        }
         for (dow = 0; dow <= 6; dow++) {
           if (currentWeekday.isSame(firstDayOfMonth, "month")) {
             if (currentWeekday.isSame(moment(), "day")) {
