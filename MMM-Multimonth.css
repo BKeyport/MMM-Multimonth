@@ -68,5 +68,6 @@
 
 .MMM-Multimonth .current_day {
 	background-color: Yellow;
+	border-radius: 8px;
 	color: black;
 }

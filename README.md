@@ -4,9 +4,24 @@ This is a module for the [MagicMirror](https://github.com/MichMich/MagicMirror) 
 
 It's purpose is to enable a mini-calendar with as many months as the user wants, assuming screen space is available. 
 
-![screenshot](screenshot-vertical-norepeat.png?raw=true "Screenshot (vertical mode, single weekday line)")
-![screenshot](screenshot-vertical-repeat.png?raw=true "Screenshot (vertical mode, repeat weekday line for every month)")
-![screenshot](screenshot-horizontal.png?raw=true "Screenshot (horizontal mode)")
+![screenshot](vert-noweek-norep.png?raw=true "Screenshot (vertical mode, no week numbers, single weekday line)")
+Vertical mode, No Week Numbers, Single line for weekday names. 
+
+![screenshot](vert-noweek-rep.png?raw=true "Screenshot (vertical mode, no week numbers, repeat weekday line for every month)")
+Vertical mode, No Week Numbers, Repeat line for weekday names.
+
+![screenshot](vert-week-norep.png?raw=true "Screenshot (vertical mode, no week numbers, single weekday line)")
+Vertical mode, Week Numbers, Single line for weekday names.
+
+![screenshot](vert-week-rep.png?raw=true "Screenshot (vertical mode, no week numbers, repeat weekday line for every month)")
+Vertical mode, Week Numbers, Repeat line for weekday names.
+
+![screenshot](horz-noweeknum.png?raw=true "Screenshot (horizontal mode)")
+Horizontal mode, No Week Numbers.
+
+![screenshot](horz-week.png?raw=true "Screenshot (horizontal mode)")
+Horizontal mode, Week Numbers.
+
 
 ## Installation
 
@@ -55,3 +70,7 @@ Localization is provided by moment.js and controlled by the master language of M
 0.9 - Start of week now moves per moment.js. Note: at this point, module is almost everything I wanted. If I don't get any bug reports that I can control, I'm going to bump it up to 1.0 and call it good. 
 
 0.95 - Fix start of week issue. Had a calculation backwards. - Suggestion was made to optionally add week numbers to the system, still working on that. 
+
+0.99 - Major rewrite by [Volker Wegert](https://github.com/vwegert) (Danke sehr!) - Implements everything I want, and I even understand the wizard level code he wrote. 
+
+1.00 - Minor changes to code/css to standardize look.  

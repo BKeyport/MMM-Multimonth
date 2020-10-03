@@ -1,7 +1,9 @@
 /* Magic Mirror Module: MMM-Minical
- * v0.95 - Apr 2020
- * By Brendan Keyport <brendan.keyport@gmail.com>
  *
+ * v1.0 - October 2020
+ * By Brendan Keyport <brendan.keyport@gmail.com>
+ * Major assistance and rewrite by Volker Wegert <github@volker-wegert.de> 
+ * 
  */
 
 Module.register("MMM-Multimonth", {
