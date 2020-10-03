@@ -4,7 +4,9 @@ This is a module for the [MagicMirror](https://github.com/MichMich/MagicMirror) 
 
 It's purpose is to enable a mini-calendar with as many months as the user wants, assuming screen space is available. 
 
-![screenshot](screenshot.png?raw=true "Screenshot")
+![screenshot](screenshot-vertical-norepeat.png?raw=true "Screenshot (vertical mode, single weekday line)")
+![screenshot](screenshot-vertical-repeat.png?raw=true "Screenshot (vertical mode, repeat weekday line for every month)")
+![screenshot](screenshot-horizontal.png?raw=true "Screenshot (horizontal mode)")
 
 ## Installation
 
@@ -22,6 +24,9 @@ To use this module, add it to the modules array in the config/config.js file:
 	config: { // Optional - will default to 3 months, with one previous and one next. 
 		startMonth: -1, // Define when you start from current month (negative is before current, zero is current, positive is in future) 
 		monthCount: 3, //  How many months to display 
+		monthsVertical: true, // Whether to arrange the months vertically (true) or horizontally (false).
+		repeatWeekdaysVertical: false, // Whether to repeat the week days in each month in vertical mode. Ignored in horizontal mode.
+		weekNumbers: false, // Whether to display the week numbers in front of each week.
 	}
 }
 ```

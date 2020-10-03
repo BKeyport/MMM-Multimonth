@@ -9,6 +9,9 @@ Module.register("MMM-Multimonth", {
   defaults: {
     startMonth: -1, // Define when you start from current month
     monthCount: 3, // Define How many months to display
+    monthsVertical: true, // Whether to arrange the months vertically (true) or horizontally (false).
+    repeatWeekdaysVertical: false, // Whether to repeat the week days in each month in vertical mode. Ignored in horizontal mode.
+    weekNumbers: false, // Whether to display the week numbers in front of each week.
   },
 
   // CSS Add
@@ -26,58 +29,72 @@ Module.register("MMM-Multimonth", {
   // Override dom generator.
   getDom: function() {
     var wrapper = document.createElement("div");
-    // Static variables 
-    var maxLoops = this.config.startMonth + this.config.monthCount;
+    var lastMonth = this.config.startMonth + this.config.monthCount - 1;
     var todayNum = moment().format("D");
-    var weekdayArray = moment.weekdaysShort(true);
-    // start of output string 
-    output = "<table border=0 class ='xsmall'><tr>"
 
-    // master loop 
-    for (processMonth = this.config.startMonth; processMonth < maxLoops; processMonth++) {
-      // Variables that need to change each loop
-      processTitle = moment().add(processMonth, "month").format("MMMM YYYY");
-      processEnd = moment().add(processMonth, "month").endOf("month").format("D");
-      monthStart = parseInt(moment().add(processMonth, "month").startOf("month").format("d"));
-      weekStart = parseInt(moment().add(processMonth, "month").startOf("week").format("d"));
-      processStart = monthStart-weekStart;
-      if (processStart == 7) {processStart = 0} 
-      output += "<tr><th colspan=7 class='monthhead'>" + processTitle + "</th></tr>";
-      // write the first line after the first month (Day string)
-      if (processMonth == this.config.startMonth) {
-        output += "<tr>";
-        for (weekdayLoop = 0; weekdayLoop < 7; weekdayLoop++) {
-          output += "<td width='14%'>" + weekdayArray[weekdayLoop] + "</td>";
-        }
-        output += "</tr>";
-      }
-      for (processWeekday = 0; processWeekday <= processStart; processWeekday++) {
-        if (processWeekday == 0) {
-          output += "<tr>";
-        } else {
-          output += "<td></td>"
-        }
-      }
-
-      for (processDayNo = 1; processDayNo <= processEnd; processDayNo++) {
-        if (processWeekday == 0) {
-          output += "<tr>";
-          processWeekday++
-          processDayNo--
-        } else if (processWeekday == 8) {
-          output += "</tr>";
-          processWeekday = 0
-          processDayNo--
-        } else {
-          if (processDayNo == todayNum && processMonth == 0) {
-            output += "<td class='hilight'>" + processDayNo + "</td>"
-          } else {
-            output += "<td>" + processDayNo + "</td>"
-          }
-          processWeekday++
-        }
-      }
+    // pre-calculcate the header line containing the week days - no need to repeat this for every month
+    var weekdays = moment.weekdaysShort(true);
+    var weekdaysHeader = "<div class='days-header'>";
+    if (this.config.weekNumbers) {
+      // empty cell as a placeholder for the week number
+      weekdaysHeader += "<div class='day-header'>&nbsp;&nbsp;&nbsp;</div>";      
     }
+    for (day = 0; day < 7; day++) {
+      weekdaysHeader += "<div class='day-header'>" + weekdays[day] + "</div>";
+    }
+    weekdaysHeader += "</div>";
+
+    // set calendar main container depending on calendar orientation 
+    if (this.config.monthsVertical) {
+      output = "<div class='calendar calendar-vertical'>";
+    } else {
+      output = "<div class='calendar calendar-horizontal'>";
+    }
+
+    // iterate through months to display
+    for (currentMonth = this.config.startMonth; currentMonth <= lastMonth; currentMonth++) {
+      output += "<div class='month'>";
+
+      // add the month and week day headers
+      monthTitle = moment().add(currentMonth, "month").format("MMMM YYYY");
+      output += "<div class='month-header'>" + monthTitle + "</div>";
+      if ((!this.config.monthsVertical) || ((this.config.repeatWeekdaysVertical || (currentMonth == this.config.startMonth)))) {
+        output += weekdaysHeader;
+      }
+
+      // get the start of the week that contains the first day of the month
+      firstDayOfMonth = moment().add(currentMonth, "month").startOf("month") 
+      currentWeekday = moment().add(currentMonth, "month").startOf("month").startOf("week");
+
+      // get the end of the week that contains the last day of the month
+      lastWeekday = moment().add(currentMonth, "month").endOf("month").endOf("week");
+
+      do {
+        output += "<div class='week'>";
+        if (this.config.weekNumbers) {
+          output += "<div class='weeknumber'>" + currentWeekday.format("W") + "</div>";
+        }
+        for (dow = 0; dow <= 6; dow++) {
+          if (currentWeekday.isSame(firstDayOfMonth, "month")) {
+            if (currentWeekday.isSame(moment(), "day")) {
+              output += "<div class='day current_day'>" + currentWeekday.format("D") + "</div>";
+            } else {
+              output += "<div class='day'>" + currentWeekday.format("D") + "</div>";
+            }
+          } else {
+            // empty cell as placeholder
+            output += "<div class='day'>&nbsp;</div>";
+          }
+          currentWeekday.add(1, "days");
+        }
+        output += "</div>"; // end of week
+      } while (currentWeekday.isSameOrBefore(lastWeekday, "day"));
+
+      output += "</div>"; // end of month
+    }
+
+    output += "</div>"; // end of calendar
+
     wrapper.innerHTML = output;
     return wrapper;
   }
