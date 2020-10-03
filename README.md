@@ -2,26 +2,7 @@
 
 This is a module for the [MagicMirror](https://github.com/MichMich/MagicMirror) project. 
 
-It's purpose is to enable a mini-calendar with as many months as the user wants, assuming screen space is available. 
-
-![screenshot](vert-noweek-norep.png?raw=true "Screenshot (vertical mode, no week numbers, single weekday line)")
-Vertical mode, No Week Numbers, Single line for weekday names. 
-
-![screenshot](vert-noweek-rep.png?raw=true "Screenshot (vertical mode, no week numbers, repeat weekday line for every month)")
-Vertical mode, No Week Numbers, Repeat line for weekday names.
-
-![screenshot](vert-week-norep.png?raw=true "Screenshot (vertical mode, no week numbers, single weekday line)")
-Vertical mode, Week Numbers, Single line for weekday names.
-
-![screenshot](vert-week-rep.png?raw=true "Screenshot (vertical mode, no week numbers, repeat weekday line for every month)")
-Vertical mode, Week Numbers, Repeat line for weekday names.
-
-![screenshot](horz-noweeknum.png?raw=true "Screenshot (horizontal mode)")
-Horizontal mode, No Week Numbers.
-
-![screenshot](horz-week.png?raw=true "Screenshot (horizontal mode)")
-Horizontal mode, Week Numbers.
-
+It's purpose is to enable a mini-calendar with as many months as the user wants, assuming screen space is available. Screenshots are with config examples. 
 
 ## Installation
 
@@ -36,15 +17,26 @@ To use this module, add it to the modules array in the config/config.js file:
 {
   module: 'MMM-Multimonth',
 	position: 'top_left', // can be any of the postions
-	config: { // Optional - will default to 3 months, with one previous and one next. 
+	config: { // Optional - will default to 3 months, with one previous and one next, vertical orientation. 
 		startMonth: -1, // Define when you start from current month (negative is before current, zero is current, positive is in future) 
 		monthCount: 3, //  How many months to display 
+		// See below for examples of the following config items. 
 		monthsVertical: true, // Whether to arrange the months vertically (true) or horizontally (false).
 		repeatWeekdaysVertical: false, // Whether to repeat the week days in each month in vertical mode. Ignored in horizontal mode.
 		weekNumbers: false, // Whether to display the week numbers in front of each week.
 	}
-}
+},
 ```
+
+| Screenshot | How to get |
+| --- | --- |
+| ![screenshot](vert-noweek-norep.png?raw=true "Screenshot (vertical mode, no week numbers, single weekday line)") | Vertical: <br> monthsVertical: true, <br> 		repeatWeekdaysVertical: false, <br> weekNumbers: false, |
+| ![screenshot](vert-noweek-rep.png?raw=true "Screenshot (vertical mode, no week numbers, repeat weekday line for every month)")| Vertical: <br> monthsVertical: true, <br> 		repeatWeekdaysVertical: true, <br> weekNumbers: false,  |
+| ![screenshot](vert-week-norep.png?raw=true "Screenshot (vertical mode, no week numbers, single weekday line)") | Vertical: <br> monthsVertical: true, <br> 		repeatWeekdaysVertical: false, <br> weekNumbers: true, |
+| ![screenshot](vert-week-rep.png?raw=true "Screenshot (vertical mode, no week numbers, repeat weekday line for every month)") | Vertical: <br> monthsVertical: true, <br> 		repeatWeekdaysVertical: true, <br> weekNumbers: true, |
+| ![screenshot](horz-noweeknum.png?raw=true "Screenshot (horizontal mode)")| Horizontal: <br> monthsVertical: false, <br> weekNumbers: false, |
+| ![screenshot](horz-week.png?raw=true "Screenshot (horizontal mode)") | Horizontal: <br> monthsVertical: false, <br> weekNumbers: true, |
+
 
 Many thanks to kirash for the inspiration with the monthly_calendar module, sdetweil and lavolp3 for the help in coding and CSS work. Without your help, this would just be a pipe dream. 
 
