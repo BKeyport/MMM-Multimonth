@@ -30,12 +30,12 @@ To use this module, add it to the modules array in the config/config.js file:
 
 | Screenshot | How to get |
 | --- | --- |
-| ![screenshot](vert-noweek-norep.png?raw=true "Screenshot (vertical mode, no week numbers, single weekday line)") | Vertical: <br> monthsVertical: true, <br> 		repeatWeekdaysVertical: false, <br> weekNumbers: false, |
-| ![screenshot](vert-noweek-rep.png?raw=true "Screenshot (vertical mode, no week numbers, repeat weekday line for every month)")| Vertical: <br> monthsVertical: true, <br> 		repeatWeekdaysVertical: true, <br> weekNumbers: false,  |
-| ![screenshot](vert-week-norep.png?raw=true "Screenshot (vertical mode, no week numbers, single weekday line)") | Vertical: <br> monthsVertical: true, <br> 		repeatWeekdaysVertical: false, <br> weekNumbers: true, |
-| ![screenshot](vert-week-rep.png?raw=true "Screenshot (vertical mode, no week numbers, repeat weekday line for every month)") | Vertical: <br> monthsVertical: true, <br> 		repeatWeekdaysVertical: true, <br> weekNumbers: true, |
-| ![screenshot](horz-noweeknum.png?raw=true "Screenshot (horizontal mode)")| Horizontal: <br> monthsVertical: false, <br> weekNumbers: false, |
-| ![screenshot](horz-week.png?raw=true "Screenshot (horizontal mode)") | Horizontal: <br> monthsVertical: false, <br> weekNumbers: true, |
+| ![screenshot](vert-noweek-norep.png?raw=true "Screenshot (vertical mode, no week numbers, single weekday line)") | monthsVertical: true, <br> 		repeatWeekdaysVertical: false, <br> weekNumbers: false, |
+| ![screenshot](vert-noweek-rep.png?raw=true "Screenshot (vertical mode, no week numbers, repeat weekday line for every month)")| monthsVertical: true, <br> 		repeatWeekdaysVertical: true, <br> weekNumbers: false,  |
+| ![screenshot](vert-week-norep.png?raw=true "Screenshot (vertical mode, no week numbers, single weekday line)") | monthsVertical: true, <br> repeatWeekdaysVertical: false, <br> weekNumbers: true, |
+| ![screenshot](vert-week-rep.png?raw=true "Screenshot (vertical mode, no week numbers, repeat weekday line for every month)") | monthsVertical: true, <br> 		repeatWeekdaysVertical: true, <br> weekNumbers: true, |
+| ![screenshot](horz-noweeknum.png?raw=true "Screenshot (horizontal mode)")| monthsVertical: false, <br> weekNumbers: false, |
+| ![screenshot](horz-week.png?raw=true "Screenshot (horizontal mode)") | monthsVertical: false, <br> weekNumbers: true, |
 
 
 Many thanks to kirash for the inspiration with the monthly_calendar module, sdetweil and lavolp3 for the help in coding and CSS work. Without your help, this would just be a pipe dream. 
