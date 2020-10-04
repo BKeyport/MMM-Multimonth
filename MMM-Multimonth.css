@@ -28,6 +28,7 @@
 	color: white;
 	font-size: 20px;
 	line-height: 25px;
+	border-radius: 8px
 }
 
 /* The sub-header containing the names of the days, and the cell of an individual day */
@@ -64,10 +65,19 @@
 	min-width: 0;
 	padding-left: 4px;
 	padding-right: 4px;
+	color: gainsboro;
 }
 
 .MMM-Multimonth .current_day {
 	background-color: Yellow;
 	border-radius: 8px;
 	color: black;
+}
+
+.MMM-Multimonth .daydim {
+	flex: 1 1 0px;
+	min-width: 0;
+	padding-left: 4px;
+	padding-right: 4px;
+	color: grey;
 }

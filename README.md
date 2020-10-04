@@ -19,8 +19,8 @@ To use this module, add it to the modules array in the config/config.js file:
 	position: 'top_left', // can be any of the postions
 	config: { // Optional - will default to 3 months, with one previous and one next, vertical orientation. 
 		startMonth: -1, // Define when you start from current month (negative is before current, zero is current, positive is in future) 
-		monthCount: 3, //  How many months to display 
-		// See below for examples of the following config items. 
+		monthCount: 3, //  How many months to display - If Month Count is 1, Calendar will show previous and next month dates in empty spots.  
+		// See screenshots for examples of the following config items. 
 		monthsVertical: true, // Whether to arrange the months vertically (true) or horizontally (false).
 		repeatWeekdaysVertical: false, // Whether to repeat the week days in each month in vertical mode. Ignored in horizontal mode.
 		weekNumbers: false, // Whether to display the week numbers in front of each week.
@@ -66,3 +66,5 @@ Localization is provided by moment.js and controlled by the master language of M
 0.99 - Major rewrite by [Volker Wegert](https://github.com/vwegert) (Danke sehr!) - Implements everything I want, and I even understand the wizard level code he wrote. 
 
 1.00 - Minor changes to code/css to standardize look.  
+
+1.10 - Added leading and trailing months when 1 month is selected per user request. 

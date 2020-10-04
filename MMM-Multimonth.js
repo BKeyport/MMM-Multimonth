@@ -85,7 +85,11 @@ Module.register("MMM-Multimonth", {
             }
           } else {
             // empty cell as placeholder
-            output += "<div class='day'>&nbsp;</div>";
+            if (this.config.monthCount == 1) {
+				output += "<div class='daydim'>"+currentWeekday.format("D")+"</div>";
+			} else {
+				output += "<div class='daydim'>&nbsp;</div>";
+			}
           }
           currentWeekday.add(1, "days");
         }
