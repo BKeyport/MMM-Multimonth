@@ -71,3 +71,5 @@ Localization is provided by moment.js and controlled by the master language of M
 1.10 - Added leading and trailing months when 1 month is selected per user request. 
 
 1.20 - Added weekend highlight, default is off. 
+
+1.21 - Added weekend highlight for current day, so user could specify a different look for current day on weekend. 

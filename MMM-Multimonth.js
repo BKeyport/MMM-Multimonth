@@ -1,6 +1,6 @@
 /* Magic Mirror Module: MMM-Minical
  *
- * v1.20 - January 2021
+ * v1.21 - January 2021
  * By Brendan Keyport <brendan.keyport@gmail.com>
  * Major assistance and rewrite by Volker Wegert <github@volker-wegert.de> 
  * 
@@ -81,8 +81,16 @@ Module.register("MMM-Multimonth", {
 				for (dow = 0; dow <= 6; dow++) {
 					if (currentWeekday.isSame(firstDayOfMonth, "month")) {
 						if (currentWeekday.isSame(moment(), "day")) {
-							output += "<div class='day current_day'>" + currentWeekday.format("D") + "</div>";
-						} else {
+							if (this.config.highlightWeekend) {
+								if (currentWeekday.day() == 0 || currentWeekday.day() == 6) {
+									output += "<div class='current_day_weekend'>" + currentWeekday.format("D") + "</div>";
+								} else {
+									output += "<div class='current_day'>" + currentWeekday.format("D") + "</div>";
+								}
+							} else {
+								output += "<div class='current_day'>" + currentWeekday.format("D") + "</div>";
+							}
+						} else { // End of current day 
 							if (this.config.highlightWeekend) {
 								if (currentWeekday.day() == 0 || currentWeekday.day() == 6) {
 									output += "<div class='weekend'>" + currentWeekday.format("D") + "</div>";

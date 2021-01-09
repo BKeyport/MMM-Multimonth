@@ -81,6 +81,20 @@
 	}
 
 .MMM-Multimonth .current_day {
+	flex: 1 1 0px;
+	min-width: 0;
+	padding-left: 4px;
+	padding-right: 4px;
+	background-color: Yellow;
+	border-radius: 8px;
+	color: black;
+}
+
+.MMM-Multimonth .current_day_weekend {
+	flex: 1 1 0px;
+	min-width: 0;
+	padding-left: 4px;
+	padding-right: 4px;
 	background-color: Yellow;
 	border-radius: 8px;
 	color: black;
