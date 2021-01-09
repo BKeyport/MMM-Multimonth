@@ -8,9 +8,11 @@
 	line-height: 20px;
 }
 .MMM-Multimonth .calendar-vertical {
+	display: block;
 	flex-direction: column;
 }
 .MMM-Multimonth .calendar-horizontal {
+	display: block;
 	flex-direction: row;
 }
 
@@ -67,6 +69,16 @@
 	padding-right: 4px;
 	color: gainsboro;
 }
+
+.MMM-Multimonth .weekend {
+	flex: 1 1 0px;
+	min-width: 0;
+	padding-left: 4px;
+	padding-right: 4px;
+	border-radius: 8px;
+	background-color: lightgrey;
+	color: black;
+	}
 
 .MMM-Multimonth .current_day {
 	background-color: Yellow;

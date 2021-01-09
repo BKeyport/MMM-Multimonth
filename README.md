@@ -24,6 +24,7 @@ To use this module, add it to the modules array in the config/config.js file:
 		monthsVertical: true, // Whether to arrange the months vertically (true) or horizontally (false).
 		repeatWeekdaysVertical: false, // Whether to repeat the week days in each month in vertical mode. Ignored in horizontal mode.
 		weekNumbers: false, // Whether to display the week numbers in front of each week.
+		highlightWeekend: false, // Highlight Saturday and Sunday
 	}
 },
 ```
@@ -68,3 +69,5 @@ Localization is provided by moment.js and controlled by the master language of M
 1.00 - Minor changes to code/css to standardize look.  
 
 1.10 - Added leading and trailing months when 1 month is selected per user request. 
+
+1.20 - Added weekend highlight, default is off. 
