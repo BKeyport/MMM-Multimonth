@@ -8,11 +8,9 @@
 	line-height: 20px;
 }
 .MMM-Multimonth .calendar-vertical {
-	display: block;
 	flex-direction: column;
 }
 .MMM-Multimonth .calendar-horizontal {
-	display: block;
 	flex-direction: row;
 }
 
