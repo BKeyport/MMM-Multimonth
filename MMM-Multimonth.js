@@ -27,7 +27,7 @@ Module.register("MMM-Multimonth", {
 	start: function (){
 		 var timer = setInterval(()=>{
 		 this.updateDom()
-		}, moment().add(1, 'days').hours(0).minutes(0).seconds(0)-moment())
+		}, moment().add(1, 'days').startOf('day'))
 	},    
 
 	// Override dom generator.
