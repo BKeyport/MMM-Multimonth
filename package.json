@@ -1,6 +1,6 @@
 {
   "name": "MMM-Multimonth",
-  "version": "1.90 Beta",
+  "version": "1.5",
   "description": "Simple Multimonth Calendar",
   "main": "MMM-Multimonth.js",
   "repository": {
