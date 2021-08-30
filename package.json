@@ -11,7 +11,7 @@
     "MagicMirror",
     "calendar"
   ],
-  "author": "bkeyport <brendan.keyport@gmail.com",
+  "author": "bkeyport <brendan.keyport@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/BKeyport/MMM-Multimonth/issues"
