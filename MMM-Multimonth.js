@@ -1,4 +1,4 @@
-/* Magic Mirror Module: MMM-Minical
+/* Magic Mirror Module: MMM-Multimonth
  *
  * v1.21 - January 2021
  * By Brendan Keyport <brendan.keyport@gmail.com>

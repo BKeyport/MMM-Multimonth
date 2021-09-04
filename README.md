@@ -1,5 +1,7 @@
 # MagicMirror Module to display a calendar with multiple months (user configurable)
 
+*** Notice: This module is abandoned at this time. If moment is dropped from MagicMirror, it will not function, and due to incomplete/poor documentation, I will not continue supporting it. *** 
+
 This is a module for the [MagicMirror](https://github.com/MichMich/MagicMirror) project. 
 
 It's purpose is to enable a mini-calendar with as many months as the user wants, assuming screen space is available. Screenshots are with config examples. 
@@ -73,3 +75,5 @@ Localization is provided by moment.js and controlled by the master language of M
 1.20 - Added weekend highlight, default is off. 
 
 1.21 - Added weekend highlight for current day, so user could specify a different look for current day on weekend. 
+
+1.50 - Minor fixes/Notice of end of life. 
