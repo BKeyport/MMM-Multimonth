@@ -1,6 +1,6 @@
 # MagicMirror Module to display a calendar with multiple months (user configurable)
 
-*** Notice: This module is abandoned at this time. If moment is dropped from MagicMirror, it will not function, and due to incomplete/poor documentation, I will not continue supporting it. *** 
+*** This module may break in future versions of MagicMirror. Working on a solution *** 
 
 This is a module for the [MagicMirror](https://github.com/MichMich/MagicMirror) project. 
 
