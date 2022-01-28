@@ -1,3 +1,5 @@
+### NOTE: THIS MODULE IS TO BE HOSTED ONLY AT https://github.com/BKeyport/MMM-Multimonth - Any other hosting location is invalid.
+
 # MagicMirror Module to display a calendar with multiple months (user configurable)
 
 *** This module may break in future versions of MagicMirror. Working on a solution *** 
@@ -76,4 +78,4 @@ Localization is provided by moment.js and controlled by the master language of M
 
 1.21 - Added weekend highlight for current day, so user could specify a different look for current day on weekend. 
 
-1.50 - Minor fixes/Notice of end of life. 
+1.50 - Minor fixes/Notice of possible end of life. 
