@@ -1,5 +1,7 @@
 ### NOTE: THIS MODULE IS TO BE HOSTED ONLY AT https://github.com/BKeyport/MMM-Multimonth - Any other hosting location is invalid.
 
+If you fork and change any code, please let me know, if it's useful for the general public, I'd love to add it! 
+
 # MagicMirror Module to display a calendar with multiple months (user configurable)
 
 *** This module may break in future versions of MagicMirror. Working on a solution *** 
