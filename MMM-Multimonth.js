@@ -1,6 +1,6 @@
 /* Magic Mirror Module: MMM-Multimonth
  *
- * v1.21 - January 2021
+ * v1.90 - August 2022 - Preparing for moment.js removal. 
  * By Brendan Keyport <brendan.keyport@gmail.com>
  * Major assistance and rewrite by Volker Wegert <github@volker-wegert.de> 
  * 
