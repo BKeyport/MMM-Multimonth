@@ -81,3 +81,6 @@ Localization is provided by moment.js and controlled by the master language of M
 1.21 - Added weekend highlight for current day, so user could specify a different look for current day on weekend. 
 
 1.50 - Minor fixes/Notice of possible end of life. 
+
+1.90 - Minor fixes/Remove EOL - Begin work on moving to a life without moment.js - Goal, no dependencies. 
+
