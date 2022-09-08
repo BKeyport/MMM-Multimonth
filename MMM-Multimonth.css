@@ -38,7 +38,7 @@
 	align-items: stretch;
 }
 .MMM-Multimonth .day-header {
-	color: white;
+	color: var(--color-text-bright);
 	flex: 1 1 0px;
 	min-width: 0;
 	padding-left: 4px;
@@ -58,14 +58,14 @@
 	padding-right: 4px;
 	border-radius: 8px;
 	background-color: DarkGrey;
-	color: black;
+	color: var(--color-text-dimmed);
 }
 .MMM-Multimonth .day {
 	flex: 1 1 0px;
 	min-width: 0;
 	padding-left: 4px;
 	padding-right: 4px;
-	color: gainsboro;
+	color: var(--color-text);
 }
 
 .MMM-Multimonth .weekend {

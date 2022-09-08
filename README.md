@@ -2,6 +2,12 @@
 
 If you fork and change any code, please let me know, if it's useful for the general public, I'd love to add it! 
 
+If you find this module useful, and would like to contribute to the project, I appreciate the thought. Instead of giving to me, please donate to L'Arche Tahoma Hope
+at https://www.larchetahomahope.org/donate/ - in honor of Nancy Tyson. (Dedicate my donation checkbox). Nancy means the world to me. You don't have to notify me you
+have done so. 
+
+THANK YOU for your consideration. 
+
 # MagicMirror Module to display a calendar with multiple months (user configurable)
 
 *** This module may break in future versions of MagicMirror. Working on a solution *** 
@@ -80,7 +86,9 @@ Localization is provided by moment.js and controlled by the master language of M
 
 1.21 - Added weekend highlight for current day, so user could specify a different look for current day on weekend. 
 
-1.50 - Minor fixes/Notice of possible end of life. 
+1.50 - Minor fixes
 
 1.90 - Minor fixes/Remove EOL - Begin work on moving to a life without moment.js - Goal, no dependencies. 
+
+7 Sept. 2022 - changing to date based versioning. 
 
