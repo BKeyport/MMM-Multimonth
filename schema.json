@@ -45,7 +45,7 @@
             "startMonth": {
               "type": "integer",
               "minimum": "-12",
-              "maximum": "12"              
+              "maximum": "12"
             },
             "monthCount": {
               "type": "integer",
@@ -108,17 +108,16 @@
           "title": "monthCount",
           "key": "MMM-Multimonth.config.monthCount",
           "description": "How many months do you want to show"
-          
         },
         {
           "title": "monthsVertical",
           "key": "MMM-Multimonth.config.monthsVertical",
-          "description": "Check if you'd like a vertical display" 
+          "description": "Check if you'd like a vertical display"
         },
         {
           "title": "repeatWeekdaysVertical",
           "key": "MMM-Multimonth.config.repeatWeekdaysVertical",
-          "description": "Check if you'd like weekdays repeated each month in vertical mode" 
+          "description": "Check if you'd like weekdays repeated each month in vertical mode"
         },
         {
           "title": "weekNumbers",
