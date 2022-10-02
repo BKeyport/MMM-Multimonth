@@ -36,40 +36,45 @@ Module.register("MMM-Multimonth", {
 		}, reset)
 	},    
 	
-	// Functions
-	const firstDay = (dateObject, index) => {
-		const dayOfWeek = dateObject.getDay(),
-		firstDay = new Date(dateObject),
-		diff = dayOfWeek >= index ? dayOfWeek - index : 6 - dayOfWeek;
-		firstDay.setDate(dateObject.getDate() - diff);
-		firstDay.setHours(0, 0, 0, 0);
-		return firstDay;
-	}
-
-	const lastDay = (dateObject, index) => {
-		const dayOfWeek = dateObject.getDay(),
-		lastDay = new Date(dateObject),
-		diff = (index + (7 - dateObject.getDay())) % 7;
-		lastDay.setDate(dateObject.getDate() + diff);
-		lastDay.setHours(0, 0, 0, 0);
-		return lastDay;
-	}
-
-	const weekNames = (dateObject) => {
-		sDate = firstDay(dateObject, 0);
-		var weekdaysHeader = "";
-		for (tday = 0; tday < 7; tday++) {
-			weekdaysHeader += "<div class='day-header'>" + sDate.toLocaleDateString('en-uk', { weekday: headtype }) + "</div>";
-			sDate.setDate(sDate.getDate()+1);
-		}
-		return weekdaysHeader;
-	}
-
-
-
-	// Override dom generator.
+		// Override dom generator.
 	getDom: function () {
-	date = new Date();
+		// Functions
+		const firstDay = (dateObject, index) => {
+			const dayOfWeek = dateObject.getDay(),
+			firstDay = new Date(dateObject),
+			diff = dayOfWeek >= index ? dayOfWeek - index : 6 - dayOfWeek;
+			firstDay.setDate(dateObject.getDate() - diff);
+			firstDay.setHours(0, 0, 0, 0);
+			return firstDay;
+		}
+
+		const lastDay = (dateObject, index) => {
+			const dayOfWeek = dateObject.getDay(),
+			lastDay = new Date(dateObject),
+			diff = (index + (7 - dateObject.getDay())) % 7;
+			lastDay.setDate(dateObject.getDate() + diff);
+			lastDay.setHours(0, 0, 0, 0);
+			return lastDay;
+		}
+
+		const weekNames = (dateObject) => {
+			sDate = firstDay(dateObject, 0);
+			var weekdaysHeader = "";
+			for (tday = 0; tday < 7; tday++) {
+				weekdaysHeader += "<div class='day-header'>" + sDate.toLocaleDateString('en-us', { weekday: 'short' }) + "</div>";
+				sDate.setDate(sDate.getDate()+1);
+			}
+			return weekdaysHeader;
+		}
+		
+		const weekNumber = (dateObject) => {
+			var oneJan = new Date(dateObject.getFullYear(),0,1);
+			var numberOfDays = Math.floor((dateObject - oneJan) / (24 * 60 * 60 * 1000));
+			var result = Math.ceil(( currentdate.getDay() + 1 + numberOfDays) / 7);
+			return result;
+		}
+		
+		date = new Date();
 		month = date.getMonth();
 		day = date.getDate();
 		year = date.getFullYear();
@@ -77,15 +82,12 @@ Module.register("MMM-Multimonth", {
 		var lastMonth = this.config.startMonth + this.config.monthCount - 1;
 
 		// pre-calculcate the header line containing the week days - no need to repeat this for every month
-		var weekdays = moment.weekdaysShort(true);
 		var weekdaysHeader = "<div class='days-header'>";
 		if (this.config.weekNumbers) {
 			// empty cell as a placeholder for the week number
 			weekdaysHeader += "<div class='day-header'>&nbsp;&nbsp;&nbsp;</div>";
 		}
-		for (day = 0; day < 7; day++) {
-			weekdaysHeader += "<div class='day-header'>" + weekdays[day] + "</div>";
-		}
+			weekdaysHeader += weekNames(date);
 		weekdaysHeader += "</div>";
 
 		// set calendar main container depending on calendar orientation
@@ -103,8 +105,8 @@ Module.register("MMM-Multimonth", {
 			output += "<div class='month'>";
 
 			// add the month headers
-			monthTemp = month + currentMonth;
-			monthTitle = moment().add(currentMonth, "month").format("MMMM YYYY");
+			titleTemp = new Date(year, month + currentMonth, 1);
+			monthTitle = titleTemp.toLocaleString('default', { month: 'long', year: 'numeric' });
 			output += "<div class='month-header'>" + monthTitle + "</div>";
 
 			// add day of week headers
@@ -117,59 +119,60 @@ Module.register("MMM-Multimonth", {
 			}
 
 			firstDayOfMonth = new Date(year, month + currentMonth, 1, 0, 0, 0, 0);
-			gridDay = moment().add(currentMonth, "month").startOf("month").startOf("week");
-			gridEnd = moment().add(currentMonth, "month").endOf("month").endOf("week");
+			lastDayOfMonth = new Date(year, month + currentMonth + 1, 0, 0, 0, 0, 0);
+			gridDay = firstDay(firstDayOfMonth, 0);
+			gridEnd = lastDay(lastDayOfMonth, 0);
 
 			// Week grid builder
 			do {
 				output += "<div class='week'>";
 				if (this.config.weekNumbers) {
-					output += "<div class='weeknumber'>" + gridDay.format("W") + "</div>";
+					output += "<div class='weeknumber'>" + weekNumber(gridDay) + "</div>";
 				}
 				for (dow = 0; dow <= 6; dow++) { // Walk the week 
-					if (gridDay.isSame(firstDayOfMonth, "month")) { // Current Month? 
-						if (gridDay.isSame(moment(), "day")) {  // is it today? 
+					if (gridDay.getMonth() == firstDayOfMonth.getMonth()) { // Current Month? 
+						if (gridDay == date) {  // is it today? 
 							if (this.config.highlightWeekend) { // highlight the weekend? 
-								if (gridDay.day() == 0 || gridDay.day() == 6) { // Is it the weekend? 
+								if (gridDay.getDay() == 0 || gridDay.getDay() == 6) { // Is it the weekend? 
 									output +=   
 										"<div class='current_day_weekend'>" +
-										gridDay.format("D") +
+										gridDay.getDate() +
 										"</div>";
 								} else { 
 									output +=
 										"<div class='current_day'>" +
-										gridDay.format("D") +
+										gridDay.getDate() +
 										"</div>";
 								}
 							} else {
 								output +=
-									"<div class='current_day'>" + gridDay.format("D") + "</div>";
+									"<div class='current_day'>" + gridDay.getDate() + "</div>";
 							}
 						} else {
 							if (this.config.highlightWeekend) {
-								if (gridDay.day() == 0 || gridDay.day() == 6) {
+								if (gridDay.getDay() == 0 || gridDay.getDay() == 6) {
 									output +=
-										"<div class='weekend'>" + gridDay.format("D") + "</div>";
+										"<div class='weekend'>" + gridDay.getDate() + "</div>";
 								} else {
 									output +=
-										"<div class='day'>" + gridDay.format("D") + "</div>";
+										"<div class='day'>" + gridDay.getDate() + "</div>";
 								}
 							} else {
-								output += "<div class='day'>" + gridDay.format("D") + "</div>";
+								output += "<div class='day'>" + gridDay.getDate() + "</div>";
 							}
 						}
 					} else {
 						// empty cell as placeholder
 						if (this.config.monthCount == 1) {
-							output += "<div class='daydim'>" + gridDay.format("D") + "</div>";
+							output += "<div class='daydim'>" + gridDay.getDate() + "</div>";
 						} else {
 							output += "<div class='daydim'>&nbsp;</div>";
 						}
 					}
-					gridDay.add(1, "days");
+					gridDay.setDate(gridDay.getDate()+1);
 				}
 				output += "</div>"; // end of week
-			} while (gridDay.isSameOrBefore(gridEnd, "day"));
+			} while (gridDay <= gridEnd);
 
 			output += "</div>"; // end of month
 		}

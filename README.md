@@ -10,17 +10,17 @@ THANK YOU for your consideration.
 
 # MagicMirror Module to display a calendar with multiple months (user configurable)
 
-**_ This module may break in future versions of MagicMirror. Working on a solution _**
-
 This is a module for the [MagicMirror](https://github.com/MichMich/MagicMirror) project.
 
-It's purpose is to enable a mini-calendar with as many months as the user wants, assuming screen space is available. Screenshots are with config examples.
+This will create a mini-calendar with as many months as the user wants, assuming screen space is available. Screenshots are with config examples.
 
 ## Installation
 
 Clone this repository in your ~/MagicMirror/modules/ folder ( $ cd ~MagicMirror/modules/ ):
 
 git clone https://github.com/BKeyport/MMM-Multimonth.git
+
+** note: NPM INSTALL is no longer required. This module is proud to no longer use any external dependencies! **
 
 ## Using the module
 
@@ -92,3 +92,5 @@ Localization is provided by moment.js and controlled by the master language of M
 1.90 - Minor fixes/Remove EOL - Begin work on moving to a life without moment.js - Goal, no dependencies.
 
 7 Sept. 2022 - changing to date based versioning.
+
+1 Oct. 2022 - Completely removed moment.js from project. ** Returned to Beta Status due to lack of internationalization and start of week adjustments ** 
