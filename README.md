@@ -55,13 +55,7 @@ Many thanks to kirash for the inspiration with the monthly_calendar module, sdet
 
 This is a basic module, but I felt it was good enough for release to the public. Please, if you have any suggestions for improvement, let me know, I'm learning JS and CSS as I write this, and I dream of much bigger things.
 
-Localization is provided by moment.js and controlled by the master language of MagicMirror. Please file any errors with localizations as bugs with the moment.js team - https://github.com/moment/moment/
-
-“Let the improvement of yourself keep you so busy that you have no time to criticize others.”
-― Roy T. Bennett, The Light in the Heart
-
-“The more I read, the more I acquire, the more certain I am that I know nothing.”
-― Voltaire
+Language Localization is controlled by the master language of MagicMirror. 
 
 ## Versioning
 
