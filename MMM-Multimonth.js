@@ -61,7 +61,7 @@ Module.register("MMM-Multimonth", {
 			sDate = firstDay(dateObject, 0);
 			var weekdaysHeader = "";
 			for (tday = 0; tday < 7; tday++) {
-				weekdaysHeader += "<div class='day-header'>" + sDate.toLocaleDateString('en-us', { weekday: 'short' }) + "</div>";
+				weekdaysHeader += "<div class='day-header'>" + sDate.toLocaleDateString(config.language, { weekday: 'short' }) + "</div>";
 				sDate.setDate(sDate.getDate()+1);
 			}
 			return weekdaysHeader;
@@ -106,7 +106,7 @@ Module.register("MMM-Multimonth", {
 
 			// add the month headers
 			titleTemp = new Date(year, month + currentMonth, 1);
-			monthTitle = titleTemp.toLocaleString('default', { month: 'long', year: 'numeric' });
+			monthTitle = titleTemp.toLocaleString(config.language, { month: 'long', year: 'numeric' });
 			output += "<div class='month-header'>" + monthTitle + "</div>";
 
 			// add day of week headers
@@ -178,7 +178,6 @@ Module.register("MMM-Multimonth", {
 		}
 
 		output += "</div>"; // end of calendar
-
 		wrapper.innerHTML = output;
 		return wrapper;
 	}
