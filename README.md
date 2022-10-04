@@ -31,16 +31,25 @@ To use this module, add it to the modules array in the config/config.js file:
   module: 'MMM-Multimonth',
 	position: 'top_left', // can be any of the postions
 	config: { // Optional - will default to 3 months, with one previous and one next, vertical orientation.
-		startMonth: -1, // Define when you start from current month (negative is before current, zero is current, positive is in future)
-		monthCount: 3, //  How many months to display - If Month Count is 1, Calendar will show previous and next month dates in empty spots.
-		// See screenshots for examples of the following config items.
+		startMonth: -1, // Define when you start from current month
+		monthCount: 3, // Define How many months to display
 		monthsVertical: true, // Whether to arrange the months vertically (true) or horizontally (false).
 		repeatWeekdaysVertical: false, // Whether to repeat the week days in each month in vertical mode. Ignored in horizontal mode.
 		weekNumbers: false, // Whether to display the week numbers in front of each week.
 		highlightWeekend: false, // Highlight Saturday and Sunday
+		startWeek: 0, // 0 is Sunday, 1 Monday, 6 Saturday. 
+		headerType: 'short' // Short or Narrow. (USA: Short: "Sun", "Mon", etc - Narrow: "SMTWTFS") 
 	}
 },
 ```
+** THIS MODULE NOW HAS NEW CONFIGURATION OPTIONS - PLEASE READ **
+
+Language and start of the week has been de-coupled. In order to get the start of the week correct, use "startWeek" above. Language is still a function of the main system. 
+
+You now have the option to shorten the week day names even more than normal. See headerType for this option. 
+
+ToDo: Indicator for system wide events (calendar module compatability, like MMRize's MMM-CalendarEXT3) 
+
 
 | Screenshot                                                                                                                     | How to get                                                                         |
 | ------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------- |
@@ -85,6 +94,9 @@ Language Localization is controlled by the master language of MagicMirror.
 
 1.90 - Minor fixes/Remove EOL - Begin work on moving to a life without moment.js - Goal, no dependencies.
 
-7 Sept. 2022 - changing to date based versioning.
+7 Sep 2022 - changing to date based versioning.
 
-1 Oct. 2022 - Completely removed moment.js from project. ** Returned to Beta Status due to lack of internationalization and start of week adjustments ** 
+1 Oct 2022 - Completely removed moment.js from project. ** Returned to Beta Status due to lack of internationalization and start of week adjustments ** 
+
+4 Oct 2022 - Internationalization and Start of Week added back in. -- Note: I'm aware of a bug where the week numbers are showing an extra week. I'm redesigning the layout. 
+

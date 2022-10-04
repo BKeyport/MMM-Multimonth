@@ -15,7 +15,9 @@ Module.register("MMM-Multimonth", {
 		monthsVertical: true, // Whether to arrange the months vertically (true) or horizontally (false).
 		repeatWeekdaysVertical: false, // Whether to repeat the week days in each month in vertical mode. Ignored in horizontal mode.
 		weekNumbers: false, // Whether to display the week numbers in front of each week.
-		highlightWeekend: false // Highlight Saturday and Sunday
+		highlightWeekend: false, // Highlight Saturday and Sunday
+		startWeek: 5, // 0 is Sunday, 1 Monday, 6 Saturday. 
+		headerType: 'short' // Short or Narrow. (USA: Short: "Sun", "Mon", etc - Narrow: "SMTWTFS") 
 	},
 
 	// CSS Add
@@ -31,8 +33,8 @@ Module.register("MMM-Multimonth", {
 		nextday = day + 1;
 		year = date.getFullYear();
 		reset = new Date(year, month, nextday, 0, 0, 0, 0).getTime()-date.getTime();
-	 var timer = setInterval(()=>{
-		 this.updateDom()
+		var timer = setInterval(()=>{
+			this.updateDom()
 		}, reset)
 	},    
 	
@@ -57,16 +59,24 @@ Module.register("MMM-Multimonth", {
 			return lastDay;
 		}
 
-		const weekNames = (dateObject) => {
+// For anyone looking at my code, this is the only way I could get this to work... 		
+		const weekNames = (dateObject, index) => {
 			sDate = firstDay(dateObject, 0);
+			weekdaysTemp = [];
 			var weekdaysHeader = "";
 			for (tday = 0; tday < 7; tday++) {
-				weekdaysHeader += "<div class='day-header'>" + sDate.toLocaleDateString(config.language, { weekday: 'short' }) + "</div>";
+				weekdaysTemp.push(sDate.toLocaleDateString(config.language, {weekday: this.config.headerType}));
 				sDate.setDate(sDate.getDate()+1);
+			}
+			for (tday = 0; tday < 7; tday++) {
+				offset = tday + index
+				if (offset >= 7) offset = offset - 7;
+				weekdaysHeader += "<div class='day-header'>" + weekdaysTemp[offset] + "</div>";
 			}
 			return weekdaysHeader;
 		}
-		
+// end bodge 
+
 		const weekNumber = (dateObject) => {
 			var oneJan = new Date(dateObject.getFullYear(),0,1);
 			var numberOfDays = Math.floor((dateObject - oneJan) / (24 * 60 * 60 * 1000));
@@ -87,7 +97,7 @@ Module.register("MMM-Multimonth", {
 			// empty cell as a placeholder for the week number
 			weekdaysHeader += "<div class='day-header'>&nbsp;&nbsp;&nbsp;</div>";
 		}
-			weekdaysHeader += weekNames(date);
+			weekdaysHeader += weekNames(date, this.config.startWeek);
 		weekdaysHeader += "</div>";
 
 		// set calendar main container depending on calendar orientation
@@ -120,8 +130,8 @@ Module.register("MMM-Multimonth", {
 
 			firstDayOfMonth = new Date(year, month + currentMonth, 1, 0, 0, 0, 0);
 			lastDayOfMonth = new Date(year, month + currentMonth + 1, 0, 0, 0, 0, 0);
-			gridDay = firstDay(firstDayOfMonth, 0);
-			gridEnd = lastDay(lastDayOfMonth, 0);
+			gridDay = firstDay(firstDayOfMonth, this.config.startWeek);
+			gridEnd = lastDay(lastDayOfMonth, this.config.startWeek);
 
 			// Week grid builder
 			do {
@@ -131,7 +141,7 @@ Module.register("MMM-Multimonth", {
 				}
 				for (dow = 0; dow <= 6; dow++) { // Walk the week 
 					if (gridDay.getMonth() == firstDayOfMonth.getMonth()) { // Current Month? 
-						if (gridDay == date) {  // is it today? 
+						if (gridDay.setHours(0, 0, 0, 0) == date.setHours(0, 0, 0, 0)) {  // is it today? 
 							if (this.config.highlightWeekend) { // highlight the weekend? 
 								if (gridDay.getDay() == 0 || gridDay.getDay() == 6) { // Is it the weekend? 
 									output +=   
