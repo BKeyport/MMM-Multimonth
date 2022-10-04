@@ -16,7 +16,7 @@ Module.register("MMM-Multimonth", {
 		repeatWeekdaysVertical: false, // Whether to repeat the week days in each month in vertical mode. Ignored in horizontal mode.
 		weekNumbers: false, // Whether to display the week numbers in front of each week.
 		highlightWeekend: false, // Highlight Saturday and Sunday
-		startWeek: 5, // 0 is Sunday, 1 Monday, 6 Saturday. 
+		startWeek: 0, // 0 is Sunday, 1 Monday, 6 Saturday. 
 		headerType: 'short' // Short or Narrow. (USA: Short: "Sun", "Mon", etc - Narrow: "SMTWTFS") 
 	},
 
