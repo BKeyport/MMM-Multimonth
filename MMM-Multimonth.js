@@ -80,7 +80,7 @@ Module.register("MMM-Multimonth", {
 		const weekNumber = (dateObject) => {
 			var oneJan = new Date(dateObject.getFullYear(),0,1);
 			var numberOfDays = Math.floor((dateObject - oneJan) / (24 * 60 * 60 * 1000));
-			var result = Math.ceil(( currentdate.getDay() + 1 + numberOfDays) / 7);
+			var result = Math.ceil(( date.getDay() + 1 + numberOfDays) / 7);
 			return result;
 		}
 		
