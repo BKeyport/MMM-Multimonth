@@ -100,3 +100,4 @@ Language Localization is controlled by the master language of MagicMirror.
 
 4 Oct 2022 - Internationalization and Start of Week added back in. -- Note: I'm aware of a bug where the week numbers are showing an extra week. I'm redesigning the layout. 
 
+5 Oct 2022 - Fix bug in week numbers, fix extra week error.
