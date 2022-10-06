@@ -182,7 +182,7 @@ Module.register("MMM-Multimonth", {
 					gridDay.setDate(gridDay.getDate()+1);
 				}
 				output += "</div>"; // end of week
-			} while (gridDay <= gridEnd);
+			} while (gridDay < gridEnd);
 
 			output += "</div>"; // end of month
 		}
