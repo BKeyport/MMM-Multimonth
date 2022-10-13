@@ -131,7 +131,7 @@ Module.register("MMM-Multimonth", {
 			firstDayOfMonth = new Date(year, month + currentMonth, 1, 0, 0, 0, 0);
 			lastDayOfMonth = new Date(year, month + currentMonth + 1, 0, 0, 0, 0, 0);
 			gridDay = firstDay(firstDayOfMonth, this.config.startWeek);
-			gridEnd = lastDay(lastDayOfMonth, this.config.startWeek);
+			gridEnd = lastDay(lastDayOfMonth, this.config.startWeek-1);
 
 			// Week grid builder
 			do {
