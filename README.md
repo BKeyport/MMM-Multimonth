@@ -24,30 +24,25 @@ git clone https://github.com/BKeyport/MMM-Multimonth.git
 
 ## Using the module
 
-To use this module, add it to the modules array in the config/config.js file:
+To use this module, add it to the modules array in the config/config.js file - shown options are defaults:
 
 ```
 {
   module: 'MMM-Multimonth',
 	position: 'top_left', // can be any of the postions
 	config: { // Optional - will default to 3 months, with one previous and one next, vertical orientation.
-		startMonth: -1, // Define when you start from current month
+		headerType: 'short', // Short or Narrow. (USA: Short: "Sun", "Mon", etc - Narrow: "SMTWTFS") 
+		highlightWeekend: false, // Highlight Saturday and Sunday
 		monthCount: 3, // Define How many months to display
 		monthsVertical: true, // Whether to arrange the months vertically (true) or horizontally (false).
+		otherMonths: false, // Show other months in the grid? (Previous/Next Month) 
 		repeatWeekdaysVertical: false, // Whether to repeat the week days in each month in vertical mode. Ignored in horizontal mode.
-		weekNumbers: false, // Whether to display the week numbers in front of each week.
-		highlightWeekend: false, // Highlight Saturday and Sunday
+		startMonth: -1, // Define when you start from current month
 		startWeek: 0, // 0 is Sunday, 1 Monday, 6 Saturday. 
-		headerType: 'short' // Short or Narrow. (USA: Short: "Sun", "Mon", etc - Narrow: "SMTWTFS") 
+		weekNumbers: false, // Whether to display the week numbers in front of each week.
 	}
 },
 ```
-** THIS MODULE NOW HAS NEW CONFIGURATION OPTIONS - PLEASE READ **
-
-Language and start of the week has been de-coupled. In order to get the start of the week correct, use "startWeek" above. Language is still a function of the main system. 
-
-You now have the option to shorten the week day names even more than normal. See headerType for this option. 
-
 ToDo: Indicator for system wide events (calendar module compatability, like MMRize's MMM-CalendarEXT3) 
 
 
@@ -104,3 +99,4 @@ Language Localization is controlled by the master language of MagicMirror.
 
 12 Oct 2022 - Fix bug causing last day of month to fall off calendar if it's the same day as start of week. 
 
+24 Oct 2022 - add config option for previous/next month display rather than forcing based on use. 

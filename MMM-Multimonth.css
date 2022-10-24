@@ -103,5 +103,5 @@
   min-width: 0;
   padding-left: 4px;
   padding-right: 4px;
-  color: grey;
+  color: var(--color-text-dimmed);
 }

@@ -17,7 +17,9 @@ Module.register("MMM-Multimonth", {
 		weekNumbers: false, // Whether to display the week numbers in front of each week.
 		highlightWeekend: false, // Highlight Saturday and Sunday
 		startWeek: 0, // 0 is Sunday, 1 Monday, 6 Saturday. 
-		headerType: 'short' // Short or Narrow. (USA: Short: "Sun", "Mon", etc - Narrow: "SMTWTFS") 
+		headerType: 'short', // Short or Narrow. (USA: Short: "Sun", "Mon", etc - Narrow: "SMTWTFS") 
+		otherMonths: false, // Show other months dimmed. 
+
 	},
 
 	// CSS Add
@@ -75,7 +77,6 @@ Module.register("MMM-Multimonth", {
 			}
 			return weekdaysHeader;
 		}
-// end bodge 
 
 		const weekNumber = (dateObject) => {
 			var oneJan = new Date(dateObject.getFullYear(),0,1);
@@ -172,8 +173,8 @@ Module.register("MMM-Multimonth", {
 							}
 						}
 					} else {
-						// empty cell as placeholder
-						if (this.config.monthCount == 1) {
+						// Previous months and post months, optional. 
+						if (this.config.otherMonths) {
 							output += "<div class='daydim'>" + gridDay.getDate() + "</div>";
 						} else {
 							output += "<div class='daydim'>&nbsp;</div>";
