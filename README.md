@@ -61,6 +61,7 @@ New method has colorization and rounding options together!
 Old method was using direct colors, now you only have to change one section. If you'd like to change, remove old settings and add new to custom.css. 
 
 New will be overridden by custom.css if you don't, so old will still work. 
+
 ToDo: Indicator for system wide events (calendar module compatability, like MMRize's MMM-CalendarEXT3) 
 
 
