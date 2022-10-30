@@ -1,5 +1,25 @@
 /* Developed by BKeyport */
 
+  
+.MMM-Multimonth .settings {
+  --background-dimmed: var(--color-background);
+  --background-weekday: var(--color-background);
+  --background-weekend: cornflowerblue;
+  --background-current: Yellow;
+  --background-header: Green;
+  --background-weekno: grey;
+  --background-dow: var(--color-background);
+  --color-weekday: var(--color-text);
+  --color-weekend: var(--color-background);
+  --color-current: var(--color-background);
+  --color-dimmed: var(--color-text-dimmed);
+  --color-header: var(--color-text-bright);
+  --color-weekno: var(--color-text-bright);
+  --color-dow: var(--color-text);
+  --back-rounding: 8px;
+  }
+
+
 /* The parent DIV that contains the entire container */
 .MMM-Multimonth .calendar {
   display: flex;
@@ -8,17 +28,23 @@
   border: 0;
   font-size: 15px;
   line-height: 20px;
+  
+  /* Next lines not needed in final */
+  background-color: var(--color-background);
+  text-align: center;
 }
+
 .MMM-Multimonth .calendar-vertical {
   flex-direction: column;
 }
+
 .MMM-Multimonth .calendar-horizontal {
   flex-direction: row;
 }
 
 /* The container for the entire month */
 .MMM-Multimonth .month {
-  flex-basis: 100%;
+  flex-basis: 90%;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -26,21 +52,23 @@
 
 /* The header line containing the name of the month and the year */
 .MMM-Multimonth .month-header {
-  background-color: green;
-  color: white;
+  background-color: var(--background-header);
+  color: var(--color-header);
   font-size: 20px;
   line-height: 25px;
-  border-radius: 8px;
+  border-radius: var(--back-rounding);
 }
 
 /* The sub-header containing the names of the days, and the cell of an individual day */
-.MMM-Multimonth .days-header {
+.MMM-Multimonth .dow-line {
   display: flex;
   flex-direction: row;
   align-items: stretch;
 }
-.MMM-Multimonth .day-header {
-  color: var(--color-text-bright);
+
+.MMM-Multimonth .dow {
+  color: var(--color-dow);
+  background-color: var(--background-dow);
   flex: 1 1 0px;
   min-width: 0;
   padding-left: 4px;
@@ -52,58 +80,73 @@
   display: flex;
   flex-direction: row;
   align-items: stretch;
-}
-.MMM-Multimonth .weeknumber {
-  flex: 1 1 0px;
-  min-width: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-  border-radius: 8px;
-  background-color: DarkGrey;
-  color: var(--color-text-dimmed);
-}
-.MMM-Multimonth .day {
   flex: 1 1 0px;
   min-width: 0;
   padding-left: 4px;
   padding-right: 4px;
   color: var(--color-text);
+  background-color: var(--color-background);
+  border-radius: var(--back-rounding);
+
+}
+
+.MMM-Multimonth .weeknumber {
+  flex: inherit;
+  min-width: inherit;
+  padding-left: inherit;
+  padding-right: inherit;
+  color: inherit;
+  border-radius: inherit;
+  background-color: var(--background-weekno); 
+  color: var(--color-weekno);
+}
+
+.MMM-Multimonth .day {
+  flex: inherit;
+  min-width: inherit;
+  padding-left: inherit;
+  padding-right: inherit;
+  color: inherit;
+  border-radius: inherit;
+  background-color: var(--background-weekday);
+  color: var(--color-weekday);  
 }
 
 .MMM-Multimonth .weekend {
-  flex: 1 1 0px;
-  min-width: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-  border-radius: 8px;
-  background-color: cornflowerBlue;
-  color: black;
+  flex: inherit;
+  min-width: inherit;
+  padding-left: inherit;
+  padding-right: inherit;
+  color: inherit;
+  border-radius: inherit;
+  background-color: var(--background-weekend);
+  color: var(--color-weekend);
 }
 
-.MMM-Multimonth .current_day {
-  flex: 1 1 0px;
-  min-width: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-  background-color: Yellow;
-  border-radius: 8px;
-  color: black;
-}
-
-.MMM-Multimonth .current_day_weekend {
-  flex: 1 1 0px;
-  min-width: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-  background-color: Yellow;
-  border-radius: 8px;
-  color: black;
+.MMM-Multimonth .current {
+  flex: inherit;
+  min-width: inherit;
+  padding-left: inherit;
+  padding-right: inherit;
+  color: inherit;
+  border-radius: inherit;
+  background-color: var(--background-current);
+  color: var(--color-current);
 }
 
 .MMM-Multimonth .daydim {
-  flex: 1 1 0px;
-  min-width: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-  color: grey;
+  flex: inherit;
+  min-width: inherit;
+  padding-left: inherit;
+  padding-right: inherit;
+  color: inherit;
+  border-radius: inherit;
+  background-color: var(--background-dimmed);
+  color: var(--color-dimmed);
 }
+
+.MMM-Multimonth .event {
+  border: 3px red solid;
+}
+
+

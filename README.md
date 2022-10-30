@@ -31,25 +31,58 @@ To use this module, add it to the modules array in the config/config.js file:
   module: 'MMM-Multimonth',
 	position: 'top_left', // can be any of the postions
 	config: { // Optional - will default to 3 months, with one previous and one next, vertical orientation.
-		startMonth: -1, // Define when you start from current month
-		monthCount: 3, // Define How many months to display
-		monthsVertical: true, // Whether to arrange the months vertically (true) or horizontally (false).
-		repeatWeekdaysVertical: false, // Whether to repeat the week days in each month in vertical mode. Ignored in horizontal mode.
-		weekNumbers: false, // Whether to display the week numbers in front of each week.
-		highlightWeekend: false, // Highlight Saturday and Sunday
-		startWeek: 0, // 0 is Sunday, 1 Monday, 6 Saturday. 
-		headerType: 'short' // Short or Narrow. (USA: Short: "Sun", "Mon", etc - Narrow: "SMTWTFS") 
 	}
 },
 ```
-** THIS MODULE NOW HAS NEW CONFIGURATION OPTIONS - PLEASE READ **
+** Full config options: **
 
-Language and start of the week has been de-coupled. In order to get the start of the week correct, use "startWeek" above. Language is still a function of the main system. 
+| Option                                              | Default | Description                                                         |
+|-----------------------------------------------------:|:---------:|---------------------------------------------------------------------|
+| startMonth                                          | -1      | Starting month relative to the current month                        |
+| monthCount                                          | 3       | How many months do you want to display?                             |
+| repeatWeekdaysVertical                              | false   | Repeat the weekday names? <br> (Vertical Calendar Only)             |
+| weekNumbers                                         | false   | Show the week numbers (How many weeks in the year)                  |
+| highlightWeekend                                    | false   | highlight the weekend (See Below)                                   |
+| headerType                                          | 'short' | How do you want the days displayed?<br>In US - 'short' = "Sun, Mon, Tue"<br>In US - 'narrow' = "S, M, T"|
+| otherMonths                                         | false   | NEW: Display the previous and next month dimmed in the month grid.  |
+| startWeek                                           | 0       | Starting day of your week                                           |
+| weekend1                                            | 0       | 1st Day of your weekend                                             |
+| weekend2                                            | 6       | 2nd day of your weekend       
 
-You now have the option to shorten the week day names even more than normal. See headerType for this option. 
+for the last three items: 0 = Sunday, 1 = Monday, 2 = Tuesday, 3 = Wednesday, 4 = Thursday, 5 = Friday, 6 = Saturday.
+Remember the format for options ```option: value,``` 
 
 ToDo: Indicator for system wide events (calendar module compatability, like MMRize's MMM-CalendarEXT3) 
 
+CSS is starting to change: 
+
+New method has colorization and rounding options together! 
+
+Old method was using direct colors, now you only have to change one section. If you'd like to change, remove old settings and add new to custom.css. 
+
+New will be overridden by custom.css if you don't, so old will still work. 
+
+The following CSS code is all you need in ```custom.css``` if all you're changing is the colors and/or background edge rounding: 
+
+```
+.MMM-Multimonth .settings {
+  --background-dimmed: var(--color-background);    /* For dimmed (previous/next month in current grid), use the global background color */
+  --background-weekday: var(--color-background);   /* For normal days, use global background */ 
+  --background-weekend: cornflowerblue;            /* For the days defined as your weekend, change the background to cornflowerblue */
+  --background-current: Yellow;                    /* for the current day, change the background to yellow */ 
+  --background-header: Green;                      /* for the month and year line, use green background */ 
+  --background-weekno: grey;                       /* for the week number, use a grey background */ 
+  --background-dow: var(--color-background);       /* For the days of the week, use global background */ 
+  --color-weekday: var(--color-text);              /* For normal days, use global normal text */ 
+  --color-weekend: var(--color-background);        /* For the days defined as your weekend, change the text to the background color */
+  --color-current: var(--color-background);        /* for the current day, change the text to the background color */  
+  --color-dimmed: var(--color-text-dimmed);        /* For dimmed (previous/next month in current grid), use the global dimmed text color */
+  --color-header: var(--color-text-bright);        /* for the header lines, use the global bright text color */ 
+  --color-weekno: var(--color-text-bright);        /* for the week numbers, use the global bright text color */
+  --color-dow: var(--color-text);                  /* for the days of the week header, use the global text color */
+  --back-rounding: 20px;                           /* Set the radius of the background rounded edges. See documentation for border-radius elsewhere */        
+  }
+```
 
 | Screenshot                                                                                                                     | How to get                                                                         |
 | ------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------- |
@@ -101,3 +134,5 @@ Language Localization is controlled by the master language of MagicMirror.
 4 Oct 2022 - Internationalization and Start of Week added back in. -- Note: I'm aware of a bug where the week numbers are showing an extra week. I'm redesigning the layout. 
 
 5 Oct 2022 - Fix bug in week numbers, fix extra week error.
+
+29 Oct 2022 - Start Implementing streamlined CSS, add feature to move weekend around, documentation improvements. 

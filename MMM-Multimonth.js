@@ -15,9 +15,17 @@ Module.register("MMM-Multimonth", {
 		monthsVertical: true, // Whether to arrange the months vertically (true) or horizontally (false).
 		repeatWeekdaysVertical: false, // Whether to repeat the week days in each month in vertical mode. Ignored in horizontal mode.
 		weekNumbers: false, // Whether to display the week numbers in front of each week.
-		highlightWeekend: false, // Highlight Saturday and Sunday
-		startWeek: 0, // 0 is Sunday, 1 Monday, 6 Saturday. 
-		headerType: 'short' // Short or Narrow. (USA: Short: "Sun", "Mon", etc - Narrow: "SMTWTFS") 
+		highlightWeekend: false, // Highlight your weekend. 
+		headerType: 'short', // Short or Narrow. (USA: Short: "Sun", "Mon", etc - Narrow: "SMTWTFS")
+		otherMonths: false, // Do you want to show other months or not. (previous/next)
+		
+		/* for the following: 
+		 * 0 = Sunday, 1 = Monday, 2 = Tuesday, 3 = Wednesday
+		 * 4 = Thursday, 5 = Friday, 6 = Saturday. */
+		
+		startWeek: 0, // What day starts your week? 
+		weekend1: 0, // what is the first day of your weekend? 
+		weekend2: 6, // what is the second day of your weekend?  
 	},
 
 	// CSS Add
@@ -71,7 +79,7 @@ Module.register("MMM-Multimonth", {
 			for (tday = 0; tday < 7; tday++) {
 				offset = tday + index
 				if (offset >= 7) offset = offset - 7;
-				weekdaysHeader += "<div class='day-header'>" + weekdaysTemp[offset] + "</div>";
+				weekdaysHeader += "<div class='dow day-header'>" + weekdaysTemp[offset] + "</div>";
 			}
 			return weekdaysHeader;
 		}
@@ -92,19 +100,19 @@ Module.register("MMM-Multimonth", {
 		var lastMonth = this.config.startMonth + this.config.monthCount - 1;
 
 		// pre-calculcate the header line containing the week days - no need to repeat this for every month
-		var weekdaysHeader = "<div class='days-header'>";
+		var weekdaysHeader = "<div class='dow-line days-header'>";
 		if (this.config.weekNumbers) {
 			// empty cell as a placeholder for the week number
-			weekdaysHeader += "<div class='day-header'>&nbsp;&nbsp;&nbsp;</div>";
+			weekdaysHeader += "<div class='dow day-header'>&nbsp;&nbsp;&nbsp;</div>";
 		}
 			weekdaysHeader += weekNames(date, this.config.startWeek);
 		weekdaysHeader += "</div>";
 
 		// set calendar main container depending on calendar orientation
 		if (this.config.monthsVertical) {
-			output = "<div class='calendar calendar-vertical'>";
+			output = "<div class='calendar settings calendar-vertical'>";
 		} else {
-			output = "<div class='calendar calendar-horizontal'>";
+			output = "<div class='calendar settings calendar-horizontal'>";
 		}
  // iterate through months to display
 		for (
@@ -143,24 +151,24 @@ Module.register("MMM-Multimonth", {
 					if (gridDay.getMonth() == firstDayOfMonth.getMonth()) { // Current Month? 
 						if (gridDay.setHours(0, 0, 0, 0) == date.setHours(0, 0, 0, 0)) {  // is it today? 
 							if (this.config.highlightWeekend) { // highlight the weekend? 
-								if (gridDay.getDay() == 0 || gridDay.getDay() == 6) { // Is it the weekend? 
+								if (gridDay.getDay() == this.config.weekend1 || gridDay.getDay() == this.config.weekend2) { // Is it the weekend? 
 									output +=   
-										"<div class='current_day_weekend'>" +
+										"<div class='current weekend current_day_weekend'>" +
 										gridDay.getDate() +
 										"</div>";
 								} else { 
 									output +=
-										"<div class='current_day'>" +
+										"<div class='current current_day'>" +
 										gridDay.getDate() +
 										"</div>";
 								}
 							} else {
 								output +=
-									"<div class='current_day'>" + gridDay.getDate() + "</div>";
+									"<div class='current current_day'>" + gridDay.getDate() + "</div>";
 							}
 						} else {
 							if (this.config.highlightWeekend) {
-								if (gridDay.getDay() == 0 || gridDay.getDay() == 6) {
+								if (gridDay.getDay() == this.config.weekend1 || gridDay.getDay() == this.config.weekend2) {
 									output +=
 										"<div class='weekend'>" + gridDay.getDate() + "</div>";
 								} else {
@@ -173,7 +181,7 @@ Module.register("MMM-Multimonth", {
 						}
 					} else {
 						// empty cell as placeholder
-						if (this.config.monthCount == 1) {
+						if (this.config.otherMonths) {
 							output += "<div class='daydim'>" + gridDay.getDate() + "</div>";
 						} else {
 							output += "<div class='daydim'>&nbsp;</div>";
