@@ -145,8 +145,12 @@
   color: var(--color-dimmed);
 }
 
-.MMM-Multimonth .event {
-  border: 3px red solid;
+.MMM-Multimonth .daydim {
+  flex: 1 1 0px;
+  min-width: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+  color: var(--color-text-dimmed);
 }
 
 

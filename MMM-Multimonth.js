@@ -15,14 +15,10 @@ Module.register("MMM-Multimonth", {
 		monthsVertical: true, // Whether to arrange the months vertically (true) or horizontally (false).
 		repeatWeekdaysVertical: false, // Whether to repeat the week days in each month in vertical mode. Ignored in horizontal mode.
 		weekNumbers: false, // Whether to display the week numbers in front of each week.
+
 		highlightWeekend: false, // Highlight your weekend. 
 		headerType: 'short', // Short or Narrow. (USA: Short: "Sun", "Mon", etc - Narrow: "SMTWTFS")
 		otherMonths: false, // Do you want to show other months or not. (previous/next)
-		
-		/* for the following: 
-		 * 0 = Sunday, 1 = Monday, 2 = Tuesday, 3 = Wednesday
-		 * 4 = Thursday, 5 = Friday, 6 = Saturday. */
-		
 		startWeek: 0, // What day starts your week? 
 		weekend1: 0, // what is the first day of your weekend? 
 		weekend2: 6, // what is the second day of your weekend?  
@@ -83,7 +79,6 @@ Module.register("MMM-Multimonth", {
 			}
 			return weekdaysHeader;
 		}
-// end bodge 
 
 		const weekNumber = (dateObject) => {
 			var oneJan = new Date(dateObject.getFullYear(),0,1);
@@ -139,7 +134,7 @@ Module.register("MMM-Multimonth", {
 			firstDayOfMonth = new Date(year, month + currentMonth, 1, 0, 0, 0, 0);
 			lastDayOfMonth = new Date(year, month + currentMonth + 1, 0, 0, 0, 0, 0);
 			gridDay = firstDay(firstDayOfMonth, this.config.startWeek);
-			gridEnd = lastDay(lastDayOfMonth, this.config.startWeek);
+			gridEnd = lastDay(lastDayOfMonth, this.config.startWeek-1);
 
 			// Week grid builder
 			do {
@@ -180,7 +175,8 @@ Module.register("MMM-Multimonth", {
 							}
 						}
 					} else {
-						// empty cell as placeholder
+
+						// Previous months and post months, optional. 
 						if (this.config.otherMonths) {
 							output += "<div class='daydim'>" + gridDay.getDate() + "</div>";
 						} else {

@@ -24,7 +24,7 @@ git clone https://github.com/BKeyport/MMM-Multimonth.git
 
 ## Using the module
 
-To use this module, add it to the modules array in the config/config.js file:
+To use this module, add it to the modules array in the config/config.js file - shown options are defaults:
 
 ```
 {
@@ -61,6 +61,8 @@ New method has colorization and rounding options together!
 Old method was using direct colors, now you only have to change one section. If you'd like to change, remove old settings and add new to custom.css. 
 
 New will be overridden by custom.css if you don't, so old will still work. 
+ToDo: Indicator for system wide events (calendar module compatability, like MMRize's MMM-CalendarEXT3) 
+
 
 The following CSS code is all you need in ```custom.css``` if all you're changing is the colors and/or background edge rounding: 
 
@@ -134,5 +136,9 @@ Language Localization is controlled by the master language of MagicMirror.
 4 Oct 2022 - Internationalization and Start of Week added back in. -- Note: I'm aware of a bug where the week numbers are showing an extra week. I'm redesigning the layout. 
 
 5 Oct 2022 - Fix bug in week numbers, fix extra week error.
+
+12 Oct 2022 - Fix bug causing last day of month to fall off calendar if it's the same day as start of week. 
+
+24 Oct 2022 - add config option for previous/next month display rather than forcing based on use. 
 
 29 Oct 2022 - Start Implementing streamlined CSS, add feature to move weekend around, documentation improvements. 
