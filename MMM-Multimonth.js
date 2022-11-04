@@ -15,7 +15,7 @@ Module.register("MMM-Multimonth", {
 		monthsVertical: true, // Whether to arrange the months vertically (true) or horizontally (false).
 		repeatWeekdaysVertical: false, // Whether to repeat the week days in each month in vertical mode. Ignored in horizontal mode.
 		weekNumbers: false, // Whether to display the week numbers in front of each week.
-
+		weekNumbersISO: false, // Use ISO (monday based week) rather than US (Sunday Based week) Ignored if weekNumbers is not used. 
 		highlightWeekend: false, // Highlight your weekend. 
 		headerType: 'short', // Short or Narrow. (USA: Short: "Sun", "Mon", etc - Narrow: "SMTWTFS")
 		otherMonths: false, // Do you want to show other months or not. (previous/next)
@@ -81,11 +81,26 @@ Module.register("MMM-Multimonth", {
 		}
 
 		const weekNumber = (dateObject) => {
-			var oneJan = new Date(dateObject.getFullYear(),0,1);
-			var numberOfDays = Math.floor((dateObject - oneJan) / (24 * 60 * 60 * 1000));
-			var result = Math.ceil(( date.getDay() + 1 + numberOfDays) / 7);
+			satDate = new Date(dateObject.getFullYear(),dateObject.getMonth(), dateObject.getDate()+6);
+			eval1Date = dateObject.getFullYear(); 
+			eval2Date = satDate.getFullYear();
+			if (eval2Date > eval1Date) { 
+				result = 1;
+			} else {
+				var oneJan = new Date(dateObject.getFullYear(),0,1);
+				var numberOfDays = Math.floor((dateObject - oneJan) / (24 * 60 * 60 * 1000));
+				var result = Math.ceil(( dateObject.getDay() + 1 + numberOfDays) / 7)+1;
+			};
 			return result;
 		}
+		
+		const weekNumberISO = (dateObject) => {
+			mondayDate = new Date(dateObject.getFullYear(), dateObject.getMonth(), dateObject.getDate()+1);
+			var oneJan = new Date(mondayDate.getFullYear(),0,1);
+			var numberOfDays = Math.floor((mondayDate - oneJan) / (24 * 60 * 60 * 1000));
+			var result = Math.ceil((mondayDate.getDay() + 1 + numberOfDays) / 7);
+			return result;
+}
 		
 		date = new Date();
 		month = date.getMonth();
@@ -140,7 +155,11 @@ Module.register("MMM-Multimonth", {
 			do {
 				output += "<div class='week'>";
 				if (this.config.weekNumbers) {
-					output += "<div class='weeknumber'>" + weekNumber(gridDay) + "</div>";
+					if (this.config.weekNumbersISO) { 
+						output += "<div class='weeknumber'> " + weekNumberISO(gridDay) + "</div>";
+					} else { 
+						output += "<div class='weeknumber'> " + weekNumber(gridDay) + "</div>";
+					}
 				}
 				for (dow = 0; dow <= 6; dow++) { // Walk the week 
 					if (gridDay.getMonth() == firstDayOfMonth.getMonth()) { // Current Month? 

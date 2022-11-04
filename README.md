@@ -37,11 +37,12 @@ To use this module, add it to the modules array in the config/config.js file - s
 ** Full config options: **
 
 | Option                                              | Default | Description                                                         |
-|-----------------------------------------------------:|:---------:|---------------------------------------------------------------------|
+|-:|:-:|-|
 | startMonth                                          | -1      | Starting month relative to the current month                        |
 | monthCount                                          | 3       | How many months do you want to display?                             |
 | repeatWeekdaysVertical                              | false   | Repeat the weekday names? <br> (Vertical Calendar Only)             |
 | weekNumbers                                         | false   | Show the week numbers (How many weeks in the year)                  |
+| weekNumbersISO                                      | false   | Use ISO calculation or US/CA calculation (ignored if WeekNumbers is false) |
 | highlightWeekend                                    | false   | highlight the weekend (See Below)                                   |
 | headerType                                          | 'short' | How do you want the days displayed?<br>In US - 'short' = "Sun, Mon, Tue"<br>In US - 'narrow' = "S, M, T"|
 | otherMonths                                         | false   | NEW: Display the previous and next month dimmed in the month grid.  |
@@ -50,7 +51,9 @@ To use this module, add it to the modules array in the config/config.js file - s
 | weekend2                                            | 6       | 2nd day of your weekend       
 
 for the last three items: 0 = Sunday, 1 = Monday, 2 = Tuesday, 3 = Wednesday, 4 = Thursday, 5 = Friday, 6 = Saturday.
-Remember the format for options ```option: value,``` 
+Remember the format for options:
+
+```option: value,``` Example: ``` startMonth: -1, ```
 
 ToDo: Indicator for system wide events (calendar module compatability, like MMRize's MMM-CalendarEXT3) 
 
@@ -63,7 +66,6 @@ Old method was using direct colors, now you only have to change one section. If 
 New will be overridden by custom.css if you don't, so old will still work. 
 
 ToDo: Indicator for system wide events (calendar module compatability, like MMRize's MMM-CalendarEXT3) 
-
 
 The following CSS code is all you need in ```custom.css``` if all you're changing is the colors and/or background edge rounding: 
 
@@ -143,3 +145,5 @@ Language Localization is controlled by the master language of MagicMirror.
 24 Oct 2022 - add config option for previous/next month display rather than forcing based on use. 
 
 29 Oct 2022 - Start Implementing streamlined CSS, add feature to move weekend around, documentation improvements. 
+
+4 Nov 2022 - Correct US/CA Week number calculation, add ISO calculation. 
