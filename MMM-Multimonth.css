@@ -9,6 +9,7 @@
   --background-header: Green;
   --background-weekno: grey;
   --background-dow: var(--color-background);
+  --background-blank: var(--color-background);
   --color-weekday: var(--color-text);
   --color-weekend: var(--color-background);
   --color-current: var(--color-background);
@@ -17,6 +18,7 @@
   --color-weekno: var(--color-text-bright);
   --color-dow: var(--color-text);
   --back-rounding: 8px;
+  --alignment: center; 
   }
 
 
@@ -28,17 +30,15 @@
   border: 0;
   font-size: 15px;
   line-height: 20px;
+  text-align: var(--alignment);
   
-  /* Next lines not needed in final */
-  background-color: var(--color-background);
-  text-align: center;
 }
 
-.MMM-Multimonth .calendar-vertical {
+.MMM-Multimonth .vertical {
   flex-direction: column;
 }
 
-.MMM-Multimonth .calendar-horizontal {
+.MMM-Multimonth .horizontal {
   flex-direction: row;
 }
 
@@ -101,6 +101,8 @@
   color: var(--color-weekno);
 }
 
+/* Ranked Day Fields */
+
 .MMM-Multimonth .day {
   flex: inherit;
   min-width: inherit;
@@ -110,6 +112,17 @@
   border-radius: inherit;
   background-color: var(--background-weekday);
   color: var(--color-weekday);  
+}
+
+.MMM-Multimonth .dim {
+  flex: inherit;
+  min-width: inherit;
+  padding-left: inherit;
+  padding-right: inherit;
+  color: inherit;
+  border-radius: inherit;
+  background-color: var(--background-dimmed);
+  color: var(--color-dimmed);
 }
 
 .MMM-Multimonth .weekend {
@@ -134,23 +147,15 @@
   color: var(--color-current);
 }
 
-.MMM-Multimonth .daydim {
+.MMM-Multimonth .event {
   flex: inherit;
   min-width: inherit;
   padding-left: inherit;
   padding-right: inherit;
   color: inherit;
   border-radius: inherit;
-  background-color: var(--background-dimmed);
-  color: var(--color-dimmed);
-}
-
-.MMM-Multimonth .daydim {
-  flex: 1 1 0px;
-  min-width: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-  color: var(--color-text-dimmed);
+  background-color: var(--background-weekday);
+  color: var(--color-weekday);  
 }
 
 

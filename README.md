@@ -132,18 +132,24 @@ Language Localization is controlled by the master language of MagicMirror.
 
 1.90 - Minor fixes/Remove EOL - Begin work on moving to a life without moment.js - Goal, no dependencies.
 
-7 Sep 2022 - changing to date based versioning.
+7 Sep 2022 - 	changing to date based versioning.
 
-1 Oct 2022 - Completely removed moment.js from project. ** Returned to Beta Status due to lack of internationalization and start of week adjustments ** 
+1 Oct 2022 - 	Completely removed moment.js from project. ** Returned to Beta Status due to lack of internationalization and start of week adjustments ** 
 
-4 Oct 2022 - Internationalization and Start of Week added back in. -- Note: I'm aware of a bug where the week numbers are showing an extra week. I'm redesigning the layout. 
+4 Oct 2022 - 	Internationalization and Start of Week added back in. -- Note: I'm aware of a bug where the week numbers are showing an extra week. I'm redesigning the layout. 
 
-5 Oct 2022 - Fix bug in week numbers, fix extra week error.
+5 Oct 2022 - 	Fix bug in week numbers, fix extra week error.
 
-12 Oct 2022 - Fix bug causing last day of month to fall off calendar if it's the same day as start of week. 
+12 Oct 2022 - 	Fix bug causing last day of month to fall off calendar if it's the same day as start of week. 
 
-24 Oct 2022 - add config option for previous/next month display rather than forcing based on use. 
+24 Oct 2022 - 	Add config option for previous/next month display rather than forcing based on use. 
 
-29 Oct 2022 - Start Implementing streamlined CSS, add feature to move weekend around, documentation improvements. 
+29 Oct 2022 - 	Start Implementing streamlined CSS, add feature to move weekend around, documentation improvements. 
 
-4 Nov 2022 - Correct US/CA Week number calculation, add ISO calculation. 
+4 Nov 2022 - 	Correct US/CA Week number calculation, add ISO calculation. 
+
+11 Nov 2022 -	Temporary disabled US/CA week numbers, routine isn't consistent. I'm gonna rework it. Regardless of how it's set, you will use ISO week numbers.
+				Rewrote javascript to match new knowledge, saving several lines of code and making more CSS sense. 
+				added classes for future features, prepped more things for major future planned feature. 
+				Streamlined CSS classes some more. 
+				Due to changes, css class "current_day_weekend" is no longer supported. It does nothing. 

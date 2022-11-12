@@ -63,7 +63,6 @@ Module.register("MMM-Multimonth", {
 			return lastDay;
 		}
 
-// For anyone looking at my code, this is the only way I could get this to work... 		
 		const weekNames = (dateObject, index) => {
 			sDate = firstDay(dateObject, 0);
 			weekdaysTemp = [];
@@ -75,12 +74,13 @@ Module.register("MMM-Multimonth", {
 			for (tday = 0; tday < 7; tday++) {
 				offset = tday + index
 				if (offset >= 7) offset = offset - 7;
-				weekdaysHeader += "<div class='dow day-header'>" + weekdaysTemp[offset] + "</div>";
+				weekdaysHeader += `<div class='dow day-header ${weekdaysTemp[offset]}'> ${weekdaysTemp[offset]} </div>`;
 			}
 			return weekdaysHeader;
 		}
 
 		const weekNumber = (dateObject) => {
+			/* Broken! 
 			satDate = new Date(dateObject.getFullYear(),dateObject.getMonth(), dateObject.getDate()+6);
 			eval1Date = dateObject.getFullYear(); 
 			eval2Date = satDate.getFullYear();
@@ -91,6 +91,8 @@ Module.register("MMM-Multimonth", {
 				var numberOfDays = Math.floor((dateObject - oneJan) / (24 * 60 * 60 * 1000));
 				var result = Math.ceil(( dateObject.getDay() + 1 + numberOfDays) / 7)+1;
 			};
+			*/
+			var result = weekNumberISO(dateObject);
 			return result;
 		}
 		
@@ -100,7 +102,7 @@ Module.register("MMM-Multimonth", {
 			var numberOfDays = Math.floor((mondayDate - oneJan) / (24 * 60 * 60 * 1000));
 			var result = Math.ceil((mondayDate.getDay() + 1 + numberOfDays) / 7);
 			return result;
-}
+		}
 		
 		date = new Date();
 		month = date.getMonth();
@@ -113,16 +115,16 @@ Module.register("MMM-Multimonth", {
 		var weekdaysHeader = "<div class='dow-line days-header'>";
 		if (this.config.weekNumbers) {
 			// empty cell as a placeholder for the week number
-			weekdaysHeader += "<div class='dow day-header'>&nbsp;&nbsp;&nbsp;</div>";
+			weekdaysHeader += "<div class='dow day-header'>&nbsp;</div>";
 		}
 			weekdaysHeader += weekNames(date, this.config.startWeek);
 		weekdaysHeader += "</div>";
 
 		// set calendar main container depending on calendar orientation
 		if (this.config.monthsVertical) {
-			output = "<div class='calendar settings calendar-vertical'>";
+			output = "<div class='calendar settings vertical'>";
 		} else {
-			output = "<div class='calendar settings calendar-horizontal'>";
+			output = "<div class='calendar settings horizontal'>";
 		}
  // iterate through months to display
 		for (
@@ -138,11 +140,7 @@ Module.register("MMM-Multimonth", {
 			output += "<div class='month-header'>" + monthTitle + "</div>";
 
 			// add day of week headers
-			if (
-				!this.config.monthsVertical ||
-				this.config.repeatWeekdaysVertical ||
-				currentMonth == this.config.startMonth
-			) {
+			if ( !this.config.monthsVertical || this.config.repeatWeekdaysVertical || currentMonth == this.config.startMonth ) {
 				output += weekdaysHeader;
 			}
 
@@ -156,57 +154,28 @@ Module.register("MMM-Multimonth", {
 				output += "<div class='week'>";
 				if (this.config.weekNumbers) {
 					if (this.config.weekNumbersISO) { 
-						output += "<div class='weeknumber'> " + weekNumberISO(gridDay) + "</div>";
+						output += `<div class='weeknumber w${weekNumberISO(gridDay)}'>${weekNumberISO(gridDay)}</div>`;
 					} else { 
-						output += "<div class='weeknumber'> " + weekNumber(gridDay) + "</div>";
+						output += `<div class='weeknumber w${weekNumber(gridDay)}'>${weekNumber(gridDay)}</div>`;
 					}
 				}
 				for (dow = 0; dow <= 6; dow++) { // Walk the week 
-					if (gridDay.getMonth() == firstDayOfMonth.getMonth()) { // Current Month? 
-						if (gridDay.setHours(0, 0, 0, 0) == date.setHours(0, 0, 0, 0)) {  // is it today? 
-							if (this.config.highlightWeekend) { // highlight the weekend? 
-								if (gridDay.getDay() == this.config.weekend1 || gridDay.getDay() == this.config.weekend2) { // Is it the weekend? 
-									output +=   
-										"<div class='current weekend current_day_weekend'>" +
-										gridDay.getDate() +
-										"</div>";
-								} else { 
-									output +=
-										"<div class='current current_day'>" +
-										gridDay.getDate() +
-										"</div>";
-								}
-							} else {
-								output +=
-									"<div class='current current_day'>" + gridDay.getDate() + "</div>";
-							}
-						} else {
-							if (this.config.highlightWeekend) {
-								if (gridDay.getDay() == this.config.weekend1 || gridDay.getDay() == this.config.weekend2) {
-									output +=
-										"<div class='weekend'>" + gridDay.getDate() + "</div>";
-								} else {
-									output +=
-										"<div class='day'>" + gridDay.getDate() + "</div>";
-								}
-							} else {
-								output += "<div class='day'>" + gridDay.getDate() + "</div>";
-							}
-						}
+					if (gridDay.getMonth() == firstDayOfMonth.getMonth()) { // Current Month?
+						output += "<div class='day";
+						if (gridDay.setHours(0, 0, 0, 0) == date.setHours(0, 0, 0, 0)) { output += " current current_day" }
+						if ((this.config.highlightWeekend) && (gridDay.getDay() == this.config.weekend1 || gridDay.getDay() == this.config.weekend2)) { output += " weekend" } 
+						output += ` ${gridDay.getMonth()+1}-${gridDay.getDate()}'> ${gridDay.getDate()}</div>`;
 					} else {
-
-						// Previous months and post months, optional. 
 						if (this.config.otherMonths) {
-							output += "<div class='daydim'>" + gridDay.getDate() + "</div>";
+							output += `<div class='dim daydim ${gridDay.getDate()}'>${gridDay.getDate()}</div>`;
 						} else {
-							output += "<div class='daydim'>&nbsp;</div>";
+							output += `<div class='dim'>&nbsp;</div>`;
 						}
 					}
 					gridDay.setDate(gridDay.getDate()+1);
 				}
 				output += "</div>"; // end of week
 			} while (gridDay < gridEnd);
-
 			output += "</div>"; // end of month
 		}
 
