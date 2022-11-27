@@ -40,7 +40,15 @@ Module.register("MMM-Multimonth", {
 		var timer = setInterval(()=>{
 			this.updateDom()
 		}, reset)
+		this.storedEvents = [];
 	},    
+	
+	notificationReceived: function(notification, payload, sender) {
+			if (notification === 'CALENDAR_EVENTS') {
+				this.storedEvents = JSON.parse(JSON.stringify(payload))
+				this.updateDom();
+			}
+		},
 	
 		// Override dom generator.
 	getDom: function () {
@@ -104,6 +112,8 @@ Module.register("MMM-Multimonth", {
 			return result;
 		}
 		
+		
+		
 		date = new Date();
 		month = date.getMonth();
 		day = date.getDate();
@@ -164,6 +174,9 @@ Module.register("MMM-Multimonth", {
 						output += "<div class='day";
 						if (gridDay.setHours(0, 0, 0, 0) == date.setHours(0, 0, 0, 0)) { output += " current current_day" }
 						if ((this.config.highlightWeekend) && (gridDay.getDay() == this.config.weekend1 || gridDay.getDay() == this.config.weekend2)) { output += " weekend" } 
+						for (let ev = 0; ev < this.storedEvents.length; ev++) {
+							if (this.storedEvents[ev].startDate == gridDay.getTime()) { output += " event" }
+						}
 						output += ` ${gridDay.getMonth()+1}-${gridDay.getDate()}'> ${gridDay.getDate()}</div>`;
 					} else {
 						if (this.config.otherMonths) {

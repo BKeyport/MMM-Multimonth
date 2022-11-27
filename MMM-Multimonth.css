@@ -9,7 +9,6 @@
   --background-header: Green;
   --background-weekno: grey;
   --background-dow: var(--color-background);
-  --background-blank: var(--color-background);
   --color-weekday: var(--color-text);
   --color-weekend: var(--color-background);
   --color-current: var(--color-background);
@@ -17,9 +16,10 @@
   --color-header: var(--color-text-bright);
   --color-weekno: var(--color-text-bright);
   --color-dow: var(--color-text);
+  --color-event: Red;
   --back-rounding: 8px;
   --alignment: center; 
-  }
+}
 
 
 /* The parent DIV that contains the entire container */
@@ -126,36 +126,19 @@
 }
 
 .MMM-Multimonth .weekend {
-  flex: inherit;
-  min-width: inherit;
-  padding-left: inherit;
-  padding-right: inherit;
-  color: inherit;
-  border-radius: inherit;
   background-color: var(--background-weekend);
   color: var(--color-weekend);
 }
 
 .MMM-Multimonth .current {
-  flex: inherit;
-  min-width: inherit;
-  padding-left: inherit;
-  padding-right: inherit;
-  color: inherit;
-  border-radius: inherit;
+  border-style: hidden;
+  border-color: var(--background-current);
   background-color: var(--background-current);
   color: var(--color-current);
 }
 
 .MMM-Multimonth .event {
-  flex: inherit;
-  min-width: inherit;
-  padding-left: inherit;
-  padding-right: inherit;
-  color: inherit;
-  border-radius: inherit;
-  background-color: var(--background-weekday);
-  color: var(--color-weekday);  
+  text-decoration: underline var(--color-event);
 }
 
 
