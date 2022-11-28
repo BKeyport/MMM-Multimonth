@@ -46,9 +46,11 @@ To use this module, add it to the modules array in the config/config.js file - s
 | highlightWeekend                                    | false   | highlight the weekend (See Below)                                   |
 | headerType                                          | 'short' | How do you want the days displayed?<br>In US - 'short' = "Sun, Mon, Tue"<br>In US - 'narrow' = "S, M, T"|
 | otherMonths                                         | false   | NEW: Display the previous and next month dimmed in the month grid.  |
+| eventsOn                                            | true    | Turn on and off Event monitoring                                    |
 | startWeek                                           | 0       | Starting day of your week                                           |
 | weekend1                                            | 0       | 1st Day of your weekend                                             |
-| weekend2                                            | 6       | 2nd day of your weekend       
+| weekend2                                            | 6       | 2nd day of your weekend                                             |
+
 
 for the last three items: 0 = Sunday, 1 = Monday, 2 = Tuesday, 3 = Wednesday, 4 = Thursday, 5 = Friday, 6 = Saturday.
 Remember the format for options:
@@ -175,4 +177,6 @@ Language Localization is controlled by the master language of MagicMirror.
 * Changed the following css elements: day, dim, weekend, current, event, settings. 
 * Added new varable "--color-event" - which sets the color of the underline marking event on that day. 
 
-Todo: adjust code to pick which calendars to use. add option to turn off function if you don't want it.
+28 Nove 2022 - Added config option "eventsOn" to control event monitoring. 
+
+Todo: adjust code to pick which calendars to use

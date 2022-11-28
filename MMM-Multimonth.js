@@ -22,6 +22,7 @@ Module.register("MMM-Multimonth", {
 		startWeek: 0, // What day starts your week? 
 		weekend1: 0, // what is the first day of your weekend? 
 		weekend2: 6, // what is the second day of your weekend?  
+		eventsOn: true, // Underline events 
 	},
 
 	// CSS Add
@@ -175,7 +176,7 @@ Module.register("MMM-Multimonth", {
 						if (gridDay.setHours(0, 0, 0, 0) == date.setHours(0, 0, 0, 0)) { output += " current current_day" }
 						if ((this.config.highlightWeekend) && (gridDay.getDay() == this.config.weekend1 || gridDay.getDay() == this.config.weekend2)) { output += " weekend" } 
 						for (let ev = 0; ev < this.storedEvents.length; ev++) {
-							if (this.storedEvents[ev].startDate == gridDay.getTime()) { output += " event" }
+							if (this.storedEvents[ev].startDate == gridDay.getTime() && this.config.eventsOn) { output += " event" }
 						}
 						output += ` ${gridDay.getMonth()+1}-${gridDay.getDate()}'> ${gridDay.getDate()}</div>`;
 					} else {
