@@ -177,6 +177,6 @@ Language Localization is controlled by the master language of MagicMirror.
 * Changed the following css elements: day, dim, weekend, current, event, settings. 
 * Added new varable "--color-event" - which sets the color of the underline marking event on that day. 
 
-28 Nove 2022 - Added config option "eventsOn" to control event monitoring. 
+28 Nov 2022 - Added config option "eventsOn" to control event monitoring. 
 
 Todo: adjust code to pick which calendars to use
