@@ -40,13 +40,15 @@ To use this module, add it to the modules array in the config/config.js file - s
 |-:|:-:|-|
 | startMonth                                          | -1      | Starting month relative to the current month                        |
 | monthCount                                          | 3       | How many months do you want to display?                             |
+| monthsVertical                                      | false   | Display months on a vertical line                                   |
 | repeatWeekdaysVertical                              | false   | Repeat the weekday names? <br> (Vertical Calendar Only)             |
 | weekNumbers                                         | false   | Show the week numbers (How many weeks in the year)                  |
 | weekNumbersISO                                      | false   | Use ISO calculation or US/CA calculation (ignored if WeekNumbers is false) |
 | highlightWeekend                                    | false   | highlight the weekend (See Below)                                   |
 | headerType                                          | 'short' | How do you want the days displayed?<br>In US - 'short' = "Sun, Mon, Tue"<br>In US - 'narrow' = "S, M, T"|
-| otherMonths                                         | false   | NEW: Display the previous and next month dimmed in the month grid.  |
+| otherMonths                                         | false   | Display the previous and next month dimmed in the month grid.       |
 | eventsOn                                            | true    | Turn on and off Event monitoring                                    |
+| calNames                                            | []      | List of calendar names to trigger underline. Empty will do all of them. |
 | startWeek                                           | 0       | Starting day of your week                                           |
 | weekend1                                            | 0       | 1st Day of your weekend                                             |
 | weekend2                                            | 6       | 2nd day of your weekend                                             |
@@ -57,8 +59,31 @@ Remember the format for options:
 
 ```option: value,``` Example: ``` startMonth: -1, ```
 
+Important: calNames is an array, please specify as such ```["Main", "Sportsball", "Utility"]``` case is IMPORTANT. 
 
-CSS is changed from before - please remove all old customizations in custom.css and reset to new: 
+To get events to feed to module, add the calendar module into your ```config.js```
+
+Suggested settings at minimum: (name for other modules that use this calendar data) 
+```
+		{
+			module: "calendar",
+			config: {
+				broadcastPastEvents: true,
+				calendars: [
+					{
+						url: <insert URL>,
+						name: <name>,
+					},
+					//.... As many as you'd like .... 
+				],
+			}
+		},
+```
+
+
+Updating from prior to 11 Nov 2022: 
+
+CSS is changed - please remove all old customizations in custom.css and reset to new: 
 
 The following CSS code is all you need in ```custom.css``` if all you're changing is the colors and/or background edge rounding: 
 
@@ -84,27 +109,6 @@ The following CSS code is all you need in ```custom.css``` if all you're changin
 }
 ```
 
-To get events to feed to module, add the calendar module into your ```config.js```
-
-Suggested settings at minimum: (name for other modules that use this calendar data) 
-```
-		{
-			module: "calendar",
-			config: {
-				broadcastPastEvents: true,
-				calendars: [
-					{
-						url: <insert URL>,
-						name: <name>,
-					},
-					//.... As many as you'd like .... 
-				],
-			}
-		},
-```
-
-
-
 
 | Screenshot                                                                                                                     | How to get                                                                         |
 | ------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------- |
@@ -117,7 +121,7 @@ Suggested settings at minimum: (name for other modules that use this calendar da
 
 Many thanks to kirash for the inspiration with the monthly_calendar module, sdetweil and lavolp3 for the help in coding and CSS work. Without your help, this would just be a pipe dream.
 
-This is a basic module, but I felt it was good enough for release to the public. Please, if you have any suggestions for improvement, let me know, I'm learning JS and CSS as I write this, and I dream of much bigger things.
+Please, if you have any suggestions for improvement, let me know, I'm learning JS and CSS as I write this, and I dream of much bigger things.
 
 Language Localization is controlled by the master language of MagicMirror. 
 
@@ -179,4 +183,4 @@ Language Localization is controlled by the master language of MagicMirror.
 
 28 Nov 2022 - Added config option "eventsOn" to control event monitoring. 
 
-Todo: adjust code to pick which calendars to use
+17 May 2023 - Added calNames - a way to control which calendars do what. Please see above.

@@ -22,7 +22,8 @@ Module.register("MMM-Multimonth", {
 		startWeek: 0, // What day starts your week? 
 		weekend1: 0, // what is the first day of your weekend? 
 		weekend2: 6, // what is the second day of your weekend?  
-		eventsOn: true, // Underline events 
+		eventsOn: true, // Underline events
+		calNames: [], // List of calendar names to trigger underline. Empty will do all of them. 
 	},
 
 	// CSS Add
@@ -101,7 +102,7 @@ Module.register("MMM-Multimonth", {
 				var result = Math.ceil(( dateObject.getDay() + 1 + numberOfDays) / 7)+1;
 			};
 			*/
-			var result = weekNumberISO(dateObject);
+			var result = weekNumberISO(dateObject); // Temp fix. 
 			return result;
 		}
 		
@@ -113,6 +114,18 @@ Module.register("MMM-Multimonth", {
 			return result;
 		}
 		
+		const matchName = (cn) => {
+			result = true;
+			if (this.config.calNames.length > 0) {
+				result = false; 
+				for (let ev = 0; ev < this.config.calNames.length; ev++) {
+					if (this.config.calNames[ev] == cn) {
+						result = true;
+					}
+				}
+			}
+			return result;
+		}
 		
 		
 		date = new Date();
@@ -176,9 +189,11 @@ Module.register("MMM-Multimonth", {
 						if (gridDay.setHours(0, 0, 0, 0) == date.setHours(0, 0, 0, 0)) { output += " current current_day" }
 						if ((this.config.highlightWeekend) && (gridDay.getDay() == this.config.weekend1 || gridDay.getDay() == this.config.weekend2)) { output += " weekend" } 
 						for (let ev = 0; ev < this.storedEvents.length; ev++) {
+							// calendarName is property needed. 
+							match = matchName(this.storedEvents[ev].calendarName); 
 							orig = new Date(Number(this.storedEvents[ev].startDate));
 							modi = orig.setHours(0,0,0,0);
-							if (modi == gridDay.getTime() && this.config.eventsOn) {
+							if (modi == gridDay.getTime() && this.config.eventsOn && match) {
 								output += " event";
 							};
 						};
@@ -196,7 +211,6 @@ Module.register("MMM-Multimonth", {
 			} while (gridDay < gridEnd);
 			output += "</div>"; // end of month
 		}
-
 		output += "</div>"; // end of calendar
 		wrapper.innerHTML = output;
 		return wrapper;
