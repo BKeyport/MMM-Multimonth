@@ -184,3 +184,7 @@ Language Localization is controlled by the master language of MagicMirror.
 28 Nov 2022 - Added config option "eventsOn" to control event monitoring. 
 
 17 May 2023 - Added calNames - a way to control which calendars do what. Please see above.
+
+16 Jul 2023 - Adjusted CSS to follow master font sizing from MagicMirror. Does not affect custom.css if used for this module. 
+
+

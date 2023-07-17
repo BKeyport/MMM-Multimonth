@@ -28,10 +28,9 @@
   align-items: stretch;
   white-space: nowrap;
   border: 0;
-  font-size: 15px;
-  line-height: 20px;
+  font-size: var(--font-size-xsmall);
+  line-height: var(--font-size-xsmall)+5;
   text-align: var(--alignment);
-  
 }
 
 .MMM-Multimonth .vertical {
@@ -54,8 +53,8 @@
 .MMM-Multimonth .month-header {
   background-color: var(--background-header);
   color: var(--color-header);
-  font-size: 20px;
-  line-height: 25px;
+  font-size: var(--font-size-small);
+  line-height: var(--font-size-small)+5;
   border-radius: var(--back-rounding);
 }
 
