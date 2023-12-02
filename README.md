@@ -35,35 +35,47 @@ To use this module, add it to the modules array in the config/config.js file - s
 },
 ```
 ** Full config options: **
-
-| Option                                              | Default | Description                                                         |
-|-:|:-:|-|
-| startMonth                                          | -1      | Starting month relative to the current month                        |
-| monthCount                                          | 3       | How many months do you want to display?                             |
-| monthsVertical                                      | false   | Display months on a vertical line                                   |
-| repeatWeekdaysVertical                              | false   | Repeat the weekday names? <br> (Vertical Calendar Only)             |
-| weekNumbers                                         | false   | Show the week numbers (How many weeks in the year)                  |
-| weekNumbersISO                                      | false   | Use ISO calculation or US/CA calculation (ignored if WeekNumbers is false) |
-| highlightWeekend                                    | false   | highlight the weekend (See Below)                                   |
-| headerType                                          | 'short' | How do you want the days displayed?<br>In US - 'short' = "Sun, Mon, Tue"<br>In US - 'narrow' = "S, M, T"|
-| otherMonths                                         | false   | Display the previous and next month dimmed in the month grid.       |
-| eventsOn                                            | true    | Turn on and off Event monitoring                                    |
-| calNames                                            | []      | List of calendar names to trigger underline. Empty will do all of them. |
-| startWeek                                           | 0       | Starting day of your week                                           |
-| weekend1                                            | 0       | 1st Day of your weekend                                             |
-| weekend2                                            | 6       | 2nd day of your weekend                                             |
-
+| Option | Default | Description |
+|---|---|---|
+| startMonth | -1 | Starting month relative to the current month |
+| monthCount | 3 | How many months do you want to display? |
+| monthsVertical | false | Display months on a vertical line |
+| repeatWeekdaysVertical | false | Repeat the weekday names? (Vertical Calendar Only) |
+| weekNumbers | false | Show the week numbers (How many weeks in the year) |
+| weekNumbersISO | false | Use ISO calculation or US/CA calculation (ignored if WeekNumbers is false) True = ISO, False = US/Canada. (currently only ISO) |
+| highlightWeekend | false | highlight the weekend (See Below) |
+| headerType | 'short' | How do you want the days displayed? In US - 'short' = "Sun, Mon, Tue" In US - 'narrow' = "S, M, T" |
+| otherMonths | false | Display the previous and next month dimmed in the month grid. |
+| eventsOn | true | Turn on and off Event monitoring |
+| calNames | [] | List of calendar names to trigger underline. Empty will do all of them. |
+| instanceID |  | If you'd like to have changes per instance, use a string here and specify in CSS. |
+| startWeek | 0 | Starting day of your week |
+| weekend1 | 0 | 1st Day of your weekend |
+| weekend2 | 6 | 2nd day of your weekend |
 
 for the last three items: 0 = Sunday, 1 = Monday, 2 = Tuesday, 3 = Wednesday, 4 = Thursday, 5 = Friday, 6 = Saturday.
+
 Remember the format for options:
 
 ```option: value,``` Example: ``` startMonth: -1, ```
 
 Important: calNames is an array, please specify as such ```["Main", "Sportsball", "Utility"]``` case is IMPORTANT. 
 
+instanceID: You can specify in custom.css different css for each instance. For example, if you add ```instanceID: "test",``` to your code, you can overide that instance with: 
+
+```
+.MMM-Multimonth .month-header.test {
+  background-color: blue;
+  color: var(--color-header);
+  font-size: var(--font-size-small);
+  line-height: var(--font-size-small)+5;
+  border-radius: var(--back-rounding);
+}
+```
+
 To get events to feed to module, add the calendar module into your ```config.js```
 
-Suggested settings at minimum: (name for other modules that use this calendar data) 
+Suggested settings at minimum:  
 ```
 		{
 			module: "calendar",
@@ -186,5 +198,11 @@ Language Localization is controlled by the master language of MagicMirror.
 17 May 2023 - Added calNames - a way to control which calendars do what. Please see above.
 
 16 Jul 2023 - Adjusted CSS to follow master font sizing from MagicMirror. Does not affect custom.css if used for this module. 
+
+18 Oct 2023 - Added CSS class "instanceID" to allow for more complex CSS. Yes, I'm still working on the module - just been busy. Added fontsize variable to defaults. 
+
+1 Dec 2023 - Basic changes to system to allow for a new feature (currently undocumented, need to go back through code to document due to being lazy and not writing down changes) - large calendar as well as small. 
+
+
 
 

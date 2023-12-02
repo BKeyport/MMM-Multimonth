@@ -23,7 +23,9 @@ Module.register("MMM-Multimonth", {
 		weekend1: 0, // what is the first day of your weekend? 
 		weekend2: 6, // what is the second day of your weekend?  
 		eventsOn: true, // Underline events
-		calNames: [], // List of calendar names to trigger underline. Empty will do all of them. 
+		calNames: [], // List of calendar names to trigger event monitoring. Empty will do all of them. 
+		instanceID: "", // what instance number is this? 
+		bigCalendar: false, //  Provide big calendar options. 
 	},
 
 	// CSS Add
@@ -43,6 +45,7 @@ Module.register("MMM-Multimonth", {
 			this.updateDom()
 		}, reset)
 		this.storedEvents = [];
+		this.matchEvents = [];
 	},    
 	
 	notificationReceived: function(notification, payload, sender) {
@@ -84,7 +87,7 @@ Module.register("MMM-Multimonth", {
 			for (tday = 0; tday < 7; tday++) {
 				offset = tday + index
 				if (offset >= 7) offset = offset - 7;
-				weekdaysHeader += `<div class='dow day-header ${weekdaysTemp[offset]}'> ${weekdaysTemp[offset]} </div>`;
+				weekdaysHeader += `<div class='dow day-header ${this.config.instanceID} ${weekdaysTemp[offset]}'> ${weekdaysTemp[offset]} </div>`;
 			}
 			return weekdaysHeader;
 		}
@@ -136,19 +139,19 @@ Module.register("MMM-Multimonth", {
 		var lastMonth = this.config.startMonth + this.config.monthCount - 1;
 
 		// pre-calculcate the header line containing the week days - no need to repeat this for every month
-		var weekdaysHeader = "<div class='dow-line days-header'>";
+		var weekdaysHeader = `<div class='dow-line days-header ${this.config.instanceID}'>`;
 		if (this.config.weekNumbers) {
 			// empty cell as a placeholder for the week number
-			weekdaysHeader += "<div class='dow day-header'>&nbsp;</div>";
+			weekdaysHeader += `<div class='dow day-header ${this.config.instanceID}'>&nbsp;</div>`;
 		}
 			weekdaysHeader += weekNames(date, this.config.startWeek);
 		weekdaysHeader += "</div>";
 
 		// set calendar main container depending on calendar orientation
 		if (this.config.monthsVertical) {
-			output = "<div class='calendar settings vertical'>";
+			output = `<div class='calendar settings ${this.config.instanceID} vertical '>`;
 		} else {
-			output = "<div class='calendar settings horizontal'>";
+			output = `<div class='calendar settings ${this.config.instanceID} horizontal '>`;
 		}
  // iterate through months to display
 		for (
@@ -156,12 +159,12 @@ Module.register("MMM-Multimonth", {
 			currentMonth <= lastMonth;
 			currentMonth++
 		) {
-			output += "<div class='month'>";
+			output += `<div class='month ${this.config.instanceID}'>`;
 
 			// add the month headers
 			titleTemp = new Date(year, month + currentMonth, 1);
 			monthTitle = titleTemp.toLocaleString(config.language, { month: 'long', year: 'numeric' });
-			output += "<div class='month-header'>" + monthTitle + "</div>";
+			output += `<div class='month-header ${this.config.instanceID}'>` + monthTitle + "</div>";
 
 			// add day of week headers
 			if ( !this.config.monthsVertical || this.config.repeatWeekdaysVertical || currentMonth == this.config.startMonth ) {
@@ -175,36 +178,56 @@ Module.register("MMM-Multimonth", {
 
 			// Week grid builder
 			do {
-				output += "<div class='week'>";
+				output += `<div class='week ${this.config.instanceID}'>`;
 				if (this.config.weekNumbers) {
 					if (this.config.weekNumbersISO) { 
-						output += `<div class='weeknumber w${weekNumberISO(gridDay)}'>${weekNumberISO(gridDay)}</div>`;
+						output += `<div class='weeknumber w${weekNumberISO(gridDay)} ${this.config.instanceID}'>${weekNumberISO(gridDay)}</div>`;
 					} else { 
-						output += `<div class='weeknumber w${weekNumber(gridDay)}'>${weekNumber(gridDay)}</div>`;
+						output += `<div class='weeknumber w${weekNumber(gridDay)} ${this.config.instanceID}'>${weekNumber(gridDay)}</div>`;
 					}
 				}
 				for (dow = 0; dow <= 6; dow++) { // Walk the week 
+					output += `<div class='daycontainer ${this.config.instanceID}'>`;
+						output += `<div class='`;
 					if (gridDay.getMonth() == firstDayOfMonth.getMonth()) { // Current Month?
-						output += "<div class='day";
+						output += `day ${this.config.instanceID}`;
 						if (gridDay.setHours(0, 0, 0, 0) == date.setHours(0, 0, 0, 0)) { output += " current current_day" }
 						if ((this.config.highlightWeekend) && (gridDay.getDay() == this.config.weekend1 || gridDay.getDay() == this.config.weekend2)) { output += " weekend" } 
-						for (let ev = 0; ev < this.storedEvents.length; ev++) {
-							// calendarName is property needed. 
-							match = matchName(this.storedEvents[ev].calendarName); 
-							orig = new Date(Number(this.storedEvents[ev].startDate));
-							modi = orig.setHours(0,0,0,0);
-							if (modi == gridDay.getTime() && this.config.eventsOn && match) {
-								output += " event";
+						if (!this.config.bigCalendar) {
+							for (let ev = 0; ev < this.storedEvents.length; ev++) {
+								match = matchName(this.storedEvents[ev].calendarName); 
+								orig = new Date(Number(this.storedEvents[ev].startDate));
+								modi = orig.setHours(0,0,0,0);
+								if (modi == gridDay.getTime() && this.config.eventsOn && match) {
+									output += " event";	
+								}
 							};
 						};
-						output += ` ${gridDay.getMonth()+1}-${gridDay.getDate()}'> ${gridDay.getDate()}</div>`;
 					} else {
 						if (this.config.otherMonths) {
-							output += `<div class='dim daydim ${gridDay.getDate()}'>${gridDay.getDate()}</div>`;
+							output += `dim ${this.config.instanceID} daydim`;
 						} else {
-							output += `<div class='dim'>&nbsp;</div>`;
+							output += `noDisplay ${this.config.instanceID}`;
 						}
+						
 					}
+					output += ` ${gridDay.getMonth()+1}-${gridDay.getDate()}'> ${gridDay.getDate()}</div>`;
+/* Big Events Cycle */
+					if (this.config.bigCalendar) {
+						if (gridDay.getMonth() == firstDayOfMonth.getMonth()) { // Current Month?
+							output += `<div class='bigEvent ${this.config.instanceID}'>`
+							for (let ev = 0; ev < this.storedEvents.length; ev++) {
+								match = matchName(this.storedEvents[ev].calendarName); 
+								orig = new Date(Number(this.storedEvents[ev].startDate));
+								modi = orig.setHours(0,0,0,0);
+								if (modi == gridDay.getTime() && this.config.eventsOn && match) {
+									output += `<i class="icon ${this.storedEvents[ev].symbol}"></i>`;
+								}
+							};
+							output +="</div>";
+						}
+					};
+					output += "</div>";
 					gridDay.setDate(gridDay.getDate()+1);
 				}
 				output += "</div>"; // end of week

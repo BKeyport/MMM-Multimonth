@@ -19,6 +19,7 @@
   --color-event: Red;
   --back-rounding: 8px;
   --alignment: center; 
+  --fontsize: --var(--font-size-xsmall);
 }
 
 
@@ -28,8 +29,8 @@
   align-items: stretch;
   white-space: nowrap;
   border: 0;
-  font-size: var(--font-size-xsmall);
-  line-height: var(--font-size-xsmall)+5;
+  font-size: var(--fontsize);
+  line-height: var(--fontsize)+5;
   text-align: var(--alignment);
 }
 
@@ -53,8 +54,8 @@
 .MMM-Multimonth .month-header {
   background-color: var(--background-header);
   color: var(--color-header);
-  font-size: var(--font-size-small);
-  line-height: var(--font-size-small)+5;
+  font-size: var(--fontsize);
+  line-height: var(--fontsize)+5;
   border-radius: var(--back-rounding);
 }
 
@@ -100,13 +101,19 @@
   color: var(--color-weekno);
 }
 
-/* Ranked Day Fields */
-
-.MMM-Multimonth .day {
+/* to enable big calendar mode */
+.MMM-Multimonth .daycontainer {
+  display: flex;
   flex: inherit;
+  flex-direction: column;
   min-width: inherit;
   padding-left: inherit;
   padding-right: inherit;
+ }
+
+/* Ranked Day Fields */
+
+.MMM-Multimonth .day {
   color: inherit;
   border-radius: inherit;
   background-color: var(--background-weekday);
@@ -122,6 +129,11 @@
   border-radius: inherit;
   background-color: var(--background-dimmed);
   color: var(--color-dimmed);
+  font-size: var(--fontsize);
+}
+
+.MMM-Multimonth .noDisplay {
+	display: none;
 }
 
 .MMM-Multimonth .weekend {
@@ -140,4 +152,6 @@
   text-decoration: underline var(--color-event);
 }
 
-
+.MMM-Multimonth .bigEvent {
+	font-size: var(--fontsize);
+}
