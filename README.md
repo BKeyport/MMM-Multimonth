@@ -1,9 +1,9 @@
-### NOTE: THIS MODULE IS TO BE HOSTED ONLY AT https://github.com/BKeyport/MMM-Multimonth - Any other hosting location is invalid.
+### NOTE: THIS MODULE IS TO BE HOSTED ONLY AT <https://github.com/BKeyport/MMM-Multimonth> - Any other hosting location is invalid.
 
 If you fork and change any code, please let me know, if it's useful for the general public, I'd love to add it!
 
 If you find this module useful, and would like to contribute to the project, I appreciate the thought. Instead of giving to me, please donate to L'Arche Tahoma Hope
-at https://www.larchetahomahope.org/donate/ - in honor of Nancy Tyson. (Dedicate my donation checkbox). Nancy means the world to me. You don't have to notify me you
+at <https://www.larchetahomahope.org/donate/> - in honor of Nancy Tyson. (Dedicate my donation checkbox). Nancy means the world to me. You don't have to notify me you
 have done so.
 
 THANK YOU for your consideration.
@@ -18,15 +18,17 @@ This will create a mini-calendar with as many months as the user wants, assuming
 
 Clone this repository in your ~/MagicMirror/modules/ folder ( $ cd ~MagicMirror/modules/ ):
 
-git clone https://github.com/BKeyport/MMM-Multimonth.git
+```shell
+git clone https://github.com/BKeyport/MMM-Multimonth
+```
 
-** note: NPM INSTALL is no longer required. This module is proud to no longer use any external dependencies! **
+**Note: NPM INSTALL is no longer required. This module is proud to no longer use any external dependencies!**
 
 ## Using the module
 
 To use this module, add it to the modules array in the config/config.js file - shown options are defaults:
 
-```
+```js
 {
   module: 'MMM-Multimonth',
     position: 'top_left', // can be any of the postions
@@ -34,7 +36,8 @@ To use this module, add it to the modules array in the config/config.js file - s
     }
 },
 ```
-** Full config options: **
+
+**Full config options:**
 | Option | Default | Description |
 |---|---|---|
 | startMonth | -1 | Starting month relative to the current month |
@@ -59,11 +62,11 @@ Remember the format for options:
 
 ```option: value,``` Example: ``` startMonth: -1, ```
 
-Important: calNames is an array, please specify as such ```["Main", "Sportsball", "Utility"]``` case is IMPORTANT. 
+Important: calNames is an array, please specify as such ```["Main", "Sportsball", "Utility"]``` case is IMPORTANT.
 
-instanceID: You can specify in custom.css different css for each instance. For example, if you add ```instanceID: "test",``` to your code, you can overide that instance with: 
+instanceID: You can specify in custom.css different css for each instance. For example, if you add ```instanceID: "test",``` to your code, you can overide that instance with:
 
-```
+```css
 .MMM-Multimonth .month-header.test {
   background-color: blue;
   color: var(--color-header);
@@ -76,7 +79,8 @@ instanceID: You can specify in custom.css different css for each instance. For e
 To get events to feed to module, add the calendar module into your ```config.js```
 
 Suggested settings at minimum:  
-```
+
+```js
 		{
 			module: "calendar",
 			config: {
@@ -92,14 +96,13 @@ Suggested settings at minimum:
 		},
 ```
 
+Updating from prior to 11 Nov 2022:
 
-Updating from prior to 11 Nov 2022: 
+CSS is changed - please remove all old customizations in custom.css and reset to new:
 
-CSS is changed - please remove all old customizations in custom.css and reset to new: 
+The following CSS code is all you need in ```custom.css``` if all you're changing is the colors and/or background edge rounding:
 
-The following CSS code is all you need in ```custom.css``` if all you're changing is the colors and/or background edge rounding: 
-
-```
+```css
 .MMM-Multimonth .settings {
   --background-dimmed: var(--color-background);     /* For dimmed (previous/next month in current grid), use the global background color */
   --background-weekday: var(--color-background);    /* For normal days, use global background */ 
@@ -121,7 +124,6 @@ The following CSS code is all you need in ```custom.css``` if all you're changin
 }
 ```
 
-
 | Screenshot                                                                                                                     | How to get                                                                         |
 | ------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------- |
 | ![screenshot](vert-noweek-norep.png?raw=true "Screenshot (vertical mode, no week numbers, single weekday line)")               | monthsVertical: true, <br> repeatWeekdaysVertical: false, <br> weekNumbers: false, |
@@ -135,7 +137,7 @@ Many thanks to kirash for the inspiration with the monthly_calendar module, sdet
 
 Please, if you have any suggestions for improvement, let me know, I'm learning JS and CSS as I write this, and I dream of much bigger things.
 
-Language Localization is controlled by the master language of MagicMirror. 
+Language Localization is controlled by the master language of MagicMirror.
 
 ## Versioning
 
@@ -167,42 +169,40 @@ Language Localization is controlled by the master language of MagicMirror.
 
 7 Sep 2022 -    changing to date based versioning.
 
-1 Oct 2022 -    Completely removed moment.js from project. ** Returned to Beta Status due to lack of internationalization and start of week adjustments ** 
+1 Oct 2022 -    Completely removed moment.js from project. **Returned to Beta Status due to lack of internationalization and start of week adjustments**
 
-4 Oct 2022 -    Internationalization and Start of Week added back in. -- Note: I'm aware of a bug where the week numbers are showing an extra week. I'm redesigning the layout. 
+4 Oct 2022 -    Internationalization and Start of Week added back in. -- Note: I'm aware of a bug where the week numbers are showing an extra week. I'm redesigning the layout.
 
 5 Oct 2022 -    Fix bug in week numbers, fix extra week error.
 
-12 Oct 2022 -   Fix bug causing last day of month to fall off calendar if it's the same day as start of week. 
+12 Oct 2022 -   Fix bug causing last day of month to fall off calendar if it's the same day as start of week.
 
-24 Oct 2022 -   Add config option for previous/next month display rather than forcing based on use. 
+24 Oct 2022 -   Add config option for previous/next month display rather than forcing based on use.
 
-29 Oct 2022 -   Start Implementing streamlined CSS, add feature to move weekend around, documentation improvements. 
+29 Oct 2022 -   Start Implementing streamlined CSS, add feature to move weekend around, documentation improvements.
 
-4 Nov 2022 -    Correct US/CA Week number calculation, add ISO calculation. 
+4 Nov 2022 -    Correct US/CA Week number calculation, add ISO calculation.
 
-11 Nov 2022 -   Changes: 
+11 Nov 2022 -   Changes:
+
 * Temporary disabled US/CA week numbers, routine isn't consistent. I'm gonna rework it. Regardless of how it's set, you will use ISO week numbers.
-* Rewrote javascript to match new knowledge, saving several lines of code and making more CSS sense. 
-* added classes for future features, prepped more things for major future planned feature. 
-* Streamlined CSS classes some more. 
-* Due to changes, css class "current_day_weekend" is no longer supported. It does nothing. 
+* Rewrote javascript to match new knowledge, saving several lines of code and making more CSS sense.
+* added classes for future features, prepped more things for major future planned feature.
+* Streamlined CSS classes some more.
+* Due to changes, css class "current_day_weekend" is no longer supported. It does nothing.
 
-26 Nov 2022 -   Changes: 
-* Added support for events from default calendar module. 
-* Changed the following css elements: day, dim, weekend, current, event, settings. 
-* Added new varable "--color-event" - which sets the color of the underline marking event on that day. 
+26 Nov 2022 -   Changes:
 
-28 Nov 2022 - Added config option "eventsOn" to control event monitoring. 
+* Added support for events from default calendar module.
+* Changed the following css elements: day, dim, weekend, current, event, settings.
+* Added new varable "--color-event" - which sets the color of the underline marking event on that day.
+
+28 Nov 2022 - Added config option "eventsOn" to control event monitoring.
 
 17 May 2023 - Added calNames - a way to control which calendars do what. Please see above.
 
-16 Jul 2023 - Adjusted CSS to follow master font sizing from MagicMirror. Does not affect custom.css if used for this module. 
+16 Jul 2023 - Adjusted CSS to follow master font sizing from MagicMirror. Does not affect custom.css if used for this module.
 
-18 Oct 2023 - Added CSS class "instanceID" to allow for more complex CSS. Yes, I'm still working on the module - just been busy. Added fontsize variable to defaults. 
+18 Oct 2023 - Added CSS class "instanceID" to allow for more complex CSS. Yes, I'm still working on the module - just been busy. Added fontsize variable to defaults.
 
-1 Dec 2023 - Basic changes to system to allow for a new feature (currently undocumented, need to go back through code to document due to being lazy and not writing down changes) - large calendar as well as small. 
-
-
-
-
+1 Dec 2023 - Basic changes to system to allow for a new feature (currently undocumented, need to go back through code to document due to being lazy and not writing down changes) - large calendar as well as small.
