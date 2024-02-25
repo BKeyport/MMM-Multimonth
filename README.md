@@ -60,11 +60,11 @@ for the last three items: 0 = Sunday, 1 = Monday, 2 = Tuesday, 3 = Wednesday, 4 
 
 Remember the format for options:
 
-```option: value,``` Example: ``` startMonth: -1, ```
+`option: value,` Example: `startMonth: -1,`
 
-Important: calNames is an array, please specify as such ```["Main", "Sportsball", "Utility"]``` case is IMPORTANT.
+Important: calNames is an array, please specify as such `["Main", "Sportsball", "Utility"]` case is IMPORTANT.
 
-instanceID: You can specify in custom.css different css for each instance. For example, if you add ```instanceID: "test",``` to your code, you can overide that instance with:
+instanceID: You can specify in custom.css different css for each instance. For example, if you add `instanceID: "test",` to your code, you can overide that instance with:
 
 ```css
 .MMM-Multimonth .month-header.test {
@@ -76,7 +76,7 @@ instanceID: You can specify in custom.css different css for each instance. For e
 }
 ```
 
-To get events to feed to module, add the calendar module into your ```config.js```
+To get events to feed to module, add the calendar module into your `config.js`.
 
 Suggested settings at minimum:  
 
@@ -100,7 +100,7 @@ Updating from prior to 11 Nov 2022:
 
 CSS is changed - please remove all old customizations in custom.css and reset to new:
 
-The following CSS code is all you need in ```custom.css``` if all you're changing is the colors and/or background edge rounding:
+The following CSS code is all you need in `custom.css` if all you're changing is the colors and/or background edge rounding:
 
 ```css
 .MMM-Multimonth .settings {
