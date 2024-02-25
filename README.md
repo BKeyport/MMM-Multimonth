@@ -10,7 +10,7 @@ THANK YOU for your consideration.
 
 # MagicMirror Module to display a calendar with multiple months (user configurable)
 
-This is a module for the [MagicMirror²](https://github.com/MichMich/MagicMirror) project.
+This is a module for the [MagicMirror²](https://github.com/MagicMirrorOrg/MagicMirror) project.
 
 This will create a mini-calendar with as many months as the user wants, assuming screen space is available. Screenshots are with config examples.
 
