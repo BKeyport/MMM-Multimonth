@@ -1,4 +1,4 @@
-/* Magic Mirror Module: MMM-Multimonth
+/* MagicMirror² Module: MMM-Multimonth
  *
  * By Brendan Keyport <brendan.keyport@gmail.com>
  * Major assistance and rewrite by Volker Wegert <github@volker-wegert.de>
