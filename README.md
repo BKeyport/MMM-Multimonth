@@ -24,6 +24,13 @@ git clone https://github.com/BKeyport/MMM-Multimonth
 
 **Note: NPM INSTALL is no longer required. This module is proud to no longer use any external dependencies!**
 
+## Updating
+
+```
+cd ~/MagicMirror/modules/MMM-Multimonth
+git pull
+```
+
 ## Using the module
 
 To use this module, add it to the modules array in the config/config.js file - shown options are defaults:
