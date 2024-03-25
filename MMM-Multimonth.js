@@ -35,7 +35,7 @@ Module.register("MMM-Multimonth", {
 
 	// Update at midnight
 	start: function () {
-		date = new Date();
+		date = new Date(Date.now());
 		month = date.getMonth();
 		day = date.getDate();
 		nextday = day + 1;
@@ -131,7 +131,7 @@ Module.register("MMM-Multimonth", {
 		}
 		
 		
-		date = new Date();
+		date = new Date(Date.now());
 		month = date.getMonth();
 		day = date.getDate();
 		year = date.getFullYear();
