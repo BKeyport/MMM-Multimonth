@@ -91,32 +91,36 @@ Module.register("MMM-Multimonth", {
 			}
 			return weekdaysHeader;
 		}
-
+		
 		const weekNumber = (dateObject) => {
-			/* Broken! 
-			satDate = new Date(dateObject.getFullYear(),dateObject.getMonth(), dateObject.getDate()+6);
-			eval1Date = dateObject.getFullYear(); 
-			eval2Date = satDate.getFullYear();
-			if (eval2Date > eval1Date) { 
-				result = 1;
+			const target = new Date(dateObject);
+			const jan1 = new Date(target.getFullYear(), 0, 1);
+			const daysDiff = Math.floor((target - jan1) / (24 * 60 * 60 * 1000));
+			let weekResult = Math.ceil((daysDiff + jan1.getDay() + 1) / 7);
+
+// Check if January 1st is part of the week
+			const adjTarget = new Date(dateObject);
+			adjTarget.setDate(adjTarget.getDate() + 6);
+			const newJan1 = new Date(adjTarget.getFullYear(), 0, 1);
+			if (newJan1.getTime() === jan1.getTime()) {
+				result = weekResult
 			} else {
-				var oneJan = new Date(dateObject.getFullYear(),0,1);
-				var numberOfDays = Math.floor((dateObject - oneJan) / (24 * 60 * 60 * 1000));
-				var result = Math.ceil(( dateObject.getDay() + 1 + numberOfDays) / 7)+1;
-			};
-			*/
-			var result = weekNumberISO(dateObject); // Temp fix. 
+				result = 1
+			}
+			
 			return result;
-		}
-		
+		};
+
+
 		const weekNumberISO = (dateObject) => {
-			mondayDate = new Date(dateObject.getFullYear(), dateObject.getMonth(), dateObject.getDate()+1);
-			var oneJan = new Date(mondayDate.getFullYear(),0,1);
-			var numberOfDays = Math.floor((mondayDate - oneJan) / (24 * 60 * 60 * 1000));
-			var result = Math.ceil((mondayDate.getDay() + 1 + numberOfDays) / 7);
+			const mondayDate = new Date(dateObject.getFullYear(), dateObject.getMonth(), dateObject.getDate() + 1);
+			const oneJan = new Date(mondayDate.getFullYear(), 0, 1);
+   
+			const numberOfDays = Math.floor((mondayDate - oneJan) / (24 * 60 * 60 * 1000));
+			const result = Math.ceil((mondayDate.getDay() + 1 + numberOfDays) / 7);
 			return result;
-		}
-		
+		};
+
 		const matchName = (cn) => {
 			result = true;
 			if (this.config.calNames.length > 0) {

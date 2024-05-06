@@ -45,7 +45,7 @@ To use this module, add it to the modules array in the config/config.js file - s
 | monthsVertical | false | Display months on a vertical line |
 | repeatWeekdaysVertical | false | Repeat the weekday names? (Vertical Calendar Only) |
 | weekNumbers | false | Show the week numbers (How many weeks in the year) |
-| weekNumbersISO | false | Use ISO calculation or US/CA calculation (ignored if WeekNumbers is false) True = ISO, False = US/Canada. (currently only ISO) |
+| weekNumbersISO | false | Use ISO calculation or US/CA calculation (ignored if WeekNumbers is false) True = ISO, False = US/Canada. |
 | highlightWeekend | false | highlight the weekend (See Below) |
 | headerType | 'short' | How do you want the days displayed? In US - 'short' = "Sun, Mon, Tue" In US - 'narrow' = "S, M, T" |
 | otherMonths | false | Display the previous and next month dimmed in the month grid. |
@@ -206,3 +206,5 @@ Language Localization is controlled by the master language of MagicMirror.
 18 Oct 2023 - Added CSS class "instanceID" to allow for more complex CSS. Yes, I'm still working on the module - just been busy. Added fontsize variable to defaults.
 
 1 Dec 2023 - Basic changes to system to allow for a new feature (currently undocumented, need to go back through code to document due to being lazy and not writing down changes) - large calendar as well as small.
+
+5 May 2024 - Fixed US Weeknumbers, among other bug fixes. 
