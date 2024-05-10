@@ -15,9 +15,14 @@
     "calendar"
   ],
   "author": "Brendan Keyport",
-  "license": "MIT",
+  "license": "MIT-Modern-Variant",
   "bugs": {
     "url": "https://github.com/BKeyport/MMM-Multimonth/issues"
   },
-  "homepage": "https://github.com/BKeyport/MMM-Multimonth#readme"
+  "homepage": "https://github.com/BKeyport/MMM-Multimonth#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.2.0",
+    "eslint": "^9.2.0",
+    "globals": "^15.2.0"
+  }
 }

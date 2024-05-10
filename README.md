@@ -141,6 +141,16 @@ Please, if you have any suggestions for improvement, let me know, I'm learning J
 
 Language Localization is controlled by the master language of MagicMirror.
 
+## Update: 
+
+Simply issue the following command in the MMM-Multimonth folder: 
+
+```shell 
+    git pull
+```
+then restart your mirror. 
+
+
 ## Versioning
 
 0.1 - Initial Release
