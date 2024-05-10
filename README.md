@@ -210,3 +210,5 @@ Language Localization is controlled by the master language of MagicMirror.
 1 Dec 2023 - Basic changes to system to allow for a new feature (currently undocumented, need to go back through code to document due to being lazy and not writing down changes) - large calendar as well as small.
 
 5 May 2024 - Fixed US Weeknumbers, among other bug fixes. 
+
+9 May 2024 - Adjusted README.md for new 3rd party list compatibility, plus capturing other changes. 
