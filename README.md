@@ -10,6 +10,8 @@ THANK YOU for your consideration.
 
 # MagicMirror Module to display a calendar with multiple months (user configurable)
 
+![screenshot](screenshot.png?raw=true "Screenshot (vertical mode, no week numbers, single weekday line)")
+
 This is a module for the [MagicMirror²](https://github.com/MagicMirrorOrg/MagicMirror) project.
 
 This will create a mini-calendar with as many months as the user wants, assuming screen space is available. Screenshots are with config examples.

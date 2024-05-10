@@ -1,6 +1,13 @@
-/* Developed by BKeyport */
+/* MagicMirror² Module: MMM-Multimonth
+ *
+ * By Brendan Keyport <brendan.keyport@gmail.com>
+ * Major assistance and rewrite by Volker Wegert <github@volker-wegert.de>
+ *
+ * See README.md for versioning and important info
+ *
+ */
 
-  
+/* Settings for various elements */
 .MMM-Multimonth .settings {
   --background-dimmed: var(--color-background);
   --background-weekday: var(--color-background);
@@ -18,90 +25,22 @@
   --color-dow: var(--color-text);
   --color-event: Red;
   --back-rounding: 8px;
-  --alignment: center; 
+  --alignment: center;
   --fontsize: --var(--font-size-xsmall);
 }
 
-
-/* The parent DIV that contains the entire container */
+/* Container for the entire calendar */
 .MMM-Multimonth .calendar {
   display: flex;
   align-items: stretch;
   white-space: nowrap;
   border: 0;
   font-size: var(--fontsize);
-  line-height: var(--fontsize)+5;
+  line-height: var(--fontsize) + 5;
   text-align: var(--alignment);
 }
 
-.MMM-Multimonth .vertical {
-  flex-direction: column;
-}
-
-.MMM-Multimonth .horizontal {
-  flex-direction: row;
-}
-
-/* The container for the entire month */
-.MMM-Multimonth .month {
-  flex-basis: 90%;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-}
-
-/* The header line containing the name of the month and the year */
-.MMM-Multimonth .month-header {
-  background-color: var(--background-header);
-  color: var(--color-header);
-  font-size: var(--fontsize);
-  line-height: var(--fontsize)+5;
-  border-radius: var(--back-rounding);
-}
-
-/* The sub-header containing the names of the days, and the cell of an individual day */
-.MMM-Multimonth .dow-line {
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-}
-
-.MMM-Multimonth .dow {
-  color: var(--color-dow);
-  background-color: var(--background-dow);
-  flex: 1 1 0px;
-  min-width: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-/* The line representing an actual week */
-.MMM-Multimonth .week {
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  flex: 1 1 0px;
-  min-width: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-  color: var(--color-text);
-  background-color: var(--color-background);
-  border-radius: var(--back-rounding);
-
-}
-
-.MMM-Multimonth .weeknumber {
-  flex: inherit;
-  min-width: inherit;
-  padding-left: inherit;
-  padding-right: inherit;
-  color: inherit;
-  border-radius: inherit;
-  background-color: var(--background-weekno); 
-  color: var(--color-weekno);
-}
-
-/* to enable big calendar mode */
+/* Container for day elements */
 .MMM-Multimonth .daycontainer {
   display: flex;
   flex: inherit;
@@ -109,10 +48,9 @@
   min-width: inherit;
   padding-left: inherit;
   padding-right: inherit;
- }
+}
 
-/* Ranked Day Fields */
-
+/* Day field */
 .MMM-Multimonth .day {
   color: inherit;
   border-radius: inherit;
@@ -120,6 +58,7 @@
   color: var(--color-weekday);  
 }
 
+/* Dimmed day */
 .MMM-Multimonth .dim {
   flex: inherit;
   min-width: inherit;
@@ -132,15 +71,17 @@
   font-size: var(--fontsize);
 }
 
-.MMM-Multimonth .noDisplay {
-	display: none;
+/* Dimmed day styling (big version) */
+.MMM-Multimonth .dimBig {
+  font-size: var(--fontsize);
 }
 
-.MMM-Multimonth .weekend {
-  background-color: var(--background-weekend);
-  color: var(--color-weekend);
+/* Day styling (big version) */
+.MMM-Multimonth .dayBig {
+  font-size: var(--fontsize);
 }
 
+/* Current day styling */
 .MMM-Multimonth .current {
   border-style: hidden;
   border-color: var(--background-current);
@@ -148,10 +89,100 @@
   color: var(--color-current);
 }
 
+/* Current day styling (big version) */
+.MMM-Multimonth .currentBig {
+  font-size: var(--fontsize);
+}
+
+/* Event styling */
 .MMM-Multimonth .event {
   text-decoration: underline var(--color-event);
 }
 
-.MMM-Multimonth .bigEvent {
-	font-size: var(--fontsize);
+/* Event styling (big version) */
+.MMM-Multimonth .eventBig {
+  font-size: var(--fontsize);
+  border: 1px solid var(--color-event);
+}
+
+/* Header containing month and year */
+.MMM-Multimonth .month-header {
+  background-color: var(--background-header);
+  color: var(--color-header);
+  font-size: var(--fontsize);
+  line-height: var(--fontsize) + 5;
+  border-radius: var(--back-rounding);
+}
+
+/* Container for each month */
+.MMM-Multimonth .month {
+  flex-basis: 90%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Day of week line */
+.MMM-Multimonth .dow-line {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+/* Day of week element */
+.MMM-Multimonth .dow {
+  color: var(--color-dow);
+  background-color: var(--background-dow);
+  flex: 1 1 0px;
+  min-width: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+/* Orientation settings */
+.MMM-Multimonth .horizontal {
+  flex-direction: row;
+}
+
+/* Settings for MMM-Multimonth Module */
+.MMM-Multimonth .settings {
+  --back-rounding: 8px;
+  --fontsize: --var(--font-size-xsmall);
+}
+
+/* Weekend styling */
+.MMM-Multimonth .weekend {
+  background-color: var(--background-weekend);
+  color: var(--color-weekend);
+}
+
+/* Weekend styling (big version) */
+.MMM-Multimonth .weekendBig {
+  font-size: var(--fontsize);
+}
+
+/* Week representation */
+.MMM-Multimonth .week {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  flex: 1 1 0px;
+  min-width: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  border-radius: var(--back-rounding);
+}
+
+/* Week number */
+.MMM-Multimonth .weeknumber {
+  flex: inherit;
+  min-width: inherit;
+  padding-left: inherit;
+  padding-right: inherit;
+  color: inherit;
+  border-radius: inherit;
+  background-color: var(--background-weekno); 
+  color: var(--color-weekno);
 }
