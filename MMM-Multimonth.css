@@ -6,8 +6,6 @@
  * See README.md for versioning and important info
  *
  */
-/* Developed by BKeyport */
-
   
 .MMM-Multimonth .settings {
   --background-dimmed: var(--color-background);
@@ -17,19 +15,20 @@
   --background-header: Green;
   --background-weekno: grey;
   --background-dow: var(--color-background);
+  --background-week: var(--color-background);	
   --color-weekday: var(--color-text);
   --color-weekend: var(--color-background);
   --color-current: var(--color-background);
   --color-dimmed: var(--color-text-dimmed);
   --color-header: var(--color-text-bright);
   --color-weekno: var(--color-text-bright);
+  --color-day: var(--color-text);
   --color-dow: var(--color-text);
   --color-event: Red;
   --back-rounding: 8px;
   --alignment: center; 
-  --fontsize: --var(--font-size-xsmall);
+  --fontsize: var(--font-size-xsmall);
 }
-
 
 /* The parent DIV that contains the entire container */
 .MMM-Multimonth .calendar {
@@ -93,7 +92,7 @@
   padding-left: 4px;
   padding-right: 4px;
   color: var(--color-text);
-  background-color: var(--color-background);
+  background-color: var(--background-week);
   border-radius: var(--back-rounding);
 
 }
@@ -122,8 +121,8 @@
 /* Ranked Day Fields */
 
 .MMM-Multimonth .day {
-  color: inherit;
-  border-radius: inherit;
+  color: var(--color-day);
+  border-radius: var(back-rounding);
   background-color: var(--background-weekday);
   color: var(--color-weekday);  
 }
@@ -133,8 +132,8 @@
   min-width: inherit;
   padding-left: inherit;
   padding-right: inherit;
-  color: inherit;
-  border-radius: inherit;
+  color: var(--color-dimmed);
+  border-radius: var(--back-rounding);
   background-color: var(--background-dimmed);
   color: var(--color-dimmed);
   font-size: var(--fontsize);
@@ -151,6 +150,7 @@
 
 .MMM-Multimonth .current {
   border-style: hidden;
+  border-radius: var(--back-rounding);
   border-color: var(--background-current);
   background-color: var(--background-current);
   color: var(--color-current);
