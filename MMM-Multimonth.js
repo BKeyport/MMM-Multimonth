@@ -132,8 +132,7 @@ Module.register("MMM-Multimonth", {
 
 // pre-calculcate the header line containing the week days - no need to repeat this for every month
 		var weekdaysHeader = `<div class='dow-line days-header ${this.config.instanceID}'>`;
-		if (this.config.weekNumbers) {
-// empty cell as a placeholder for the week number
+		if (this.config.weekNumbers && !this.config.bigCalendar) {
 			weekdaysHeader += `<div class='dow day-header ${this.config.instanceID}'>&nbsp;</div>`;
 		}
 		weekdaysHeader += weekNames(date, this.config.startWeek);
@@ -148,11 +147,7 @@ Module.register("MMM-Multimonth", {
 		
 
 // iterate through months to display
-		for (
-			currentMonth = this.config.startMonth;
-			currentMonth <= lastMonth;
-			currentMonth++
-		) {
+		for (currentMonth = this.config.startMonth; currentMonth <= lastMonth; currentMonth++) {
 			output += `<div class='month ${this.config.instanceID}'>`;
 
 // add the month headers
@@ -172,17 +167,25 @@ Module.register("MMM-Multimonth", {
 // Week grid builder
 			do {
 				output += `<div class='week ${this.config.instanceID}'>`;
-				if (this.config.weekNumbers) {
-					if (this.config.weekNumbersISO) { 
-						output += `<div class='weeknumber w${weekNumberISO(gridDay)} ${this.config.instanceID}'>${weekNumberISO(gridDay)}</div>`;
-					} else { 
-						output += `<div class='weeknumber w${weekNumber(gridDay)} ${this.config.instanceID}'>${weekNumber(gridDay)}</div>`;
-					}
-				}
+
+// Week Number Calculator
+				const weekNum = this.config.weekNumbersISO ? weekNumberISO(gridDay) : weekNumber(gridDay);
+				weekNumResult= `<div class='weeknumber w${weekNum} ${this.config.instanceID}'>${weekNum}</div>`;
+
+
 // Walk the week 
+
+// Week Number to the left of the week if not a big calendar
+				if (this.config.weekNumbers && !this.config.bigCalendar) {
+					output +=weekNumResult;
+				}
+
 				for (dow = 0; dow <= 6; dow++) { 
 					output += `<div class='daycontainer ${this.config.instanceID}'>`;
 					output += `<div class='`;
+
+
+
 // Is it the current month? 
 					if (gridDay.getMonth() == firstDayOfMonth.getMonth()) { 
 						output += `day ${this.config.instanceID}`;
