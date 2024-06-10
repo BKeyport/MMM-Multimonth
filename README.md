@@ -134,13 +134,13 @@ The Week Number (if used) will become part of the first day of the week's spot.
 
 Events will be summarized into a count and a symbol, and display below each day of the month. 
 
-To keep the CSS slim, I ***do not*** format anything differently, and it ***will*** break the constraints of the mini mode. Don't use if you're inexperienced in CSS. 
+To keep the CSS slim, I ***do not*** format anything differently, and it ***will*** break the constraints of the mini mode. Don't use if you're inexperienced in CSS. You will have to design your display yourself. If you have any questions, ask in the magic mirror forums. Myself or any of the CSS wizards will be happy to help you. 
 
 
 
 ## Updating from prior to 08 Jun 2024:
 
-CSS is changed - please remove all old customizations in custom.css and reset to new:
+CSS is changed - please check all customizations. **Old Elements, values, etc. have been deleted**.
 
 The following CSS code is all you need in `custom.css` if all you're changing is the colors and/or background edge rounding:
 
@@ -149,9 +149,10 @@ The following CSS code is all you need in `custom.css` if all you're changing is
 ```css
 /* Defaults are shown */
 .MMM-Multimonth .settings {
-  --background-header: Green;                        /* for the month and year line, use green background */ 
+  --background-header: rgb(0, 128, 0);               /* for the month and year line, use green background */ 
   --background-dow: var(--color-background);         /* For the days of the week, use global background */ 
-  --background-weekno: grey;                         /* for the week number, use a grey background */ 
+  --background-dowBlank: rgba(255, 255, 255, 0);     /* For the blank square if you use Week numbers */  
+  --background-weekno: #808080;                      /* for the week number, use a grey background */ 
   --background-event: var(--color-background);		 /* Background for events, used in big mode only */
     
   --background-dimmed: var(--color-background);      /* For dimmed (previous/next month in current grid), use the global background color */
@@ -161,6 +162,7 @@ The following CSS code is all you need in `custom.css` if all you're changing is
 
   --color-header: var(--color-text-bright);         /* for the header lines, use the global bright text color */ 
   --color-dow: var(--color-text);                   /* for the days of the week header, use the global text color */
+  --color-dowBlank: rgba(255, 255, 255, 0);			/* For the blank square if you use Week numbers */ 
   --color-weekno: var(--color-text);                /* for the week numbers, use the global bright text color */
 
   --color-dimmed: var(--color-text-dimmed);         /* For dimmed (previous/next month in current grid), use the global dimmed text color */
@@ -175,6 +177,9 @@ The following CSS code is all you need in `custom.css` if all you're changing is
 }
 
 ```
+
+Notes on the colors above: You can use any colors you'd like. https://www.w3schools.com/cssref/css_colors.php is a list of accepted color names, or if you wanna make your own, https://www.w3schools.com/cssref/css_colors_legal.php. The above list is intended to be a sample, so I use different ways of doing legal colors.  the "var" statements refer back to the master color list in Magic Mirror. You'll find a full list in main.css. 
+
 
 
 

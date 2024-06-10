@@ -4,6 +4,7 @@
 .MMM-Multimonth .settings {
   --background-header: Green;
   --background-dow: var(--color-background);
+  --background-dowBlank: rgba(255, 255, 255, 0);
   --background-weekno: grey;
   --background-event: var(--color-background);
   
@@ -11,9 +12,11 @@
   --background-weekday: var(--color-background);
   --background-weekend: cornflowerblue;
   --background-today: Yellow;
+  
 
   --color-header: var(--color-text-bright);
   --color-dow: var(--color-text);
+  --color-dowBlank: rgba(255, 255, 255, 0);
   --color-weekno: var(--color-text);
 
   --color-dimmed: var(--color-text-dimmed);
@@ -81,6 +84,17 @@
   padding-left: 4px;
   padding-right: 4px;
 }
+
+.MMM-Multimonth .dowBlank {
+  color: var(--color-dowBlank);
+  border-radius: var(--back-rounding);
+  background-color: var(--background-dowBlank);
+  flex: 1 1 0px;
+  min-width: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
 
 /* Week Container */
 .MMM-Multimonth .weekContainer {
@@ -152,6 +166,7 @@
   min-width: inherit;
   padding-left: inherit;
   padding-right: inherit;
+  display: none;
 }
 
 /* Weekend */

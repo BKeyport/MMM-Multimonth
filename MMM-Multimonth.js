@@ -133,7 +133,7 @@ Module.register("MMM-Multimonth", {
         // pre-calculate the header line containing the week days - no need to repeat this for every month
         var weekdaysHeader = `<div class='dowContainer ${this.config.instanceID}'>`;
         if (this.config.weekNumbers && !this.config.bigCalendar) {
-            weekdaysHeader += `<div class='dow ${this.config.instanceID}'>&nbsp;</div>`;
+            weekdaysHeader += `<div class='dowBlank ${this.config.instanceID}'>&nbsp;</div>`;
         }
         weekdaysHeader += weekNames(date, this.config.startWeek);
         weekdaysHeader += "</div>";
