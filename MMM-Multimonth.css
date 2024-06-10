@@ -1,46 +1,47 @@
-/* MagicMirror² Module: MMM-Multimonth
- *
- * By Brendan Keyport <brendan.keyport@gmail.com>
- * Major assistance and rewrite by Volker Wegert <github@volker-wegert.de>
- *
- * See README.md for versioning and important info
- *
- */
-  
+/* CSS for Multimonth Calendar  - (C) Brendan Keyport 2024 */
+
+/* Settings */
 .MMM-Multimonth .settings {
+  --background-header: Green;
+  --background-dow: var(--color-background);
+  --background-dowBlank: rgba(255, 255, 255, 0);
+  --background-weekno: grey;
+  --background-event: var(--color-background);
+  
   --background-dimmed: var(--color-background);
   --background-weekday: var(--color-background);
   --background-weekend: cornflowerblue;
-  --background-current: Yellow;
-  --background-header: Green;
-  --background-weekno: grey;
-  --background-dow: var(--color-background);
-  --background-week: var(--color-background);	
+  --background-today: Yellow;
+  
+
+  --color-header: var(--color-text-bright);
+  --color-dow: var(--color-text);
+  --color-dowBlank: rgba(255, 255, 255, 0);
+  --color-weekno: var(--color-text);
+
+  --color-dimmed: var(--color-text-dimmed);
   --color-weekday: var(--color-text);
   --color-weekend: var(--color-background);
-  --color-current: var(--color-background);
-  --color-dimmed: var(--color-text-dimmed);
-  --color-header: var(--color-text-bright);
-  --color-weekno: var(--color-text-bright);
-  --color-day: var(--color-text);
-  --color-dow: var(--color-text);
-  --color-event: Red;
+  --color-today: var(--color-background);
+
   --back-rounding: 8px;
-  --alignment: center; 
+  --alignment: center;
   --fontsize: var(--font-size-xsmall);
+  --smallEventMarker: 3px;
 }
 
-/* The parent DIV that contains the entire container */
+/* Calendar */
 .MMM-Multimonth .calendar {
   display: flex;
   align-items: stretch;
   white-space: nowrap;
   border: 0;
   font-size: var(--fontsize);
-  line-height: var(--fontsize)+5;
+  line-height: var(--fontsize) + 5;
   text-align: var(--alignment);
 }
 
+/* Layout */
 .MMM-Multimonth .vertical {
   flex-direction: column;
 }
@@ -49,7 +50,7 @@
   flex-direction: row;
 }
 
-/* The container for the entire month */
+/* Month */
 .MMM-Multimonth .month {
   flex-basis: 90%;
   padding: 10px;
@@ -57,24 +58,26 @@
   flex-direction: column;
 }
 
-/* The header line containing the name of the month and the year */
+/* Month Header */
 .MMM-Multimonth .month-header {
   background-color: var(--background-header);
   color: var(--color-header);
   font-size: var(--fontsize);
-  line-height: var(--fontsize)+5;
+  line-height: var(--fontsize) + 5;
   border-radius: var(--back-rounding);
 }
 
-/* The sub-header containing the names of the days, and the cell of an individual day */
-.MMM-Multimonth .dow-line {
+/* Days of Week Container */
+.MMM-Multimonth .dowContainer {
   display: flex;
   flex-direction: row;
   align-items: stretch;
 }
 
+/* Days of Week */
 .MMM-Multimonth .dow {
   color: var(--color-dow);
+  border-radius: var(--back-rounding);
   background-color: var(--background-dow);
   flex: 1 1 0px;
   min-width: 0;
@@ -82,84 +85,136 @@
   padding-right: 4px;
 }
 
-/* The line representing an actual week */
-.MMM-Multimonth .week {
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
+.MMM-Multimonth .dowBlank {
+  color: var(--color-dowBlank);
+  border-radius: var(--back-rounding);
+  background-color: var(--background-dowBlank);
   flex: 1 1 0px;
   min-width: 0;
   padding-left: 4px;
   padding-right: 4px;
-  color: var(--color-text);
-  background-color: var(--background-week);
-  border-radius: var(--back-rounding);
-
 }
 
-.MMM-Multimonth .weeknumber {
-  flex: inherit;
-  min-width: inherit;
-  padding-left: inherit;
-  padding-right: inherit;
-  color: inherit;
-  border-radius: inherit;
-  background-color: var(--background-weekno); 
-  color: var(--color-weekno);
-}
 
-/* to enable big calendar mode */
-.MMM-Multimonth .daycontainer {
+/* Week Container */
+.MMM-Multimonth .weekContainer {
   display: flex;
-  flex: inherit;
   flex-direction: column;
-  min-width: inherit;
-  padding-left: inherit;
-  padding-right: inherit;
- }
-
-/* Ranked Day Fields */
-
-.MMM-Multimonth .day {
-  color: var(--color-day);
-  border-radius: var(back-rounding);
-  background-color: var(--background-weekday);
-  color: var(--color-weekday);  
+  align-items: stretch;
+  flex: 1 1 0px;
+  min-width: 0;
+  padding: 0 0; 
+  margin: 0 0; 
 }
 
-.MMM-Multimonth .dim {
+/* Small Week Number */
+.MMM-Multimonth .weekNumSmall,
+.MMM-Multimonth .weekNumBig {
+  color: var(--color-weekno);
+  border-radius: var(--back-rounding);
+  background-color: var(--background-weekno);
+  flex: 1 0;
+  min-width: inherit;
+  padding: 0 0; 
+  margin: 0 0; 
+}
+
+/* Day Lines */
+.MMM-Multimonth .dayline1,
+.MMM-Multimonth .dayline2 {
+  display: flex;
+  flex-direction: row;
+  padding: 0 0; 
+  margin: 0 0; 
+}
+
+/* Day Container */
+.MMM-Multimonth .dayContainer {
+  display: flex;
+  flex: 1 0;
+  flex-direction: row;
+  min-width: inherit;
+  padding-left: inherit;
+  padding-right: inherit;
+}
+
+/* Day */
+.MMM-Multimonth .day {
+  background-color: var(--background-weekday);
+  border-radius: var(--back-rounding);
+  color: var(--color-weekday);
   flex: inherit;
   min-width: inherit;
   padding-left: inherit;
   padding-right: inherit;
+}
+
+/* Dimmed Day */
+.MMM-Multimonth .dim {
   color: var(--color-dimmed);
   border-radius: var(--back-rounding);
   background-color: var(--background-dimmed);
-  color: var(--color-dimmed);
-  font-size: var(--fontsize);
+  flex: inherit;
+  min-width: inherit;
+  padding-left: inherit;
+  padding-right: inherit;
 }
 
+/* No Display */
 .MMM-Multimonth .noDisplay {
-	display: none;
+  flex: 1 0;
+  min-width: inherit;
+  padding-left: inherit;
+  padding-right: inherit;
+  display: none;
 }
 
+/* Weekend */
 .MMM-Multimonth .weekend {
-  background-color: var(--background-weekend);
   color: var(--color-weekend);
-}
-
-.MMM-Multimonth .current {
-  border-style: hidden;
   border-radius: var(--back-rounding);
-  border-color: var(--background-current);
-  background-color: var(--background-current);
-  color: var(--color-current);
+  background-color: var(--background-weekend);
+  flex: inherit;
+  min-width: inherit;
+  padding-left: inherit;
+  padding-right: inherit;
 }
 
-.MMM-Multimonth .event {
-  text-decoration: underline var(--color-event);
+/* Today */
+.MMM-Multimonth .today {
+  border-style: hidden;
+  background-color: var(--background-today);
+  color: var(--color-today);
 }
 
+/* Event Container */
+.MMM-Multimonth .eventContainer {
+  display: flex;
+  flex: 1 0;
+  flex-direction: column;
+  min-width: inherit;
+  padding: 0 0; 
+  margin: 0 0; 
+}
+
+/* Event */
+.MMM-Multimonth .event,
 .MMM-Multimonth .bigEvent {
-	font-size: var(--fontsize);
+  border-radius: var(--back-rounding); 
+  flex: inherit;
+  min-width: inherit;
+  padding: 0 0; 
+  margin: 0 0; 
 }
+
+/* Small Event */
+.MMM-Multimonth .event {
+  border-bottom: var(--smallEventMarker) solid;
+}
+
+/* Big Event */
+.MMM-Multimonth .bigEvent {
+  background-color: var(--background-event);
+}
+
+
