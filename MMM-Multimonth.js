@@ -172,9 +172,8 @@ Module.register("MMM-Multimonth", {
                 weekNumResultSmall = `<div class='weekNumSmall w${weekNum} ${this.config.instanceID}'>${weekNum}</div>`;
                 weekNumResultBig = `<div class='weekNumBig w${weekNum} ${this.config.instanceID}'>Wk ${weekNum}</div>`;
 
-                // 1st Week Loop  (for Days)
+                // Week Loop  (for Days)
 
-                output += "<div class='dayline1'>";
                 // Week Number to the left of the week if not a big calendar
                 if (this.config.weekNumbers && !this.config.bigCalendar) {
                     output += weekNumResultSmall;
@@ -194,7 +193,7 @@ Module.register("MMM-Multimonth", {
                     // the day item 
                     output += "<div class='day ";
 
-                    // Is it the current month? 
+                    // Is it the current month? (Duplicate, part 1, will be revising) 
                     if (gridDay.getMonth() == firstDayOfMonth.getMonth()) {
                         output += "thismonth " + this.config.instanceID;
                         if (gridDay.setHours(0, 0, 0, 0) == date.setHours(0, 0, 0, 0)) {
@@ -212,30 +211,9 @@ Module.register("MMM-Multimonth", {
                     }
 
                     output += " " + (gridDay.getMonth() + 1) + "-" + gridDay.getDate() + "'>" + gridDay.getDate() + "</div>";
+					output += "<div class='events'>";
 
-                    // End of the day container
-                    output += "</div>";
-
-                    gridDay.setDate(gridDay.getDate() + 1);
-                }
-
-                output += "</div>"
-                gridDay = eventBodge;
-
-
-                // 2nd Week loop (for events)  
-
-                output += "<div class='dayline2'>";
-                // Week Number to the left of the week if not a big calendar
-                if (this.config.weekNumbers && !this.config.bigCalendar) {
-                    output += `<div class='noDisplay'></div>`;
-                }
-
-                // build the Event container 
-                for (dow = 0; dow <= 6; dow++) {
-                    output += "<div class='eventContainer " + this.config.instanceID + "'>";
-
-                    // Is it the current month? 
+                    // Is it the current month? (Duplicate, part 2, will be revising) 
                     if (gridDay.getMonth() == firstDayOfMonth.getMonth()) {
 
                         // Object to store counts for each unique calendarName and its symbol
@@ -274,13 +252,12 @@ Module.register("MMM-Multimonth", {
                     } else {
                         output += `<div class='noDisplay ${this.config.instanceID}'></div>`;
                     }
+					output += "</div>";
+                    // End of the day container
+                    output += "</div>";
 
                     gridDay.setDate(gridDay.getDate() + 1);
-                    output += "</div>";
                 }
-
-                // End of the event container
-                output += "</div>"
 
                 output += "</div>"; // end of week
             } while (gridDay < gridEnd);

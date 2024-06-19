@@ -3,7 +3,7 @@
 /* Settings */
 .MMM-Multimonth .settings {
   --background-header: Green;
-  --background-dow: var(--color-background);
+  --background-dow: var(--color-ba ckground);
   --background-dowBlank: rgba(255, 255, 255, 0);
   --background-weekno: grey;
   --background-event: var(--color-background);
@@ -52,8 +52,8 @@
 
 /* Month */
 .MMM-Multimonth .month {
-  flex-basis: 90%;
-  padding: 10px;
+  flex-basis: 100%;
+  padding: 0px;
   display: flex;
   flex-direction: column;
 }
@@ -95,11 +95,10 @@
   padding-right: 4px;
 }
 
-
 /* Week Container */
 .MMM-Multimonth .weekContainer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: stretch;
   flex: 1 1 0px;
   min-width: 0;
@@ -107,7 +106,7 @@
   margin: 0 0; 
 }
 
-/* Small Week Number */
+/* Week Number */
 .MMM-Multimonth .weekNumSmall,
 .MMM-Multimonth .weekNumBig {
   color: var(--color-weekno);
@@ -119,53 +118,32 @@
   margin: 0 0; 
 }
 
-/* Day Lines */
-.MMM-Multimonth .dayline1,
-.MMM-Multimonth .dayline2 {
-  display: flex;
-  flex-direction: row;
-  padding: 0 0; 
-  margin: 0 0; 
-}
-
 /* Day Container */
 .MMM-Multimonth .dayContainer {
   display: flex;
+  flex-flow: row wrap;
   flex: 1 0;
-  flex-direction: row;
-  min-width: inherit;
-  padding-left: inherit;
-  padding-right: inherit;
 }
+
 
 /* Day */
 .MMM-Multimonth .day {
   background-color: var(--background-weekday);
   border-radius: var(--back-rounding);
   color: var(--color-weekday);
-  flex: inherit;
-  min-width: inherit;
-  padding-left: inherit;
-  padding-right: inherit;
+  flex: 1 1 100%;
 }
+
 
 /* Dimmed Day */
 .MMM-Multimonth .dim {
   color: var(--color-dimmed);
   border-radius: var(--back-rounding);
   background-color: var(--background-dimmed);
-  flex: inherit;
-  min-width: inherit;
-  padding-left: inherit;
-  padding-right: inherit;
-}
+  }
 
 /* No Display */
 .MMM-Multimonth .noDisplay {
-  flex: 1 0;
-  min-width: inherit;
-  padding-left: inherit;
-  padding-right: inherit;
   display: none;
 }
 
@@ -174,10 +152,6 @@
   color: var(--color-weekend);
   border-radius: var(--back-rounding);
   background-color: var(--background-weekend);
-  flex: inherit;
-  min-width: inherit;
-  padding-left: inherit;
-  padding-right: inherit;
 }
 
 /* Today */
@@ -187,21 +161,18 @@
   color: var(--color-today);
 }
 
-/* Event Container */
-.MMM-Multimonth .eventContainer {
-  display: flex;
-  flex: 1 0;
-  flex-direction: column;
-  min-width: inherit;
-  padding: 0 0; 
-  margin: 0 0; 
-}
 
-/* Event */
+/* Events */
+
+.MMM-Multimonth .events {
+  display: flex;
+  flex-flow: column wrap;
+  flex: 1 1 100%;
+ }
+
 .MMM-Multimonth .event,
 .MMM-Multimonth .bigEvent {
   border-radius: var(--back-rounding); 
-  flex: inherit;
   min-width: inherit;
   padding: 0 0; 
   margin: 0 0; 
@@ -214,6 +185,8 @@
 
 /* Big Event */
 .MMM-Multimonth .bigEvent {
+  display: inline-block; 
+  white-space: wrap; 
   background-color: var(--background-event);
 }
 
