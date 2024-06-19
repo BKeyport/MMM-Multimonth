@@ -162,11 +162,17 @@
 }
 
 
-/* Event */
+/* Events */
+
+.MMM-Multimonth .events {
+  display: flex;
+  flex-flow: column wrap;
+  flex: 1 1 100%;
+ }
+
 .MMM-Multimonth .event,
 .MMM-Multimonth .bigEvent {
   border-radius: var(--back-rounding); 
-  flex: 1 100%;
   min-width: inherit;
   padding: 0 0; 
   margin: 0 0; 
@@ -179,6 +185,8 @@
 
 /* Big Event */
 .MMM-Multimonth .bigEvent {
+  display: inline-block; 
+  white-space: wrap; 
   background-color: var(--background-event);
 }
 

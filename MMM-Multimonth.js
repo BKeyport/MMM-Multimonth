@@ -193,7 +193,7 @@ Module.register("MMM-Multimonth", {
                     // the day item 
                     output += "<div class='day ";
 
-                    // Is it the current month? 
+                    // Is it the current month? (Duplicate, part 1, will be revising) 
                     if (gridDay.getMonth() == firstDayOfMonth.getMonth()) {
                         output += "thismonth " + this.config.instanceID;
                         if (gridDay.setHours(0, 0, 0, 0) == date.setHours(0, 0, 0, 0)) {
@@ -211,8 +211,9 @@ Module.register("MMM-Multimonth", {
                     }
 
                     output += " " + (gridDay.getMonth() + 1) + "-" + gridDay.getDate() + "'>" + gridDay.getDate() + "</div>";
+					output += "<div class='events'>";
 
-                    // Is it the current month? 
+                    // Is it the current month? (Duplicate, part 2, will be revising) 
                     if (gridDay.getMonth() == firstDayOfMonth.getMonth()) {
 
                         // Object to store counts for each unique calendarName and its symbol
@@ -251,7 +252,7 @@ Module.register("MMM-Multimonth", {
                     } else {
                         output += `<div class='noDisplay ${this.config.instanceID}'></div>`;
                     }
-
+					output += "</div>";
                     // End of the day container
                     output += "</div>";
 
