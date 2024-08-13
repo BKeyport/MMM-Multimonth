@@ -25,19 +25,30 @@ Module.register("MMM-Multimonth", {
     },
 
     // Update at midnight
-    start: function () {
-        date = new Date();
-        month = date.getMonth();
-        day = date.getDate();
-        nextday = day + 1;
-        year = date.getFullYear();
-        reset = new Date(year, month, nextday, 0, 0, 0, 0).getTime() - date.getTime();
-        var timer = setInterval(() => {
-            this.updateDom()
-        }, reset)
-        this.storedEvents = [];
-        this.matchEvents = [];
-    },
+
+start: function () {
+    function scheduleMidnightUpdate() {
+        const now = new Date();
+        const nextMidnight = new Date(now);
+
+        // Set the time to midnight
+        nextMidnight.setHours(24, 0, 0, 0);
+
+        // Calculate the time remaining until the next midnight
+        const timeUntilMidnight = nextMidnight - now;
+
+        // Schedule the updateDom method to be called at midnight
+        setTimeout(() => {
+            this.updateDom();
+
+            // Reschedule the update for the next midnight
+            scheduleMidnightUpdate.call(this);
+        }, timeUntilMidnight);
+    }
+
+    // Call the function to start the first schedule
+    scheduleMidnightUpdate.call(this);
+},
 
     notificationReceived: function (notification, payload, sender) {
         if (notification === 'CALENDAR_EVENTS') {
@@ -45,6 +56,8 @@ Module.register("MMM-Multimonth", {
             this.updateDom();
         }
     },
+
+    
 
     // Override dom generator.
     getDom: function () {
