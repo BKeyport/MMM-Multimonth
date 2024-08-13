@@ -283,3 +283,6 @@ then restart your mirror.
 8 Jun 2024 - MAJOR CSS re-write. Some values have changed, Some have been eliminated, some new. 
 
 18 Jun 2024 - Adjusted JS and CSS to make things line up better, found lots of little CSS bugs. Fully enabled color event handling. 
+
+11 Aug 2024 - Adjusted startup code to refresh properly at midnight, other minor changes. 
+
