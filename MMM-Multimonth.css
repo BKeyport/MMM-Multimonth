@@ -3,7 +3,7 @@
 /* Settings */
 .MMM-Multimonth .settings {
   --background-header: Green;
-  --background-dow: var(--color-ba ckground);
+  --background-dow: var(--color-background);
   --background-dowBlank: rgba(255, 255, 255, 0);
   --background-weekno: grey;
   --background-event: var(--color-background);
