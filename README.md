@@ -286,3 +286,4 @@ then restart your mirror.
 
 11 Aug 2024 - Adjusted startup code to refresh properly at midnight, other minor changes. 
 
+20 Aug 2024 - Fixing errors caught by github user tgtechy. Thank you. 

@@ -27,6 +27,8 @@ Module.register("MMM-Multimonth", {
     // Update at midnight
 
 start: function () {
+	this.storedEvents = [];
+
     function scheduleMidnightUpdate() {
         const now = new Date();
         const nextMidnight = new Date(now);
