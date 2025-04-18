@@ -166,7 +166,7 @@
 
 .MMM-Multimonth .events {
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: row wrap;
   flex: 1 1 100%;
  }
 
@@ -180,7 +180,10 @@
 
 /* Small Event */
 .MMM-Multimonth .event {
-  border-bottom: var(--smallEventMarker) solid;
+  padding: 0 0; 
+  margin: 0 0; 
+  font-size: var(--font-size);
+  line-height: calc(var(--font-size-medium) - 20px);
 }
 
 /* Big Event */
@@ -189,5 +192,3 @@
   white-space: wrap; 
   background-color: var(--background-event);
 }
-
-

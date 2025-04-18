@@ -14,6 +14,7 @@ Module.register("MMM-Multimonth", {
         weekend1: 0,
         weekend2: 6,
         eventsOn: true,
+        eventsCount: true,
         calNames: [],
         instanceID: "",
         bigCalendar: false,
@@ -252,17 +253,26 @@ start: function () {
                         }
 
                         // Display event counts for each calendarName
-                        if (this.config.bigCalendar) {
+                        if (this.config.bigCalendar && this.config.eventCounts) {
                             output += `<div class='bigEvent'>`
                             for (const calendarName in eventCounts) {
                                 output += `<span style='color: ${eventCounts[calendarName].color};'> ${eventCounts[calendarName].count} x <i class="icon ${eventCounts[calendarName].symbol}"></i></span>`;
                             }
                             output += `</div>`
+                        } else if (this.config.bigCalendar && !this.config.eventCounts) {
+
+                            output += `<div class='bigEvent'>`
+                            for (const calendarName in eventCounts) {
+                                output += `<span style='color: ${eventCounts[calendarName].color};'><i class="icon ${eventCounts[calendarName].symbol}"></i></span>`;
+                            }
+                            output += `</div>`
                         } else {
 
                             for (const calendarName in eventCounts) {
-                                output += `<div class='event' style= 'border-color: ${eventCounts[calendarName].color};'></div>`;
+                                output += `<div class='event' style= 'color: ${eventCounts[calendarName].color};'>∙</div>`;
+                                
                             }
+                            
                         }
                     } else {
                         output += `<div class='noDisplay ${this.config.instanceID}'></div>`;

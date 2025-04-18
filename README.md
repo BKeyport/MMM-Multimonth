@@ -59,6 +59,7 @@ To use this module, add it to the modules array in the config/config.js file - s
 | startWeek              | 0       | Starting day of your week                                    |
 | weekend1               | 0       | 1st Day of your weekend                                      |
 | weekend2               | 6       | 2nd day of your weekend                                      |
+| eventsCount            | true    | Big calendar mode - show number of events per icon           |
 
 
 for the last three items: 0 = Sunday, 1 = Monday, 2 = Tuesday, 3 = Wednesday, 4 = Thursday, 5 = Friday, 6 = Saturday.
@@ -287,3 +288,5 @@ then restart your mirror.
 11 Aug 2024 - Adjusted startup code to refresh properly at midnight, other minor changes. 
 
 20 Aug 2024 - Fixing errors caught by github user tgtechy. Thank you. 
+
+18 Apr 2025 - Change Event visual on small screen to "Jewels" - the ∙ symbol colored to match calendar, add option to not show event count in big mode. 
