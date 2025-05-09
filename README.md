@@ -290,3 +290,6 @@ then restart your mirror.
 20 Aug 2024 - Fixing errors caught by github user tgtechy. Thank you. 
 
 18 Apr 2025 - Change Event visual on small screen to "Jewels" - the ∙ symbol colored to match calendar, add option to not show event count in big mode. 
+
+08 May 2025 - Remove duplicate code, clean up. 
+

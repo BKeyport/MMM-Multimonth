@@ -218,21 +218,10 @@ start: function () {
                         if ((this.config.highlightWeekend) && (gridDay.getDay() == this.config.weekend1 || gridDay.getDay() == this.config.weekend2)) {
                             output += " weekend";
                         }
-                    } else {
-                        if (this.config.otherMonths) {
-                            output += "dim " + this.config.instanceID;
-                        } else {
-                            output += "noDisplay " + this.config.instanceID;
-                        }
-                    }
+                        output += " " + (gridDay.getMonth() + 1) + "-" + gridDay.getDate() + "'>" + gridDay.getDate() + "</div>";
+                        output += "<div class='events'>";
 
-                    output += " " + (gridDay.getMonth() + 1) + "-" + gridDay.getDate() + "'>" + gridDay.getDate() + "</div>";
-					output += "<div class='events'>";
-
-                    // Is it the current month? (Duplicate, part 2, will be revising) 
-                    if (gridDay.getMonth() == firstDayOfMonth.getMonth()) {
-
-                        // Object to store counts for each unique calendarName and its symbol
+                       // Object to store counts for each unique calendarName and its symbol
                         const eventCounts = {};
 
                         // Count events for each calendarName
@@ -274,10 +263,19 @@ start: function () {
                             }
                             
                         }
+
+
                     } else {
-                        output += `<div class='noDisplay ${this.config.instanceID}'></div>`;
+                        if (this.config.otherMonths) {
+                            output += "dim " + this.config.instanceID;
+                        } else {
+                            output += "noDisplay " + this.config.instanceID;
+                        }
+                        output += "'>";
                     }
-					output += "</div>";
+
+                    
+   				output += "</div>";
                     // End of the day container
                     output += "</div>";
 
