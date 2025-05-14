@@ -18,9 +18,10 @@ This will create a mini-calendar with as many months as the user wants, assuming
 
 ## Installation
 
-Clone this repository in your ~/MagicMirror/modules/ folder ( $ cd ~MagicMirror/modules/ ):
+Clone this repository in your modules folder:
 
 ```shell
+cd ~/MagicMirror/modules/
 git clone https://github.com/BKeyport/MMM-Multimonth
 ```
 
@@ -204,7 +205,8 @@ Language Localization is controlled by the master language of MagicMirror.
 Simply issue the following command in the MMM-Multimonth folder: 
 
 ```shell 
-    git pull
+cd ~/MagicMirror/modules/MMM-Multimonth
+git pull
 ```
 then restart your mirror. 
 
