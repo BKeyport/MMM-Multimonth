@@ -8,6 +8,10 @@ have done so.
 
 THANK YOU for your consideration.
 
+### This module is suspended & effectively archived. It is left here as people are actively using it. I am no longer using Magic Mirror
+for this type of work, so I am no longer maintaining this project. If you'd like to take over the project, please let me know. 
+
+
 # MagicMirror Module to display a calendar with multiple months (user configurable)
 
 ![screenshot](screenshot.png?raw=true "Screenshot (vertical mode, no week numbers, single weekday line)")
