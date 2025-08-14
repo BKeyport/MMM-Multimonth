@@ -7,6 +7,7 @@ Notable changes to this project will be documented in this file.
 - Update README
 - Add CHANGELOG
 - Add CODE_OF_CONDUCT
+- Remove empty file
 
 ##08 May 2025 
 - Remove duplicate code, clean up. 
