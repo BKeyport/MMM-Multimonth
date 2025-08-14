@@ -8,7 +8,7 @@ have done so.
 
 THANK YOU for your consideration.
 
-# MagicMirror Module to display a calendar with multiple months (user configurable)
+# MagicMirror² Module to display a calendar with multiple months (user configurable)
 
 ![screenshot](screenshot.png?raw=true "Screenshot (vertical mode, no week numbers, single weekday line)")
 
@@ -20,7 +20,8 @@ This will create a mini-calendar with as many months as the user wants, assuming
 
 Clone this repository in your ~/MagicMirror/modules/ folder ( $ cd ~MagicMirror/modules/ ):
 
-```shell
+```bash
+cd ~/MagicMirror/modules
 git clone https://github.com/BKeyport/MMM-Multimonth
 ```
 
@@ -61,7 +62,6 @@ To use this module, add it to the modules array in the config/config.js file - s
 | weekend2               | 6       | 2nd day of your weekend                                      |
 | eventsCount            | true    | Big calendar mode - show number of events per icon           |
 
-
 for the last three items: 0 = Sunday, 1 = Monday, 2 = Tuesday, 3 = Wednesday, 4 = Thursday, 5 = Friday, 6 = Saturday.
 
 Remember the format for options:
@@ -87,19 +87,19 @@ To get events to feed to module, add the calendar module into your `config.js`.
 Suggested settings at minimum:  
 
 ```js
-		{
-			module: "calendar",
-			config: {
-				broadcastPastEvents: true,
-				calendars: [
-					{
-						url: <insert URL>,
-						name: <name>,
-					},
-					//.... As many as you'd like .... 
-				],
-			}
-		},
+{
+  module: "calendar",
+  config: {
+    broadcastPastEvents: true,
+    calendars: [
+      {
+        url: <insert URL>,
+        name: <name>,
+      },
+      //.... As many as you'd like .... 
+    ],
+  }
+},
 ```
 
 ## New Features: 
@@ -123,8 +123,6 @@ Example (uses public calendar from the University of Washington):
 },
 ```
 
-
-
 ### Big Calendar Mode:
 
 I wanted a big calendar for the current month, and the solutions out there didn't do what I wanted, so here we are. 
@@ -136,8 +134,6 @@ The Week Number (if used) will become part of the first day of the week's spot.
 Events will be summarized into a count and a symbol, and display below each day of the month. 
 
 To keep the CSS slim, I ***do not*** format anything differently, and it ***will*** break the constraints of the mini mode. Don't use if you're inexperienced in CSS. You will have to design your display yourself. If you have any questions, ask in the magic mirror forums. Myself or any of the CSS wizards will be happy to help you. 
-
-
 
 ## Updating from prior to 08 Jun 2024:
 
@@ -176,13 +172,9 @@ The following CSS code is all you need in `custom.css` if all you're changing is
   --fontsize: var(--font-size-xsmall);              /* Set font size */
   --smallEventMarker: 3px;  						/* Event Marker size in pixels */
 }
-
 ```
 
 Notes on the colors above: You can use any colors you'd like. https://www.w3schools.com/cssref/css_colors.php is a list of accepted color names, or if you wanna make your own, https://www.w3schools.com/cssref/css_colors_legal.php. The above list is intended to be a sample, so I use different ways of doing legal colors.  the "var" statements refer back to the master color list in Magic Mirror. You'll find a full list in main.css. 
-
-
-
 
 | Screenshot                                                   | How to get                                                   |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -197,17 +189,17 @@ Many thanks to kirash for the inspiration with the monthly_calendar module, sdet
 
 Please, if you have any suggestions for improvement, let me know, I'm learning JS and CSS as I write this, and I dream of much bigger things.
 
-Language Localization is controlled by the master language of MagicMirror.
+Language Localization is controlled by the master language of MagicMirror².
 
 ## Update: 
 
 Simply issue the following command in the MMM-Multimonth folder: 
 
-```shell 
-    git pull
+```bash
+cd ~/MagicMirror/modules/MMM-Multimonth
+git pull
 ```
 then restart your mirror. 
-
 
 ## Versioning
 
@@ -271,7 +263,7 @@ then restart your mirror.
 
 17 May 2023 - Added calNames - a way to control which calendars do what. Please see above.
 
-16 Jul 2023 - Adjusted CSS to follow master font sizing from MagicMirror. Does not affect custom.css if used for this module.
+16 Jul 2023 - Adjusted CSS to follow master font sizing from MagicMirror². Does not affect custom.css if used for this module.
 
 18 Oct 2023 - Added CSS class "instanceID" to allow for more complex CSS. Yes, I'm still working on the module - just been busy. Added fontsize variable to defaults.
 
