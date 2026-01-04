@@ -2,6 +2,7 @@ Module.register('MMM-Multimonth', {
   // Default module config.
   defaults: {
     startMonth: -1,
+    staticStartMonth: false,
     monthCount: 3,
     monthsVertical: true,
     repeatWeekdaysVertical: false,
@@ -138,9 +139,15 @@ Module.register('MMM-Multimonth', {
 
     // Variables
     const date = new Date()
-    const month = date.getMonth()
+    if (this.config.staticStartMonth == false) {
+      const month = date.getMonth()
+      const year = date.getFullYear()
+    } else {
+      month = 11
+      year = date.getFullYear() - 1
+    }
     // const day = date.getDate()
-    const year = date.getFullYear()
+    
     var wrapper = document.createElement('div')
     var lastMonth = this.config.startMonth + this.config.monthCount - 1
 

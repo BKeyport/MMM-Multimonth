@@ -105,7 +105,7 @@ To use this module, add it to the modules array in the config/config.js file - s
 
 | Option                 | Default | Description                                                  |
 | ---------------------- | ------- | ------------------------------------------------------------ |
-| startMonth             | -1      | Starting month relative to the current month                 |
+| startMonth             | -1      | Starting month relative to the current month (except if `staticStartMont` set to `true`) |
 | monthCount             | 3       | How many months do you want to display?                      |
 | monthsVertical         | false   | Display months on a vertical line                            |
 | repeatWeekdaysVertical | false   | Repeat the weekday names? (Vertical Calendar Only)           |
@@ -122,6 +122,7 @@ To use this module, add it to the modules array in the config/config.js file - s
 | weekend1               | 0       | 1st Day of your weekend                                      |
 | weekend2               | 6       | 2nd day of your weekend                                      |
 | eventsCount            | true    | Big calendar mode - show number of events per icon           |
+| staticStartMonth       | false   | ALways start display with a specified month; if set to `true`, select start month with `startMonth` (`1` = January) |
 
 for the last three items: 0 = Sunday, 1 = Monday, 2 = Tuesday, 3 = Wednesday, 4 = Thursday, 5 = Friday, 6 = Saturday.
 

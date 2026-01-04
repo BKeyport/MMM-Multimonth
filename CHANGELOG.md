@@ -3,6 +3,7 @@
 Notable changes to this project will be documented in this file.
 
 ## 04 Jan 2026
+- **NEW FEATURE**: `staticStartMonth` config option to always start the calendars on the same month (e.g., January)
 - Update README
 - Update dependencies
 - Update ESLint
