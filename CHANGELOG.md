@@ -2,6 +2,13 @@
 
 Notable changes to this project will be documented in this file.
 
+##4 Jan 2026
+
+- Update README
+- Update dependencies
+- Update ESLint
+- Add Dependabot version checks
+
 ##14 Aug 2025
 
 - Update README
