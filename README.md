@@ -135,8 +135,9 @@ Events will be summarized into a count and a symbol, and display below each day 
 
 To keep the CSS slim, I ***do not*** format anything differently, and it ***will*** break the constraints of the mini mode. Don't use if you're inexperienced in CSS. You will have to design your display yourself. If you have any questions, ask in the magic mirror forums. Myself or any of the CSS wizards will be happy to help you. 
 
+### Updating from prior to 08 Jun 2024
 <details>
-  <summary><b>Updating from prior to 08 Jun 2024</b> (click to expand)</summary>
+  <summary><b>Instructions for updating from versions before 8 June 2024</b> (click to expand)</summary>
 CSS is changed - please check all customizations. **Old Elements, values, etc. have been deleted**.
 
 The following CSS code is all you need in `custom.css` if all you're changing is the colors and/or background edge rounding:
@@ -184,6 +185,7 @@ Notes on the colors above: You can use any colors you'd like. https://www.w3scho
 | ![screenshot](vert-week-rep.png?raw=true "Screenshot (vertical mode, no week numbers, repeat weekday line for every month)") | monthsVertical: true, <br> repeatWeekdaysVertical: true, <br> weekNumbers: true, |
 | ![screenshot](horz-noweeknum.png?raw=true "Screenshot (horizontal mode)") | monthsVertical: false, <br> weekNumbers: false,              |
 | ![screenshot](horz-week.png?raw=true "Screenshot (horizontal mode)") | monthsVertical: false, <br> weekNumbers: true,               |
+
 </details>
 
 ## Thank You
