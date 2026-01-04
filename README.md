@@ -106,7 +106,7 @@ To use this module, add it to the modules array in the config/config.js file - s
 | Option                 | Default | Description                                                  |
 | ---------------------- | ------- | ------------------------------------------------------------ |
 | startMonth             | -1      | Starting month relative to the current month (except if `staticStartMont` set to `true`) |
-| staticStartMonth       | false   | Always start display with a specified month; if set to `true`, select start month with `startMonth` (`1` = January) |
+| staticStartMonth       | false   | Always start display with a specified month instead of relative to current month; if set to `true`, select start month with `startMonth` (`1` = January) |
 | monthCount             | 3       | How many months do you want to display?                      |
 | monthsVertical         | false   | Display months on a vertical line                            |
 | repeatWeekdaysVertical | false   | Repeat the weekday names? (Vertical Calendar Only)           |
