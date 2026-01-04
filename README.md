@@ -8,7 +8,7 @@ have done so.
 
 THANK YOU for your consideration.
 
-# MagicMirror² Module to display a calendar with multiple months (user configurable)
+MagicMirror² Module to display a calendar with multiple months (user configurable)
 
 ![screenshot](screenshot.png?raw=true "Screenshot (vertical mode, no week numbers, single weekday line)")
 
@@ -16,7 +16,7 @@ This is a module for the [MagicMirror²](https://github.com/MagicMirrorOrg/Magic
 
 This will create a mini-calendar with as many months as the user wants, assuming screen space is available. Screenshots are with config examples.
 
-## Installation
+## Installing the Module
 
 Clone this repository in your ~/MagicMirror/modules/ folder ( $ cd ~MagicMirror/modules/ ):
 
@@ -26,6 +26,15 @@ git clone https://github.com/BKeyport/MMM-Multimonth
 ```
 
 **Note: NPM INSTALL is no longer required. This module is proud to no longer use any external dependencies!**
+
+## Updating the Module
+
+```sh
+cd ~/MagicMirror/modules/MMM-Multimonth
+git pull
+```
+
+Then restart MagicMirror²
 
 ## Using the module
 
@@ -40,7 +49,7 @@ To use this module, add it to the modules array in the config/config.js file - s
 },
 ```
 
-**Full config options:**
+### Full config options
 
 | Option                 | Default | Description                                                  |
 | ---------------------- | ------- | ------------------------------------------------------------ |
@@ -102,13 +111,11 @@ Suggested settings at minimum:
 },
 ```
 
-## New Features: 
-
-### Event Colors: 
+### Event Colors
 
 The module now can use the colors from the calendar module, default is the system color set (white)
 
-### Event Symbols: 
+### Event Symbols
 
 The module now can use the symbols from the calendar module in big calendar mode. 
 
@@ -123,7 +130,7 @@ Example (uses public calendar from the University of Washington):
 },
 ```
 
-### Big Calendar Mode:
+### Big Calendar Mode
 
 I wanted a big calendar for the current month, and the solutions out there didn't do what I wanted, so here we are. 
 
@@ -188,6 +195,35 @@ Notes on the colors above: You can use any colors you'd like. https://www.w3scho
 
 </details>
 
+## Contributing
+
+If you find any problems, bugs or have questions, please [open a GitHub issue](https://github.com/BKeyport/MMM-Multimonth/issues) in this repository.
+
+Pull requests are of course also very welcome 🙂
+
+### Code of Conduct
+
+Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+
+### Developer commands
+
+You will need to first install the dev dependencies:
+
+```bash
+cd ~/MagicMirror/modules/MMM-Multimonth
+git switch development
+npm install
+```
+
+Please create all PRs against the development branch for testing and eventual merging into master.
+
+- `node --run lint` - Run linting checks.
+- `node --run lint:fix` - Fix automatically fixable linting errors.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
+
 ## Thank You
 
 Many thanks to kirash for the inspiration with the monthly_calendar module, sdetweil and lavolp3 for the help in coding and CSS work. Without your help, this would just be a pipe dream.
@@ -195,13 +231,3 @@ Many thanks to kirash for the inspiration with the monthly_calendar module, sdet
 Please, if you have any suggestions for improvement, let me know, I'm learning JS and CSS as I write this, and I dream of much bigger things.
 
 Language Localization is controlled by the master language of MagicMirror².
-
-## Update: 
-
-Simply issue the following command in the MMM-Multimonth folder: 
-
-```bash
-cd ~/MagicMirror/modules/MMM-Multimonth
-git pull
-```
-then restart your mirror. 
