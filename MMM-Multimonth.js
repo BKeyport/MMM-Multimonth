@@ -53,7 +53,7 @@ Module.register('MMM-Multimonth', {
     scheduleMidnightUpdate.call(this)
   },
 
-  notificationReceived: function (notification, payload, sender) {
+  notificationReceived: function (notification, payload) {
     if (notification === 'CALENDAR_EVENTS') {
       this.storedEvents = JSON.parse(JSON.stringify(payload))
       this.updateDom()
@@ -82,15 +82,15 @@ Module.register('MMM-Multimonth', {
     }
 
     const weekNames = (dateObject, index) => {
-      sDate = firstDay(dateObject, 0)
-      weekdaysTemp = []
+      var sDate = firstDay(dateObject, 0)
+      var weekdaysTemp = []
       var weekdaysHeader = ''
-      for (tday = 0; tday < 7; tday++) {
+      for (let tday = 0; tday < 7; tday++) {
         weekdaysTemp.push(sDate.toLocaleDateString(config.language, { weekday: this.config.headerType }))
         sDate.setDate(sDate.getDate() + 1)
       }
-      for (tday = 0; tday < 7; tday++) {
-        offset = tday + index
+      for (let tday = 0; tday < 7; tday++) {
+        var offset = tday + index
         if (offset >= 7) offset = offset - 7
         weekdaysHeader += `<div class='dow ${this.config.instanceID} ${weekdaysTemp[offset]}'> ${weekdaysTemp[offset]} </div>`
       }
@@ -107,7 +107,7 @@ Module.register('MMM-Multimonth', {
       adjTarget.setDate(adjTarget.getDate() + 6)
       const newJan1 = new Date(adjTarget.getFullYear(), 0, 1)
       if (newJan1.getTime() === jan1.getTime()) {
-        result = weekResult
+        var result = weekResult
       }
       else {
         result = 1
@@ -124,7 +124,7 @@ Module.register('MMM-Multimonth', {
     }
 
     const matchName = (cn) => {
-      result = true
+      var result = true
       if (this.config.calNames.length > 0) {
         result = false
         for (let ev = 0; ev < this.config.calNames.length; ev++) {
@@ -137,10 +137,10 @@ Module.register('MMM-Multimonth', {
     }
 
     // Variables
-    date = new Date()
-    month = date.getMonth()
-    day = date.getDate()
-    year = date.getFullYear()
+    const date = new Date()
+    const month = date.getMonth()
+    // const day = date.getDate()
+    const year = date.getFullYear()
     var wrapper = document.createElement('div')
     var lastMonth = this.config.startMonth + this.config.monthCount - 1
 
@@ -154,29 +154,29 @@ Module.register('MMM-Multimonth', {
 
     // set calendar main container depending on calendar orientation
     if (this.config.monthsVertical) {
-      output = `<div class='calendar settings ${this.config.instanceID} vertical '>`
+      var output = `<div class='calendar settings ${this.config.instanceID} vertical '>`
     }
     else {
       output = `<div class='calendar settings ${this.config.instanceID} horizontal '>`
     }
 
     // iterate through months to display
-    for (currentMonth = this.config.startMonth; currentMonth <= lastMonth; currentMonth++) {
+    for (let currentMonth = this.config.startMonth; currentMonth <= lastMonth; currentMonth++) {
       output += `<div class='month ${this.config.instanceID}'>`
 
       // add the month headers
-      titleTemp = new Date(year, month + currentMonth, 1)
-      monthTitle = titleTemp.toLocaleString(config.language, { month: 'long', year: 'numeric' })
+      const titleTemp = new Date(year, month + currentMonth, 1)
+      const monthTitle = titleTemp.toLocaleString(config.language, { month: 'long', year: 'numeric' })
       output += `<div class='month-header ${this.config.instanceID}'>` + monthTitle + '</div>'
 
       // add day of week headers
       if (!this.config.monthsVertical || this.config.repeatWeekdaysVertical || currentMonth == this.config.startMonth) {
         output += weekdaysHeader
       }
-      firstDayOfMonth = new Date(year, month + currentMonth, 1, 0, 0, 0, 0)
-      lastDayOfMonth = new Date(year, month + currentMonth + 1, 0, 0, 0, 0, 0)
-      gridDay = firstDay(firstDayOfMonth, this.config.startWeek)
-      gridEnd = lastDay(lastDayOfMonth, this.config.startWeek - 1)
+      const firstDayOfMonth = new Date(year, month + currentMonth, 1, 0, 0, 0, 0)
+      const lastDayOfMonth = new Date(year, month + currentMonth + 1, 0, 0, 0, 0, 0)
+      const gridDay = firstDay(firstDayOfMonth, this.config.startWeek)
+      const gridEnd = lastDay(lastDayOfMonth, this.config.startWeek - 1)
 
       // Week grid builder
       do {
@@ -184,8 +184,8 @@ Module.register('MMM-Multimonth', {
 
         // Week Number Calculator
         const weekNum = this.config.weekNumbersISO ? weekNumberISO(gridDay) : weekNumber(gridDay)
-        weekNumResultSmall = `<div class='weekNumSmall w${weekNum} ${this.config.instanceID}'>${weekNum}</div>`
-        weekNumResultBig = `<div class='weekNumBig w${weekNum} ${this.config.instanceID}'>Wk ${weekNum}</div>`
+        const weekNumResultSmall = `<div class='weekNumSmall w${weekNum} ${this.config.instanceID}'>${weekNum}</div>`
+        const weekNumResultBig = `<div class='weekNumBig w${weekNum} ${this.config.instanceID}'>Wk ${weekNum}</div>`
 
         // Week Loop  (for Days)
 
@@ -195,9 +195,9 @@ Module.register('MMM-Multimonth', {
         }
 
         // build the day container
-        const eventBodge = new Date(gridDay)
+        // const eventBodge = new Date(gridDay)
 
-        for (dow = 0; dow <= 6; dow++) {
+        for (let dow = 0; dow <= 6; dow++) {
           output += '<div class=\'dayContainer ' + this.config.instanceID + '\'>'
 
           // Internal week number - if big calendar
