@@ -140,8 +140,8 @@ Module.register('MMM-Multimonth', {
     // Variables
     const date = new Date()
     if (this.config.staticStartMonth == false) {
-      const month = date.getMonth()
-      const year = date.getFullYear()
+      var month = date.getMonth()
+      var year = date.getFullYear()
     } else {
       month = 11
       year = date.getFullYear() - 1
