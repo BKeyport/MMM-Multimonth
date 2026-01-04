@@ -36,6 +36,58 @@ git pull
 
 Then restart MagicMirror²
 
+<details>
+  <summary><b>Updating from prior to 08 Jun 2024</b> (click to expand)</summary>
+CSS is changed - please check all customizations. **Old Elements, values, etc. have been deleted**.
+
+The following CSS code is all you need in `custom.css` if all you're changing is the colors and/or background edge rounding:
+
+(Key changes here: "current" has been changed to "today", "background-week, color-week have been removed as redundant") 
+
+```css
+/* Defaults are shown */
+.MMM-Multimonth .settings {
+  --background-header: rgb(0, 128, 0);               /* for the month and year line, use green background */ 
+  --background-dow: var(--color-background);         /* For the days of the week, use global background */ 
+  --background-dowBlank: rgba(255, 255, 255, 0);     /* For the blank square if you use Week numbers */  
+  --background-weekno: #808080;                      /* for the week number, use a grey background */ 
+  --background-event: var(--color-background);		 /* Background for events, used in big mode only */
+    
+  --background-dimmed: var(--color-background);      /* For dimmed (previous/next month in current grid), use the global background color */
+  --background-weekday: var(--color-background);     /* For normal days, use global background */ 
+  --background-weekend: cornflowerblue;              /* For the days defined as your weekend, change the background to cornflowerblue */
+  --background-today: Yellow;                        /* for the current day, change the background to yellow */ 
+
+  --color-header: var(--color-text-bright);         /* for the header lines, use the global bright text color */ 
+  --color-dow: var(--color-text);                   /* for the days of the week header, use the global text color */
+  --color-dowBlank: rgba(255, 255, 255, 0);			/* For the blank square if you use Week numbers */ 
+  --color-weekno: var(--color-text);                /* for the week numbers, use the global bright text color */
+
+  --color-dimmed: var(--color-text-dimmed);         /* For dimmed (previous/next month in current grid), use the global dimmed text color */
+  --color-weekday: var(--color-text);               /* For normal days, use global normal text */ 
+  --color-weekend: var(--color-background);         /* For the days defined as your weekend, change the text to the background color */
+  --color-today: var(--color-background);           /* for the current day, change the text to the background color */ 
+
+  --back-rounding: 8px;                             /* Set the radius of the background rounded edges. See documentation for border-radius elsewhere */ 
+  --alignment: center;                              /* Adjust the text alignment */ 
+  --fontsize: var(--font-size-xsmall);              /* Set font size */
+  --smallEventMarker: 3px;  						/* Event Marker size in pixels */
+}
+```
+
+Notes on the colors above: You can use any colors you'd like. https://www.w3schools.com/cssref/css_colors.php is a list of accepted color names, or if you wanna make your own, https://www.w3schools.com/cssref/css_colors_legal.php. The above list is intended to be a sample, so I use different ways of doing legal colors.  the "var" statements refer back to the master color list in Magic Mirror. You'll find a full list in main.css. 
+
+| Screenshot                                                   | How to get                                                   |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ![screenshot](vert-noweek-norep.png?raw=true "Screenshot (vertical mode, no week numbers, single weekday line)") | monthsVertical: true, <br> repeatWeekdaysVertical: false, <br> weekNumbers: false, |
+| ![screenshot](vert-noweek-rep.png?raw=true "Screenshot (vertical mode, no week numbers, repeat weekday line for every month)") | monthsVertical: true, <br> repeatWeekdaysVertical: true, <br> weekNumbers: false, |
+| ![screenshot](vert-week-norep.png?raw=true "Screenshot (vertical mode, no week numbers, single weekday line)") | monthsVertical: true, <br> repeatWeekdaysVertical: false, <br> weekNumbers: true, |
+| ![screenshot](vert-week-rep.png?raw=true "Screenshot (vertical mode, no week numbers, repeat weekday line for every month)") | monthsVertical: true, <br> repeatWeekdaysVertical: true, <br> weekNumbers: true, |
+| ![screenshot](horz-noweeknum.png?raw=true "Screenshot (horizontal mode)") | monthsVertical: false, <br> weekNumbers: false,              |
+| ![screenshot](horz-week.png?raw=true "Screenshot (horizontal mode)") | monthsVertical: false, <br> weekNumbers: true,               |
+
+</details>
+
 ## Using the module
 
 To use this module, add it to the modules array in the config/config.js file - shown options are defaults:
@@ -141,59 +193,6 @@ The Week Number (if used) will become part of the first day of the week's spot.
 Events will be summarized into a count and a symbol, and display below each day of the month. 
 
 To keep the CSS slim, I ***do not*** format anything differently, and it ***will*** break the constraints of the mini mode. Don't use if you're inexperienced in CSS. You will have to design your display yourself. If you have any questions, ask in the magic mirror forums. Myself or any of the CSS wizards will be happy to help you. 
-
-### Updating from prior to 08 Jun 2024
-<details>
-  <summary><b>Instructions for updating from versions before 8 June 2024</b> (click to expand)</summary>
-CSS is changed - please check all customizations. **Old Elements, values, etc. have been deleted**.
-
-The following CSS code is all you need in `custom.css` if all you're changing is the colors and/or background edge rounding:
-
-(Key changes here: "current" has been changed to "today", "background-week, color-week have been removed as redundant") 
-
-```css
-/* Defaults are shown */
-.MMM-Multimonth .settings {
-  --background-header: rgb(0, 128, 0);               /* for the month and year line, use green background */ 
-  --background-dow: var(--color-background);         /* For the days of the week, use global background */ 
-  --background-dowBlank: rgba(255, 255, 255, 0);     /* For the blank square if you use Week numbers */  
-  --background-weekno: #808080;                      /* for the week number, use a grey background */ 
-  --background-event: var(--color-background);		 /* Background for events, used in big mode only */
-    
-  --background-dimmed: var(--color-background);      /* For dimmed (previous/next month in current grid), use the global background color */
-  --background-weekday: var(--color-background);     /* For normal days, use global background */ 
-  --background-weekend: cornflowerblue;              /* For the days defined as your weekend, change the background to cornflowerblue */
-  --background-today: Yellow;                        /* for the current day, change the background to yellow */ 
-
-  --color-header: var(--color-text-bright);         /* for the header lines, use the global bright text color */ 
-  --color-dow: var(--color-text);                   /* for the days of the week header, use the global text color */
-  --color-dowBlank: rgba(255, 255, 255, 0);			/* For the blank square if you use Week numbers */ 
-  --color-weekno: var(--color-text);                /* for the week numbers, use the global bright text color */
-
-  --color-dimmed: var(--color-text-dimmed);         /* For dimmed (previous/next month in current grid), use the global dimmed text color */
-  --color-weekday: var(--color-text);               /* For normal days, use global normal text */ 
-  --color-weekend: var(--color-background);         /* For the days defined as your weekend, change the text to the background color */
-  --color-today: var(--color-background);           /* for the current day, change the text to the background color */ 
-
-  --back-rounding: 8px;                             /* Set the radius of the background rounded edges. See documentation for border-radius elsewhere */ 
-  --alignment: center;                              /* Adjust the text alignment */ 
-  --fontsize: var(--font-size-xsmall);              /* Set font size */
-  --smallEventMarker: 3px;  						/* Event Marker size in pixels */
-}
-```
-
-Notes on the colors above: You can use any colors you'd like. https://www.w3schools.com/cssref/css_colors.php is a list of accepted color names, or if you wanna make your own, https://www.w3schools.com/cssref/css_colors_legal.php. The above list is intended to be a sample, so I use different ways of doing legal colors.  the "var" statements refer back to the master color list in Magic Mirror. You'll find a full list in main.css. 
-
-| Screenshot                                                   | How to get                                                   |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![screenshot](vert-noweek-norep.png?raw=true "Screenshot (vertical mode, no week numbers, single weekday line)") | monthsVertical: true, <br> repeatWeekdaysVertical: false, <br> weekNumbers: false, |
-| ![screenshot](vert-noweek-rep.png?raw=true "Screenshot (vertical mode, no week numbers, repeat weekday line for every month)") | monthsVertical: true, <br> repeatWeekdaysVertical: true, <br> weekNumbers: false, |
-| ![screenshot](vert-week-norep.png?raw=true "Screenshot (vertical mode, no week numbers, single weekday line)") | monthsVertical: true, <br> repeatWeekdaysVertical: false, <br> weekNumbers: true, |
-| ![screenshot](vert-week-rep.png?raw=true "Screenshot (vertical mode, no week numbers, repeat weekday line for every month)") | monthsVertical: true, <br> repeatWeekdaysVertical: true, <br> weekNumbers: true, |
-| ![screenshot](horz-noweeknum.png?raw=true "Screenshot (horizontal mode)") | monthsVertical: false, <br> weekNumbers: false,              |
-| ![screenshot](horz-week.png?raw=true "Screenshot (horizontal mode)") | monthsVertical: false, <br> weekNumbers: true,               |
-
-</details>
 
 ## Contributing
 
