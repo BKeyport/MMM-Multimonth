@@ -1,28 +1,32 @@
 {
   "name": "mmm-multimonth",
-  "version": "2024.5.9",
-  "description": "Multiple month Calendar for MagicMirror².",
-  "main": "MMM-Multimonth.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "type": "commonjs",
+  "description": "Multiple month Calendar for MagicMirror²",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/BKeyport/MMM-Multimonth.git"
   },
+  "main": "MMM-Multimonth.js",
   "keywords": [
     "MagicMirror",
     "calendar"
   ],
   "author": "Brendan Keyport",
+  "contributors": [
+    {"name": "Brendan Keyport"},
+    {"name": "dathbe"},
+    {"name": "KristjanESPERANTO"}
+  ], 
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/BKeyport/MMM-Multimonth/issues"
-  },
-  "homepage": "https://github.com/BKeyport/MMM-Multimonth#readme",
   "devDependencies": {
-    "@eslint/js": "^9.2.0",
-    "eslint": "^9.2.0",
-    "globals": "^15.2.0"
+    "@eslint/js": "^9.39.2",
+    "@stylistic/eslint-plugin": "^5.6.1",
+    "eslint": "^9.39.2",
+    "globals": "^17.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix"
   }
 }
