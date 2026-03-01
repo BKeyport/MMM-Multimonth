@@ -6,6 +6,8 @@ If you find this module useful, and would like to contribute to the project, I a
 
 THANK YOU for your consideration.
 
+Before use of this module, please review license information below! 
+
 MagicMirror² Module to display a calendar with multiple months (user configurable)
 
 ![screenshot](screenshot.png?raw=true "Screenshot (vertical mode, no week numbers, single weekday line)")
@@ -220,7 +222,9 @@ Please create all PRs against the development branch for testing and eventual me
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details. However, the following text is added:  
+
+Due to regulations being out of control, this software, as well as the entire MagicMirror project, may be illegal to use in any location with age verification laws. This software will cannot and will not provide any age verification. It is your responsibility to verify with your local government legality of software. The authors of this software and modules used both up and downstream from this product, cannot be held liable for use in a situation where age verification is required. This is your only notification. 
 
 ## Thank You
 
