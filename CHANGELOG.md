@@ -2,6 +2,11 @@
 
 Notable changes to this project will be documented in this file.
 
+## 05 Mar 2026
+- Fix reference to config options in README
+- Improve package.json
+- Update dependencies
+
 ## 04 Jan 2026
 - **NEW FEATURE**: `staticStartMonth` config option to always start the calendars on the same month (e.g., January)
 - Update README

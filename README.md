@@ -124,7 +124,7 @@ To use this module, add it to the modules array in the config/config.js file - s
 | weekend2               | 6       | 2nd day of your weekend                                      |
 | eventsCount            | true    | Big calendar mode - show number of events per icon           |
 
-for the last three items: 0 = Sunday, 1 = Monday, 2 = Tuesday, 3 = Wednesday, 4 = Thursday, 5 = Friday, 6 = Saturday.
+for `startWeek`, `weekend1`, and `weekend2`: 0 = Sunday, 1 = Monday, 2 = Tuesday, 3 = Wednesday, 4 = Thursday, 5 = Friday, 6 = Saturday.
 
 Remember the format for options:
 
