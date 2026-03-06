@@ -1,6 +1,6 @@
 {
   "name": "mmm-multimonth",
-  "version": "2026",
+  "version": "2.0.0",
   "type": "commonjs",
   "description": "Multiple month Calendar for MagicMirror²",
   "repository": {
