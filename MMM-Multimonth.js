@@ -74,7 +74,7 @@ Module.register('MMM-Multimonth', {
     }
 
     const lastDay = (dateObject, index) => {
-      dateObject.getDay(),
+      const dayOfWeek = dateObject.getDay(),
         lastDay = new Date(dateObject),
         diff = (index + (7 - dateObject.getDay())) % 7
       lastDay.setDate(dateObject.getDate() + diff)
