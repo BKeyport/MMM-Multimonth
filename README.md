@@ -8,7 +8,7 @@ THANK YOU for your consideration.
 
 MagicMirror² Module to display a calendar with multiple months (user configurable)
 
-![screenshot](screenshot.png?raw=true "Screenshot (vertical mode, no week numbers, single weekday line)")
+![screenshot](screenshot-vertical-2026.png?raw=true "Screenshot (vertical mode, no week numbers, single weekday line)")
 
 This is a module for the [MagicMirror²](https://github.com/MagicMirrorOrg/MagicMirror) project.
 
