@@ -74,7 +74,7 @@ Module.register('MMM-Multimonth', {
     }
 
     const lastDay = (dateObject, index) => {
-      const dayOfWeek = dateObject.getDay(),
+      dateObject.getDay(),
         lastDay = new Date(dateObject),
         diff = (index + (7 - dateObject.getDay())) % 7
       lastDay.setDate(dateObject.getDate() + diff)
@@ -142,12 +142,13 @@ Module.register('MMM-Multimonth', {
     if (this.config.staticStartMonth == false) {
       var month = date.getMonth()
       var year = date.getFullYear()
-    } else {
+    }
+    else {
       month = 11
       year = date.getFullYear() - 1
     }
     // const day = date.getDate()
-    
+
     var wrapper = document.createElement('div')
     var lastMonth = this.config.startMonth + this.config.monthCount - 1
 
