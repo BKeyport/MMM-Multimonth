@@ -2,6 +2,13 @@
 
 Notable changes to this project will be documented in this file.
 
+## 04 Apr 2026
+
+- Update screenshot
+- Lint
+- Update module metadata
+- Update dependencies
+
 ## 05 Mar 2026
 - Fix reference to config options in README
 - Improve package.json

@@ -142,12 +142,13 @@ Module.register('MMM-Multimonth', {
     if (this.config.staticStartMonth == false) {
       var month = date.getMonth()
       var year = date.getFullYear()
-    } else {
+    }
+    else {
       month = 11
       year = date.getFullYear() - 1
     }
     // const day = date.getDate()
-    
+
     var wrapper = document.createElement('div')
     var lastMonth = this.config.startMonth + this.config.monthCount - 1
 

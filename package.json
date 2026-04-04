@@ -1,6 +1,6 @@
 {
   "name": "mmm-multimonth",
-  "version": "2026",
+  "version": "2.0.0",
   "type": "commonjs",
   "description": "Multiple month Calendar for MagicMirror²",
   "repository": {
@@ -21,9 +21,9 @@
   "license": "MIT",
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@stylistic/eslint-plugin": "^5.9.0",
-    "eslint": "^10.0.2",
-    "globals": "^17.3.0"
+    "@stylistic/eslint-plugin": "^5.10.0",
+    "eslint": "^10.2.0",
+    "globals": "^17.4.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
