@@ -1,0 +1,23 @@
+Mode 1 (ISO style anchor, Monday logic)
+Find Jan 4
+Week 1 is the week containing Jan 4
+Weeks start on Monday
+Week number is the number of Monday based weeks since Week 1
+
+Mode 2 (Sunday to Saturday, Jan 1 anchor)
+Weeks run Sunday to Saturday
+Week 1 is the Sunday to Saturday week that contains January 1
+All subsequent weeks increment by 1
+
+Mode 3 (Sunday to Saturday, 4 day rule start)
+Weeks run Sunday to Saturday
+Find the first week of the year that contains at least 4 days in that year
+That week is Week 1
+All later weeks increment by 1
+
+Mode 4 (Sunday to Saturday, first full week)
+Weeks run Sunday to Saturday
+Find the first week where all 7 days are in the year
+That week is Week 1
+All later weeks increment by 1
+

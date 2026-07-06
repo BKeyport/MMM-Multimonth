@@ -1,0 +1,112 @@
+# MMM-Multimonth Configuration Summary (Revised)
+
+## 1. Calendar Range / Start Logic
+
+* `staticStartMonth`
+* `startMonth`
+* `monthCount`
+
+Defines where the calendar begins and how many months are generated.
+
+---
+
+## 2. Grid Structure
+
+* `otherMonths`
+
+Controls how days outside the current month are displayed (dimmed or blank).
+
+---
+
+## 3. Layout System
+
+* `monthsVertical`
+
+Selects calendar layout using:
+
+* `.vertical`
+* `.horizontal`
+
+---
+
+## 4. Weekday Header System
+
+* `dowHeader`
+* `repeatDOW`
+
+Controls weekday label format and whether weekday headers repeat in vertical layouts.
+
+**Legacy compatibility**
+
+* `headerType` → feeds `dowHeader`
+* `repeatWeekdaysVertical` → feeds `repeatDOW`
+
+If the new option exists, the legacy option is ignored.
+
+---
+
+## 5. Weekend System
+
+* `highlightWeekend`
+* `weekendDays`
+* `weekend1` *(legacy fallback)*
+* `weekend2` *(legacy fallback)*
+
+Controls weekend highlighting. `weekendDays` is the primary configuration; `weekend1` and `weekend2` populate it only when `weekendDays` is not defined.
+
+---
+
+## 6. Display Mode System
+
+* `bigCalendar`
+
+Switches between compact and expanded calendar display modes.
+
+---
+
+## 7. Instance / CSS Scoping
+
+* `instanceID`
+
+Allows multiple calendar instances with independent CSS styling.
+
+---
+
+## 8. Global Render Controls
+
+* `startWeek`
+
+Defines the first day of the week and shifts both the weekday header and calendar grid.
+
+---
+
+## 9. Week Number System
+
+* `weekNumbers`
+* `weekNumbersISO` *(legacy compatibility)*
+* `weekNumbersFollow`
+
+Controls week number visibility, calculation method, and whether week boundaries follow `startWeek`.
+
+---
+
+## 10. Event System *(future implementation)*
+
+* `eventsOn`
+* `calNames`
+* `eventsCount`
+
+Reserved for the future event processing and display system.
+
+---
+
+# Legacy Compatibility Summary
+
+| New Option         | Legacy Option            | Behavior                                                                                                           |
+| ------------------ | ------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `dowHeader`        | `headerType`             | Legacy feeds new if `dowHeader` is not defined.                                                                    |
+| `repeatDOW`        | `repeatWeekdaysVertical` | Legacy feeds new if `repeatDOW` is not defined.                                                                    |
+| `weekendDays`      | `weekend1`, `weekend2`   | Legacy values populate `weekendDays` if it is not defined.                                                         |
+| `weekNumbers`      | `weekNumbersISO`         | When `weekNumbers = true`, `weekNumbersISO` selects Mode 1 or Mode 2. Numeric modes (1–4) ignore `weekNumbersISO`. |
+| `staticStartMonth` | *(enhanced)*             | Supports legacy `true`/`false` plus numeric month override (`1–12`).                                               |
+

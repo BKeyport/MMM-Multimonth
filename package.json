@@ -1,0 +1,22 @@
+{
+  "name": "mmm-multimonth",
+  "version": "2.0.0",
+  "type": "commonjs",
+  "description": "Multiple month Calendar for MagicMirror²",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BKeyport/MMM-Multimonth.git"
+  },
+  "main": "MMM-Multimonth.js",
+  "keywords": [
+    "MagicMirror",
+    "calendar"
+  ],
+  "author": "Brendan Keyport",
+  "contributors": [
+    {"name": "Brendan Keyport"},
+    {"name": "dathbe"},
+    {"name": "KristjanESPERANTO"}
+  ],
+  "license": "MIT"
+}

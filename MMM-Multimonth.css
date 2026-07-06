@@ -1,0 +1,194 @@
+/* CSS for Multimonth Calendar  - (C) Brendan Keyport 2024 */
+
+/* Settings */
+.MMM-Multimonth .settings {
+  --background-header: Green;
+  --background-dow: var(--color-background);
+  --background-dowBlank: rgba(255, 255, 255, 0);
+  --background-weekno: grey;
+  --background-event: var(--color-background);
+  
+  --background-dimmed: var(--color-background);
+  --background-weekday: var(--color-background);
+  --background-weekend: cornflowerblue;
+  --background-today: Yellow;
+  
+
+  --color-header: var(--color-text-bright);
+  --color-dow: var(--color-text);
+  --color-dowBlank: rgba(255, 255, 255, 0);
+  --color-weekno: var(--color-text);
+
+  --color-dimmed: var(--color-text-dimmed);
+  --color-weekday: var(--color-text);
+  --color-weekend: var(--color-background);
+  --color-today: var(--color-background);
+
+  --back-rounding: 8px;
+  --alignment: center;
+  --fontsize: var(--font-size-xsmall);
+  --smallEventMarker: 3px;
+}
+
+/* Calendar */
+.MMM-Multimonth .calendar {
+  display: flex;
+  align-items: stretch;
+  white-space: nowrap;
+  border: 0;
+  font-size: var(--fontsize);
+  line-height: var(--fontsize) + 5;
+  text-align: var(--alignment);
+}
+
+/* Layout */
+.MMM-Multimonth .vertical {
+  flex-direction: column;
+}
+
+.MMM-Multimonth .horizontal {
+  flex-direction: row;
+}
+
+/* Month */
+.MMM-Multimonth .month {
+  flex-basis: 100%;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Month Header */
+.MMM-Multimonth .month-header {
+  background-color: var(--background-header);
+  color: var(--color-header);
+  font-size: var(--fontsize);
+  line-height: var(--fontsize) + 5;
+  border-radius: var(--back-rounding);
+}
+
+/* Days of Week Container */
+.MMM-Multimonth .dowContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+/* Days of Week */
+.MMM-Multimonth .dow {
+  color: var(--color-dow);
+  border-radius: var(--back-rounding);
+  background-color: var(--background-dow);
+  flex: 1 1 0px;
+  min-width: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.MMM-Multimonth .dowBlank {
+  color: var(--color-dowBlank);
+  border-radius: var(--back-rounding);
+  background-color: var(--background-dowBlank);
+  flex: 1 1 0px;
+  min-width: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+/* Week Container */
+.MMM-Multimonth .weekContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  flex: 1 1 0px;
+  min-width: 0;
+  padding: 0 0; 
+  margin: 0 0; 
+}
+
+/* Week Number */
+.MMM-Multimonth .weekNumSmall,
+.MMM-Multimonth .weekNumBig {
+  color: var(--color-weekno);
+  border-radius: var(--back-rounding);
+  background-color: var(--background-weekno);
+  flex: 1 0;
+  min-width: inherit;
+  padding: 0 0; 
+  margin: 0 0; 
+}
+
+/* Day Container */
+.MMM-Multimonth .dayContainer {
+  display: flex;
+  flex-flow: row wrap;
+  flex: 1 0;
+}
+
+
+/* Day */
+.MMM-Multimonth .day {
+  background-color: var(--background-weekday);
+  border-radius: var(--back-rounding);
+  color: var(--color-weekday);
+  flex: 1 1 100%;
+}
+
+
+/* Dimmed Day */
+.MMM-Multimonth .dim {
+  color: var(--color-dimmed);
+  border-radius: var(--back-rounding);
+  background-color: var(--background-dimmed);
+  }
+
+/* No Display */
+.MMM-Multimonth .noDisplay {
+  display: none;
+}
+
+/* Weekend */
+.MMM-Multimonth .weekend {
+  color: var(--color-weekend);
+  border-radius: var(--back-rounding);
+  background-color: var(--background-weekend);
+}
+
+/* Today */
+.MMM-Multimonth .today {
+  border-style: hidden;
+  background-color: var(--background-today);
+  color: var(--color-today);
+}
+
+
+/* Events */
+
+.MMM-Multimonth .events {
+  display: flex;
+  flex-flow: row wrap;
+  flex: 1 1 100%;
+ }
+
+.MMM-Multimonth .event,
+.MMM-Multimonth .bigEvent {
+  border-radius: var(--back-rounding); 
+  min-width: inherit;
+  padding: 0 0; 
+  margin: 0 0; 
+}
+
+/* Small Event */
+.MMM-Multimonth .event {
+  padding: 0 0; 
+  margin: 0 0; 
+  font-size: var(--font-size);
+  line-height: calc(var(--font-size-medium) - 20px);
+}
+
+/* Big Event */
+.MMM-Multimonth .bigEvent {
+  display: inline-block; 
+  white-space: wrap; 
+  background-color: var(--background-event);
+}
